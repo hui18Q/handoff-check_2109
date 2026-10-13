@@ -1,0 +1,6 @@
+Python 3.14.2
+Selected commit: 0bff84c
+Command: python3 report.py
+Records: 3
+Total quantity: 10
+Exit code: 0
