@@ -126,7 +126,7 @@ Expected results:
 The experiment demonstrates that local execution success does not establish archive completeness. It does not yet measure the completed checker's improvement over the manual workflow.
 
 Outstanding work:
-- Independent reproduction and review by another team member.
+- Peer review: tracked in MR #2.
 - Validation on the required unit-server environment with Python 3.12.
 - Documentation of the team's investigation into the real workflow need.
 - Evaluation of the completed checker against a defined manual baseline.
@@ -139,4 +139,4 @@ Both developer executions succeeded with exit code 0. The normal archive contain
 
 The environment was macOS, Git 2.50.1 (Apple Git-155), and Python 3.14.2. Receiver outputs are recorded in `docs/evidence/reproduction-2026-10-13.txt`.
 
-This check was performed by the original author. Independent reproduction by another team member and unit-server validation with Python 3.12 remain pending.
+This check was performed by the original author. Unit-server validation with Python 3.12 remains pending. Peer review is tracked in MR #2.
