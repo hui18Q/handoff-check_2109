@@ -1,0 +1,25 @@
+Reproduction by: Lu Wenxi
+Date: 2026-10-13
+git version 2.50.1 (Apple Git-155)
+Python 3.14.2
+
+Normal fixture commit: d383f50
+Fault fixture commit: a68d251
+
+Normal receiver
+Command: python3 report.py
+Records: 3
+Total quantity: 10
+Exit code: 0
+
+Fault receiver
+Command: python3 report.py
+Traceback (most recent call last):
+  File "/Users/apple/Desktop/MY-T06-06/.scenario-runs/run.dvpjRR/missing-receiver/report.py", line 7, in <module>
+    with input_file.open(newline="", encoding="utf-8") as file:
+         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/apple/Desktop/MY-T06-06/.scenario-runs/run.dvpjRR/missing-receiver/data/items.csv'
+Exit code: 1
