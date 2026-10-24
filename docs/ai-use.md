@@ -79,3 +79,25 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review and any resulting changes.
 - Evidence: scripts/handoff_check.sh, docs/handoff-interface.md, and the manual observations recorded above.
 - Remaining limitations: Checklist retrieval, Git evidence collection, archive handling, Python integration, automated regression tests and Python 3.12 unit-server verification are not yet complete. These checks do not establish the completed checker's correctness.
+## Build — Temporary workspace and exit cleanup
+
+- Date: 24 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Add a dedicated temporary workspace inside the tool project and clean it up when the Bash workflow exits.
+- AI output: Proposed workspace initialization, an EXIT cleanup function, signal handlers, and manual verification commands.
+- Human verification: Lu Wenxi saved the implementation and ran the following checks on macOS against uncommitted working-tree changes.
+
+| Check | Observed result | Exit code |
+|---|---|---|
+| Bash syntax check | No syntax errors reported | 0 |
+| Valid repository invocation | Created a temporary directory inside the tool project and reached the explicit development placeholder | 2 |
+| Post-exit directory check | No temporary workspace remained | 0 |
+| CLI help regression check | Displayed the usage information | 0 |
+
+- Exit-code observation: Cleanup preserved the development placeholder's exit code of 2.
+- Status: The listed local checks passed; independent review is pending.
+- Decision: Pending independent review and any resulting changes.
+- Evidence: scripts/handoff_check.sh and the manual observations recorded above.
+- Remaining limitations: Signal handling, cleanup after exit codes 0 and 1, and cleanup failure have not yet been verified on the owner's Mac. Checklist retrieval, Git evidence collection, archive handling, Python integration and Python 3.12 unit-server verification remain incomplete.

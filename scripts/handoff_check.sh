@@ -93,10 +93,49 @@ resolve_target_commit() {
     fi
 }
 
+cleanup() {
+    local exit_code=$?
+    trap - EXIT
+
+    if [ -n "$temp_workspace" ]; then
+        if ! rm -rf -- "$temp_workspace"; then
+            printf 'ERROR: Cannot remove temporary workspace: %s\n' "$temp_workspace" >&2
+            exit 2
+        fi
+    fi
+
+    exit "$exit_code"
+}
+
+initialize_workspace() {
+    local required_command
+
+    for required_command in dirname mktemp rm; do
+        if ! command -v "$required_command" >/dev/null 2>&1; then
+            operational_error "Required command is not available: $required_command"
+        fi
+    done
+
+    if ! tool_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P); then
+        operational_error "Cannot determine the tool project root."
+    fi
+
+    trap cleanup EXIT
+    trap 'operational_error "Interrupted by SIGHUP."' HUP
+    trap 'operational_error "Interrupted by SIGINT."' INT
+    trap 'operational_error "Interrupted by SIGTERM."' TERM
+
+    if ! temp_workspace=$(mktemp -d "$tool_root/.handoff-tmp.XXXXXXXX"); then
+        operational_error "Cannot create a temporary workspace inside the tool project."
+    fi
+}
+
 repo_path=""
 target_ref="HEAD"
 checklist_path="handoff-check.json"
 zip_path=""
+tool_root=""
+temp_workspace=""
 
 while [ "$#" -gt 0 ]; do
     case "$1" in
@@ -136,9 +175,11 @@ fi
 
 validate_repository
 resolve_target_commit
+initialize_workspace
 
 printf 'Repository: %s\n' "$repo_root"
 printf 'Selected commit: %s\n' "$commit_id"
+printf 'Temporary workspace: %s\n' "$temp_workspace"
 
 # Replaced by archive handling and Python integration in later steps.
 printf 'ERROR: Archive and Python checks are not implemented in this development step.\n' >&2

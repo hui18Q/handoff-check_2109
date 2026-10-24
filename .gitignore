@@ -1,2 +1,4 @@
 
 /.scenario-runs/
+
+.handoff-tmp.*/
