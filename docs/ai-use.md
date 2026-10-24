@@ -101,3 +101,31 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review and any resulting changes.
 - Evidence: scripts/handoff_check.sh and the manual observations recorded above.
 - Remaining limitations: Signal handling, cleanup after exit codes 0 and 1, and cleanup failure have not yet been verified on the owner's Mac. Checklist retrieval, Git evidence collection, archive handling, Python integration and Python 3.12 unit-server verification remain incomplete.
+
+## Build — Committed checklist retrieval and Git evidence collection
+
+- Date: 24 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Read the checklist from the selected commit, reject non-canonical checklist paths, and collect raw NUL-delimited Git status and tree evidence.
+- AI output: Proposed path validation, committed-blob retrieval, separate evidence files, and controlled manual verification steps.
+- Human verification: Lu Wenxi inspected the implementation and ran the following checks on macOS against uncommitted working-tree changes.
+
+| Check | Observed result | Exit code |
+|---|---|---|
+| Bash syntax | No syntax errors reported | 0 |
+| CLI help | Usage information displayed | 0 |
+| Committed checklist present | Checklist and Git evidence collection completed before the development placeholder | 2 |
+| Checklist absent from selected commit | Reported that the checklist could not be read | 2 |
+| Checklist path containing .. | Rejected the path | 2 |
+| Local checklist differs from committed checklist | Execution trace showed retrieval from the fixed commit rather than the local file; reached the development placeholder | 2 |
+| Post-exit temporary-directory check | No temporary workspace remained | 0 |
+
+- Fixture: A separate temporary Git repository was created under .scenario-runs. Its recorded commit was 379cf2236e8dfd73d855ac043bd7c074e4068d88. This fixture commit is not a development commit in the tool repository.
+- Source cross-check: The committed checklist required README.md; the uncommitted local checklist required LOCAL_ONLY_DO_NOT_USE.txt. The trace showed cat-file reading 379cf2236e8dfd73d855ac043bd7c074e4068d88:handoff-check.json.
+- Evidence-command inspection: The trace showed status --porcelain=v1 -z --untracked-files=all --ignored and ls-tree -r -z --full-tree using the selected commit. It also showed removal of the tool's temporary workspace.
+- Status: The listed local checks passed; independent review is pending.
+- Decision: Pending independent review and any resulting changes.
+- Evidence: scripts/handoff_check.sh and docs/evidence/bash-evidence-trace-2026-10-24.txt.
+- Remaining limitations: The owner's checks inspected the commands and their outcomes; they did not independently compare the raw evidence bytes or test unusual filenames. JSON content validation, archive handling, Python integration, complete target-repository preservation checks and Python 3.12 unit-server verification remain incomplete.

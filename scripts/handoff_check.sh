@@ -54,6 +54,20 @@ operational_error() {
     exit 2
 }
 
+validate_checklist_path() {
+    case "$checklist_path" in
+        /*|*/|*//*)
+            argument_error "--checklist must be a canonical repository-relative file path."
+            ;;
+    esac
+
+    case "/$checklist_path/" in
+        */./*|*/../*)
+            argument_error "--checklist must not contain . or .. path components."
+            ;;
+    esac
+}
+
 validate_repository() {
     local inside_work_tree
     local repo_prefix
@@ -85,6 +99,8 @@ validate_repository() {
     if ! repo_root=$(git -C "$repo_path" rev-parse --show-toplevel 2>/dev/null); then
         operational_error "Cannot determine the repository root: $repo_path"
     fi
+
+    repo_path="$repo_root"
 }
 
 resolve_target_commit() {
@@ -127,6 +143,25 @@ initialize_workspace() {
 
     if ! temp_workspace=$(mktemp -d "$tool_root/.handoff-tmp.XXXXXXXX"); then
         operational_error "Cannot create a temporary workspace inside the tool project."
+    fi
+
+    checklist_file="$temp_workspace/checklist.json"
+    status_file="$temp_workspace/status.bin"
+    tree_file="$temp_workspace/tree.bin"
+}
+
+collect_evidence() {
+    if ! git -C "$repo_root" cat-file blob "${commit_id}:${checklist_path}" > "$checklist_file"; then
+        operational_error "Cannot read checklist from the selected commit: $checklist_path"
+    fi
+
+    if ! GIT_OPTIONAL_LOCKS=0 git -c core.fsmonitor=false -C "$repo_root" \
+        status --porcelain=v1 -z --untracked-files=all --ignored > "$status_file"; then
+        operational_error "Cannot collect working-tree status."
+    fi
+
+    if ! git -C "$repo_root" ls-tree -r -z --full-tree "$commit_id" > "$tree_file"; then
+        operational_error "Cannot inspect the selected commit tree."
     fi
 }
 
@@ -173,13 +208,16 @@ if [ -z "$repo_path" ]; then
     argument_error "Missing required option: --repo"
 fi
 
+validate_checklist_path
 validate_repository
 resolve_target_commit
 initialize_workspace
+collect_evidence
 
 printf 'Repository: %s\n' "$repo_root"
 printf 'Selected commit: %s\n' "$commit_id"
 printf 'Temporary workspace: %s\n' "$temp_workspace"
+printf 'Checklist and Git evidence collected.\n'
 
 # Replaced by archive handling and Python integration in later steps.
 printf 'ERROR: Archive and Python checks are not implemented in this development step.\n' >&2
