@@ -29,3 +29,29 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending. An Accepted, Modified or Rejected decision will be recorded with supporting evidence after review.
 - Evidence: docs/handoff-interface.md.
 - Remaining risks: The proposed interface may require changes during review and integration. Filename handling, archive validation and command failures still require executable tests.
+
+## Build — Bash CLI scaffold and argument validation
+
+- Date: 24 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Draft the Bash help and argument-parsing layer using the proposed interface. Handle invalid arguments with exit code 2.
+- AI output: A Bash scaffold containing help text, default values, option parsing and argument-validation functions.
+- Human-led responsibilities: Confirm the required behaviour, inspect the saved script, execute checks, interpret results and decide whether the implementation is ready for integration.
+- Human verification: Lu Wenxi ran the syntax check and CLI commands below on macOS. The latest saved version produced the expected results.
+- Debugging observation: Earlier runs produced unexpected empty output and exit code 0. After inspecting the saved file, the checks were repeated successfully. The original cause was not established.
+- Evidence: scripts/handoff_check.sh and the manual verification results below.
+- Status: CLI scaffold verified locally; independent review pending.
+- Decision: Pending independent review. Record the final Accepted, Modified or Rejected decision and review evidence before merging.
+- Remaining limitations: Repository validation, Git evidence collection, archive handling and Python integration are not implemented. Valid CLI input currently reaches an explicit ERROR placeholder. This is not an end-to-end tool validation.
+
+| Check | Observed result |
+|---|---|
+| `bash -n scripts/handoff_check.sh` | No syntax error; exit 0 |
+| `--help` | Help displayed; exit 0 |
+| No arguments | Missing required `--repo`; exit 2 |
+| `--repo` | Missing value; exit 2 |
+| `--repo --ref HEAD` | Option used instead of a value; exit 2 |
+| `--repo ""` | Empty value rejected; exit 2 |
+| `--repo .` | Explicit development placeholder; exit 2 |
