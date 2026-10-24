@@ -55,3 +55,27 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 | `--repo --ref HEAD` | Option used instead of a value; exit 2 |
 | `--repo ""` | Empty value rejected; exit 2 |
 | `--repo .` | Explicit development placeholder; exit 2 |
+
+## Build — Repository validation and commit resolution
+
+- Date: 24 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Extend the Bash CLI to validate a local Git working repository and resolve the requested ref to a fixed commit ID.
+- AI output: Proposed repository-validation and commit-resolution functions, a root-directory restriction, and manual verification commands.
+- Human verification: Lu Wenxi saved and inspected the implementation and executed the following checks on macOS. These checks exercised uncommitted working-tree changes on feature-handoff-bash.
+
+| Check | Observed result | Exit code |
+|---|---|---|
+| Current repository root with default HEAD | Printed the absolute repository root and selected commit; reached the explicit development placeholder | 2 |
+| Nonexistent ref | Reported that the ref could not resolve to an available commit | 2 |
+| Script file supplied as repository path | Rejected the path because it was not a directory | 2 |
+| Repository subdirectory supplied as repository path | Rejected the path because the repository root was required | 2 |
+
+- Commit cross-check: The selected commit was 63cb487766789d959085db72e4acec53d9639bf2, matching the separate git rev-parse HEAD output.
+- Proposed interface detail: --repo must identify the repository root. The help text and docs/handoff-interface.md document this restriction.
+- Status: The listed local checks passed; independent review is pending.
+- Decision: Pending independent review and any resulting changes.
+- Evidence: scripts/handoff_check.sh, docs/handoff-interface.md, and the manual observations recorded above.
+- Remaining limitations: Checklist retrieval, Git evidence collection, archive handling, Python integration, automated regression tests and Python 3.12 unit-server verification are not yet complete. These checks do not establish the completed checker's correctness.

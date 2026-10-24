@@ -17,7 +17,9 @@ bash scripts/handoff_check.sh --repo PATH \
     [--ref REF] [--checklist PATH] [--zip PATH]
 ```
 
-- `--repo`: required path to a local, non-bare Git working repository.
+- `--repo`: required path to the root of a local, non-bare Git working
+  repository. A subdirectory is rejected rather than silently checking
+  its enclosing repository.
 - `--ref`: target commit or ref; defaults to `HEAD`.
 - `--checklist`: repository-relative checklist path; defaults to
   `handoff-check.json`.
