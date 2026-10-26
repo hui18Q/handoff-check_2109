@@ -2,3 +2,5 @@
 /.scenario-runs/
 
 .handoff-tmp.*/
+
+/.venv/
