@@ -17,6 +17,9 @@ Options:
   --zip PATH        Existing ZIP to check; otherwise generate a temporary ZIP.
   --help, -h        Show this help and exit without running a check.
 
+Requirements:
+  Git and Python 3.12 available on PATH.
+
 Completed-check exit codes:
   0  PASS: required regular files exist in the selected commit and ZIP.
   1  FAIL: a required regular file is missing or has an unsupported type.
@@ -150,6 +153,22 @@ initialize_workspace() {
     tree_file="$temp_workspace/tree.bin"
 }
 
+validate_python() {
+    if ! command -v python3 >/dev/null 2>&1; then
+        operational_error "Python 3.12 is not available on PATH."
+    fi
+
+    if ! python3 -c 'import sys; sys.exit(0 if sys.version_info[:2] == (3, 12) else 1)'; then
+        operational_error "Python 3.12 is required. Activate the project's Python 3.12 virtual environment."
+    fi
+
+    checker_script="$tool_root/src/handoff_check.py"
+
+    if [ ! -f "$checker_script" ] || [ ! -r "$checker_script" ]; then
+        operational_error "Python checker is missing or unreadable: $checker_script"
+    fi
+}
+
 collect_evidence() {
     if ! git -C "$repo_root" cat-file blob "${commit_id}:${checklist_path}" > "$checklist_file"; then
         operational_error "Cannot read checklist from the selected commit: $checklist_path"
@@ -167,8 +186,6 @@ collect_evidence() {
 
 prepare_archive() {
     if [ -n "$zip_path" ]; then
-        archive_source="supplied"
-
         case "$zip_path" in
             /*)
                 archive_path="$zip_path"
@@ -182,7 +199,6 @@ prepare_archive() {
             operational_error "Supplied ZIP is not a readable file: $archive_path"
         fi
     else
-        archive_source="generated"
         archive_path="$temp_workspace/handoff.zip"
 
         if ! git -C "$repo_root" archive \
@@ -192,14 +208,36 @@ prepare_archive() {
     fi
 }
 
+run_checker() {
+    local checker_exit
+
+    python3 "$checker_script" \
+        --repo "$repo_root" \
+        --commit "$commit_id" \
+        --checklist "$checklist_file" \
+        --status-file "$status_file" \
+        --tree-file "$tree_file" \
+        --archive "$archive_path"
+    checker_exit=$?
+
+    case "$checker_exit" in
+        0|1|2)
+            exit "$checker_exit"
+            ;;
+        *)
+            operational_error "Python checker returned an unsupported exit code: $checker_exit"
+            ;;
+    esac
+}
+
 repo_path=""
 target_ref="HEAD"
 checklist_path="handoff-check.json"
 zip_path=""
 archive_path=""
-archive_source=""
 tool_root=""
 temp_workspace=""
+checker_script=""
 
 while [ "$#" -gt 0 ]; do
     case "$1" in
@@ -241,16 +279,7 @@ validate_checklist_path
 validate_repository
 resolve_target_commit
 initialize_workspace
+validate_python
 collect_evidence
 prepare_archive
-
-printf 'Repository: %s\n' "$repo_root"
-printf 'Selected commit: %s\n' "$commit_id"
-printf 'Temporary workspace: %s\n' "$temp_workspace"
-printf 'Checklist and Git evidence collected.\n'
-printf 'Archive source: %s\n' "$archive_source"
-printf 'Archive: %s\n' "$archive_path"
-
-# Replaced by Python integration in the next development step.
-printf 'ERROR: Python checks are not implemented in this development step.\n' >&2
-exit 2
+run_checker

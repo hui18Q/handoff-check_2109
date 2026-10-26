@@ -1,0 +1,22 @@
+Scope: isolated Bash/Python interface tests using a test double
+Source state: uncommitted integration changes
+Branch: feature-handoff-python-integration
+Base commit: 39021040cb486b8d754840aaa87945a3eb25ed8f
+Python 3.12.16
+Bash: 3.2.57(1)-release
+git version 2.50.1 (Apple Git-155)
+Command: python3 tests/test_bash_python_interface.py -v
+
+test_exit_codes_streams_and_evidence (__main__.BashPythonInterfaceTests.test_exit_codes_streams_and_evidence) ... ok
+test_invalid_ref_is_error (__main__.BashPythonInterfaceTests.test_invalid_ref_is_error) ... ok
+test_missing_checker_is_error (__main__.BashPythonInterfaceTests.test_missing_checker_is_error) ... ok
+test_missing_supplied_zip_is_error (__main__.BashPythonInterfaceTests.test_missing_supplied_zip_is_error) ... ok
+test_supplied_zip_paths_and_preservation (__main__.BashPythonInterfaceTests.test_supplied_zip_paths_and_preservation) ... ok
+test_unsupported_checker_exit_is_error (__main__.BashPythonInterfaceTests.test_unsupported_checker_exit_is_error) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 3.958s
+
+OK
+
+Test exit code: 0
