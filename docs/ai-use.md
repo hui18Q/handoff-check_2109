@@ -129,3 +129,31 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review and any resulting changes.
 - Evidence: scripts/handoff_check.sh and docs/evidence/bash-evidence-trace-2026-10-24.txt.
 - Remaining limitations: The owner's checks inspected the commands and their outcomes; they did not independently compare the raw evidence bytes or test unusual filenames. JSON content validation, archive handling, Python integration, complete target-repository preservation checks and Python 3.12 unit-server verification remain incomplete.
+
+## Build — Generated and supplied ZIP handling
+
+- Date: 24 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Support an existing ZIP resolved from the caller's working directory, or generate a temporary ZIP from the fixed selected commit.
+- AI output: Proposed archive preparation, readable-file checks, source reporting, and manual verification steps.
+- Human verification: Lu Wenxi inspected the implementation and executed the following checks on macOS against uncommitted working-tree changes.
+
+| Check | Observed result | Exit code |
+|---|---|---|
+| Bash syntax | No syntax errors reported | 0 |
+| CLI help | Usage information displayed | 0 |
+| Automatic ZIP generation | Used the fixed selected commit and reached the Python development placeholder | 2 |
+| Supplied ZIP using an absolute path | Selected the supplied archive and reached the Python development placeholder | 2 |
+| Supplied ZIP using a relative path | Resolved the archive from the caller's working directory and reached the Python development placeholder | 2 |
+| Supplied ZIP filename containing spaces | Preserved the complete filename in both supplied-path checks | 2 |
+| Nonexistent supplied ZIP | Reported that the supplied ZIP was not a readable file | 2 |
+
+- Selected-commit observation: The generation trace used commit 379cf2236e8dfd73d855ac043bd7c074e4068d88, matching the reported selected commit.
+- Supplied-file content check: SHA-256 before and after both supplied-ZIP invocations was c84204106090eb709a8803241f4faa18217449b970aaabe4a71a22b25fa4642b.
+- Cleanup observation: The automatic-generation trace showed removal of the dedicated temporary workspace after the development placeholder returned 2.
+- Status: The listed local checks passed; independent review is pending.
+- Decision: Pending independent review and any resulting changes.
+- Evidence: scripts/handoff_check.sh and docs/evidence/bash-archive-trace-2026-10-24.txt.
+- Remaining limitations: These owner checks did not inspect the generated ZIP's entries or exercise archive-generation failure. ZIP validity, required-file assessment, Python integration, complete target-repository preservation checks and Python 3.12 unit-server verification remain incomplete.

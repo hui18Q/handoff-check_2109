@@ -165,10 +165,39 @@ collect_evidence() {
     fi
 }
 
+prepare_archive() {
+    if [ -n "$zip_path" ]; then
+        archive_source="supplied"
+
+        case "$zip_path" in
+            /*)
+                archive_path="$zip_path"
+                ;;
+            *)
+                archive_path="$PWD/$zip_path"
+                ;;
+        esac
+
+        if [ ! -f "$archive_path" ] || [ ! -r "$archive_path" ]; then
+            operational_error "Supplied ZIP is not a readable file: $archive_path"
+        fi
+    else
+        archive_source="generated"
+        archive_path="$temp_workspace/handoff.zip"
+
+        if ! git -C "$repo_root" archive \
+            --format=zip --output="$archive_path" "$commit_id"; then
+            operational_error "Cannot generate a ZIP from the selected commit."
+        fi
+    fi
+}
+
 repo_path=""
 target_ref="HEAD"
 checklist_path="handoff-check.json"
 zip_path=""
+archive_path=""
+archive_source=""
 tool_root=""
 temp_workspace=""
 
@@ -213,12 +242,15 @@ validate_repository
 resolve_target_commit
 initialize_workspace
 collect_evidence
+prepare_archive
 
 printf 'Repository: %s\n' "$repo_root"
 printf 'Selected commit: %s\n' "$commit_id"
 printf 'Temporary workspace: %s\n' "$temp_workspace"
 printf 'Checklist and Git evidence collected.\n'
+printf 'Archive source: %s\n' "$archive_source"
+printf 'Archive: %s\n' "$archive_path"
 
-# Replaced by archive handling and Python integration in later steps.
-printf 'ERROR: Archive and Python checks are not implemented in this development step.\n' >&2
+# Replaced by Python integration in the next development step.
+printf 'ERROR: Python checks are not implemented in this development step.\n' >&2
 exit 2
