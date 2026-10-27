@@ -224,3 +224,18 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review and executable end-to-end verification.
 - Evidence: scripts/demo.sh and docs/evidence/demo-preflight-2026-10-27.txt.
 - Remaining risks: The demonstration must be checked with the real Python implementation, coordinated with the team's fixture conventions, and verified from a clean extraction on the unit server.
+
+## Build — Development README and reproduction instructions
+
+- Date: 27 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Draft English setup, demonstration and interface-test instructions that accurately describe the current development snapshot.
+- AI output: A README covering Python 3.12 virtual-environment setup, demonstration commands, expected outcomes, the public CLI, scope and current verification status.
+- Human verification: Lu Wenxi saved the README and displayed its Git diff for inspection. The documented interface-test and missing-checker outcomes refer to previously recorded local runs.
+- Verification boundary: The README instructions have not yet been followed from a clean extraction. The real checker and complete demonstration remain unverified.
+- Status: Development documentation drafted; independent review and clean-extraction verification are pending.
+- Decision: Pending independent review and reproduction checks.
+- Evidence: README.md, docs/evidence/bash-python-interface-2026-10-26.txt and docs/evidence/demo-preflight-2026-10-27.txt.
+- Remaining risks: Setup instructions, dependencies and expected output must be updated after real-checker and team test-workflow integration, then verified on the unit server.
