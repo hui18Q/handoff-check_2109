@@ -176,7 +176,9 @@ Total quantity: 10
 ## Current verification status
 
 - The inventory example ran successfully using Python 3.12.16.
-- Six isolated interface test methods passed locally using Python 3.12.16.
+- Local setup, inventory execution and all six isolated interface test
+  methods were verified from a clean extraction of commit `917960b`
+  on macOS using a newly created Python 3.12.16 virtual environment.
 - Demonstration syntax validation passed.
 - With the real checker absent, demonstration prerequisite validation
   returned ERROR with exit code 2.
@@ -192,6 +194,7 @@ Local evidence is recorded in:
 
 - `docs/evidence/bash-python-interface-2026-10-26.txt`
 - `docs/evidence/demo-preflight-2026-10-27.txt`
+- `docs/evidence/clean-extraction-preflight-2026-10-27.txt`
 
 AI assistance, human checks, review decisions and remaining risks are
 recorded in `docs/ai-use.md`.

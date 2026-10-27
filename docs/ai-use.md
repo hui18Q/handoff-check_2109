@@ -239,3 +239,20 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review and reproduction checks.
 - Evidence: README.md, docs/evidence/bash-python-interface-2026-10-26.txt and docs/evidence/demo-preflight-2026-10-27.txt.
 - Remaining risks: Setup instructions, dependencies and expected output must be updated after real-checker and team test-workflow integration, then verified on the unit server.
+
+## Verify — Local clean-extraction reproduction
+
+- Date: 27 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Check the documented setup and available commands from an extraction containing submitted files without Git history or an existing virtual environment.
+- AI output: Commands to export the committed project, extract it, create a new Python 3.12 virtual environment, execute available checks and capture their output.
+- Source commit: 917960b09626b7185faf0a701274a731f89f5122.
+- Human verification: Lu Wenxi confirmed the extraction initially contained no .git or .venv, created a fresh virtual environment, and executed the recorded commands on macOS using Python 3.12.16, Bash 3.2.57(1)-release and Git 2.50.1.
+- Results: The interpreter path pointed to the extracted project's virtual environment. The inventory program reported 3 records and total quantity 10. All six isolated interface test methods passed with exit code 0. The demonstration reported the absent Python checker and returned the expected exit code 2. The verification process returned 0.
+- Verification boundary: These results establish the recorded local setup, example execution, interface tests and missing-checker preflight. They do not establish complete checker assessments or successful end-to-end demonstration.
+- Status: Recorded local clean-extraction checks passed; independent review and unit-server verification remain pending.
+- Decision: Pending independent review.
+- Evidence: docs/evidence/clean-extraction-preflight-2026-10-27.txt and README.md.
+- Remaining risks: The real checker, demonstration fixture execution, full automated-test and CI workflow, and manual-baseline evaluation require further verification.
