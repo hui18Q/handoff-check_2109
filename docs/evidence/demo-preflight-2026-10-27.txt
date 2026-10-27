@@ -1,0 +1,14 @@
+Scope: demo syntax and missing-checker preflight only
+Source state: uncommitted scripts/demo.sh
+Branch: feature-handoff-demo
+Base commit: c8cf660661e3cfece3b856707e5110de4dcbe495
+Python 3.12.16
+Bash: 3.2.57(1)-release
+
+Command: bash -n scripts/demo.sh
+Syntax exit code: 0
+
+Command: bash scripts/demo.sh
+ERROR: Python checker is missing or unreadable: /Users/apple/Desktop/MY-T06-06/src/handoff_check.py
+Demo exit code: 2
+Expected current result: missing checker, exit code 2

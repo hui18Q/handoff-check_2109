@@ -208,3 +208,19 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review and any resulting changes.
 - Evidence: tests/test_bash_python_interface.py and docs/evidence/bash-python-interface-2026-10-26.txt.
 - Remaining risks: The test double does not implement required-file classification or diagnostics. These results do not validate the real checker, the complete pytest/CI workflow, unit-server execution or improvement over the manual baseline.
+
+## Build — Rebuildable inventory handoff demonstration
+
+- Date: 27 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Draft an end-to-end demonstration that rebuilds normal and missing-file inventory scenarios from submitted files without relying on existing Git history.
+- AI output: scripts/demo.sh, including prerequisite checks, temporary fixture construction, two selected commits, checker invocation, expected exit-code checks and cleanup.
+- Intended behaviour: The complete selected commit should produce checker exit code 0. The commit omitting the required CSV should produce checker exit code 1 while retaining the CSV locally. The demonstration should exit with 0 only when both expected outcomes occur.
+- Human verification: Lu Wenxi saved the script and ran it using Python 3.12.16. Bash syntax validation returned 0. With the real Python checker absent, the script reported the missing checker and returned 2.
+- Verification boundary: Execution stopped during prerequisite validation. Fixture construction, both checker assessments and cleanup after fixture creation were not exercised by this run.
+- Status: Syntax and missing-checker preflight checked locally; complete demonstration and independent review are pending.
+- Decision: Pending independent review and executable end-to-end verification.
+- Evidence: scripts/demo.sh and docs/evidence/demo-preflight-2026-10-27.txt.
+- Remaining risks: The demonstration must be checked with the real Python implementation, coordinated with the team's fixture conventions, and verified from a clean extraction on the unit server.
