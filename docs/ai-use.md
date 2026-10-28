@@ -304,3 +304,53 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Integration handling: AI-assisted conflict resolution retained both the interface review and demo development records.
 - Evidence: Yin Jiayu's review dated 28 October 2026 in MR !5, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/5.
 - Remaining limitations: The run stopped before fixture construction. Successful complete demonstration, cleanup after fixture creation and final README outcomes require real-checker integration and verification.
+
+## Report drafting — Member A contribution
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Draft Member A's scenario explanation, Bash workflow contribution, current verification summary and personal AI-use reflection for the final report.
+- AI output: An English contribution draft and AI-use reflection covering the controlled scenario, Bash orchestration, available evidence, expanded AI delegation, shared-assumption risks, the documentation-copying error and remaining verification work.
+- Evidence basis: The interface contract, submitted inventory example and recorded local verification results.
+- Human action: Lu Wenxi saved the draft in docs/member-a-report-draft.md. Detailed evidence cross-checking and independent review remain pending.
+- Verification boundary: This drafting activity produced no new implementation or experimental results.
+- Status: Working draft awaiting review and integration into the final group report.
+- Decision: Pending review and any resulting revisions.
+- Evidence: docs/member-a-report-draft.md and the evidence paths cited within it.
+- Remaining risks: Update the draft after real-checker integration and evaluation, verify its claims against evidence, and fit it to the final report requirements and page limit.
+
+## Verify — Unit-server partial reproduction
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Prepare and execute scoped checks on the unit server from a clean export, then retain the original results.
+- AI output: Commands for archive export, transfer, clean extraction, virtual-environment setup, available checks, log capture and documentation updates.
+- Source commit: d63f209516f26837da2b05496cb9137967abe448.
+- Human verification: Lu Wenxi executed the commands on fit2109s2.rep.monash.edu using Python 3.12.3, Bash 5.2.21 and Git 2.43.0, inspected the output and downloaded the original log.
+- Results: The extraction initially contained no .git or .venv. Environment creation, both Bash syntax checks, CLI help, inventory execution and all six isolated interface test methods passed. Demo preflight reported the absent checker and returned 2. The verification process returned 0.
+- Verification boundary: The interface tests use a controlled Python test double. Complete real-checker assessments and demonstration fixture execution were not exercised.
+- Status: Recorded unit-server partial checks passed; independent review and complete workflow verification remain pending.
+- Decision: Pending independent review.
+- Evidence: docs/evidence/unit-server-preflight-2026-10-28.txt, README.md and docs/member-a-report-draft.md.
+- Remaining risks: Repeat clean-extraction verification after real-checker and full test-workflow integration; complete the demonstration and baseline evaluation.
+
+## Review follow-up — Report draft and server evidence
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Independent checker: Yin Jiayu.
+- Reviewed documentation version: 128330d.
+- Server-tested source version: d63f209516f26837da2b05496cb9137967abe448.
+- Review method: The reviewer cross-checked the README and Member A draft against the original local logs, interface implementation/tests and original unit-server preflight log.
+- Reviewer findings: The server log identifies Python 3.12.3, Bash 5.2.21 and Git 2.43.0, six successful interface test methods, the expected inventory output and missing-checker demo exit code 2. The README and draft distinguish these partial checks from a complete real-checker demonstration. The described Bash responsibilities match the implementation.
+- Independent conclusion: No blocking documentation inconsistency was found.
+- Review boundary: This was an evidence/documentation review. The reviewer did not independently rerun the remote server commands.
+- Owner decision: Accepted for the reviewed documentation and evidence-consistency scope. The report remains a working draft.
+- Status update: Independent documentation review is recorded for the report draft and server-evidence descriptions. Independent remote re-execution and complete workflow verification are not established by this review.
+- Integration handling: AI-assisted conflict resolution retained the demo review, report-drafting activity and unit-server partial-verification activity.
+- Evidence: Yin Jiayu's review dated 28 October 2026 in MR !6, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/6.
+- Remaining limitations: Update current-status text after real-checker integration, repeat complete clean-extraction verification on the unit server, and incorporate CI and baseline-evaluation results.

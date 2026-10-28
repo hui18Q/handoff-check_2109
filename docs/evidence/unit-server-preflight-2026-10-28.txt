@@ -1,0 +1,70 @@
+Scope: unit-server setup, interface tests and missing-checker preflight
+Complete checker assessment and end-to-end demonstration remain pending.
+Source commit: d63f209516f26837da2b05496cb9137967abe448
+d750bcabb98b249ffd1afb0ab6e12ec550b87ef277991dd123a6fc7105af1a73  /srv/home/wluu0044/fit2109-group-verification/handoff-d63f209.zip
+Wed Oct 28 02:57:48 UTC 2026
+fit2109s2.rep.monash.edu
+Linux
+Bash: 5.2.21(1)-release
+git version 2.43.0
+PASS: Fresh extraction has no .git or .venv.
+
+Command: python3.12 -m venv .venv
+Python 3.12.3
+Executable: /srv/home/wluu0044/fit2109-group-verification/run-d63f209.HmarKIp0/project/.venv/bin/python3
+Inside venv: True
+
+Command: bash -n scripts/handoff_check.sh
+
+Command: bash -n scripts/demo.sh
+
+Command: bash scripts/handoff_check.sh --help
+Usage:
+  bash scripts/handoff_check.sh --repo PATH [--ref REF]
+      [--checklist PATH] [--zip PATH]
+  bash scripts/handoff_check.sh --help
+
+Options:
+  --repo PATH       Root directory of a local Git working repository (required).
+  --ref REF         Commit or ref to check (default: HEAD).
+  --checklist PATH  Repository-relative checklist path in the selected commit
+                    (default: handoff-check.json).
+  --zip PATH        Existing ZIP to check; otherwise generate a temporary ZIP.
+  --help, -h        Show this help and exit without running a check.
+
+Requirements:
+  Git and Python 3.12 available on PATH.
+
+Completed-check exit codes:
+  0  PASS: required regular files exist in the selected commit and ZIP.
+  1  FAIL: a required regular file is missing or has an unsupported type.
+  2  ERROR: invalid input or a required operation failed.
+
+Scope:
+  Checks required-file presence, not content equality or program correctness.
+
+Command: python3 scenarios/inventory-report/report.py
+Records: 3
+Total quantity: 10
+
+Command: python3 tests/test_bash_python_interface.py -v
+test_exit_codes_streams_and_evidence (__main__.BashPythonInterfaceTests.test_exit_codes_streams_and_evidence) ... ok
+test_invalid_ref_is_error (__main__.BashPythonInterfaceTests.test_invalid_ref_is_error) ... ok
+test_missing_checker_is_error (__main__.BashPythonInterfaceTests.test_missing_checker_is_error) ... ok
+test_missing_supplied_zip_is_error (__main__.BashPythonInterfaceTests.test_missing_supplied_zip_is_error) ... ok
+test_supplied_zip_paths_and_preservation (__main__.BashPythonInterfaceTests.test_supplied_zip_paths_and_preservation) ... ok
+test_unsupported_checker_exit_is_error (__main__.BashPythonInterfaceTests.test_unsupported_checker_exit_is_error) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.956s
+
+OK
+Interface test exit code: 0
+
+Command: bash scripts/demo.sh
+ERROR: Python checker is missing or unreadable: /srv/home/wluu0044/fit2109-group-verification/run-d63f209.HmarKIp0/project/src/handoff_check.py
+Demo exit code: 2
+
+Completed the recorded unit-server partial verification.
+
+Verification process exit code: 0
