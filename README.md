@@ -7,6 +7,7 @@ Python 3.12 must already be installed.
 python3.12 -m venv .venv
 source .venv/bin/activate
 python3 --version
+python3 -m pip install -r requirements.txt
 
 bash scripts/demo.sh
 echo $?
@@ -14,27 +15,16 @@ echo $?
 
 Expected Python version: `Python 3.12.x`.
 
-Current development snapshot: the real Python checker is not yet included.
-The demonstration therefore reports:
-
-```text
-ERROR: Python checker is missing or unreadable: <project-root>/src/handoff_check.py
-2
-```
-
-This is an expected prerequisite error for this snapshot. A complete
-end-to-end demonstration has not yet been verified.
-
-Once the real checker is integrated, the intended demonstration outcomes
-are:
+The Python checker is included. The demonstration creates two local
+fixtures and checks the following outcomes:
 
 | Demonstration case | Expected checker result | Expected checker exit code |
 |---|---|---|
 | Complete selected commit and generated ZIP | PASS | 0 |
 | Required CSV exists locally but is absent from the selected commit and ZIP | FAIL | 1 |
 
-The demonstration script should return 0 only when both checker exit
-codes match these expectations. Its final success message is:
+The demonstration script returns 0 only when both checker exit codes
+match these expectations. Its final success message is:
 
 ```text
 Demo completed: both checker exit codes matched expectations.
@@ -65,7 +55,30 @@ correctness.
 
 The current runtime, demonstration and isolated interface tests use Python
 standard-library modules. No third-party package installation is needed
-for the commands documented in this snapshot.
+for the documented commands. `requirements.txt` records this explicitly;
+any future third-party test dependencies must be version-pinned there.
+
+## Full local regression checks
+
+With the Python 3.12 virtual environment activated:
+
+```bash
+bash scripts/test.sh
+echo $?
+```
+
+Expected: 32 test methods pass, the runner prints `OK`, and the process
+returns 0. This includes six isolated Bash interface test methods and
+26 methods exercising the real checker or its validation helpers.
+These are standard-library `unittest` tests; no test dependency is needed.
+
+Normal and failure assessments write reports to stdout. Invalid inputs
+write an error to stderr and return 2, without a PASS/FAIL report. Each
+required path reports working-tree, selected-commit and ZIP evidence.
+Paths with newlines are escaped so findings remain readable.
+
+The Python validation rules and design choices are documented in
+`docs/python-checker.md`.
 
 Run the tool only against repositories you are authorised to inspect.
 
@@ -102,7 +115,7 @@ bash scripts/handoff_check.sh --help
 
 Expected exit code: 0.
 
-After the real checker is integrated, the public command is:
+The public command is:
 
 ```text
 bash scripts/handoff_check.sh --repo PATH \
@@ -175,6 +188,15 @@ Total quantity: 10
 
 ## Current verification status
 
+- The real checker was exercised locally on 28 October 2026 using Python
+  3.12.14. All 32 current test methods passed. Both real-checker demo cases
+  produced their expected 0/1 exit codes and the demo returned 0.
+- `docs/evidence/python-checker-2026-10-28.txt` records the exact source
+  commit, commands, environment and actual local output. These local
+  results do not replace final unit-server verification or peer review.
+- The following earlier records describe the pre-checker snapshot and
+  retain their original limited scope.
+
 - A clean extraction of commit `d63f209` was checked on the unit server
   using a new Python 3.12.3 virtual environment, Bash 5.2.21 and Git 2.43.0.
   Both Bash syntax checks, CLI help, the inventory example and all six
@@ -189,10 +211,10 @@ Total quantity: 10
 - Demonstration syntax validation passed.
 - With the real checker absent, demonstration prerequisite validation
   returned ERROR with exit code 2.
-- Demonstration fixture construction and complete assessments have not
-  yet been exercised through `scripts/demo.sh`.
-- Independent review of the new interface and demonstration changes is
-  pending.
+- Demonstration fixture construction and complete assessments were not
+  exercised in those historical pre-checker runs. They have now been
+  exercised locally with the real checker as recorded above.
+- The real Python checker still requires independent review by Wen Chin.
 - Complete automated testing, CI integration, full unit-server workflow verification
   from a clean extraction, and evaluation against the manual baseline
   remain pending.

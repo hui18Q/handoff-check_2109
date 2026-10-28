@@ -289,3 +289,17 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review.
 - Evidence: docs/evidence/unit-server-preflight-2026-10-28.txt, README.md and docs/member-a-report-draft.md.
 - Remaining risks: Repeat clean-extraction verification after real-checker and full test-workflow integration; complete the demonstration and baseline evaluation.
+
+## Design / Build / Verify - Member B Python checker
+
+- Date: 28 October 2026.
+- Owner: Yin Jiayu. Independent checker: Wen Chin (review pending).
+- Tool: OpenAI Codex.
+- Task/instructions: Implement the agreed six-argument Python checker; validate checklist paths and raw Git/ZIP evidence; return PASS/0, FAIL/1 or ERROR/2; run real local checks before reporting results.
+- Output: Python implementation, regression tests, sample checklist, standard-library test runner, design notes and a draft Member B report contribution.
+- Design choices proposed for review: Keep exact ZIP path matching; reject ambiguous JSON/ZIP duplicates; treat unrelated status as context; retain selected-commit requirements; do not claim content/provenance validation. Alternatives and scope are documented in docs/python-checker.md.
+- Executed verification: 32 local test methods passed using Python 3.12.14. The real checker produced the expected PASS/0 and FAIL/1 demo outcomes and the demo returned 0. Exact commands/results are in docs/evidence/python-checker-2026-10-28.txt.
+- Verification method: Automated local executions and source inspection in this assisted session. These executions are not an independent human peer review. Wen Chin must check expectations and reproduce the branch before merge.
+- Decision: Proposed implementation retained for review; final owner/peer acceptance remains pending. No verification or personal design decisions are attributed to a human who has not yet performed them.
+- Remaining risks: Implementation and tests were drafted in the same session and may share assumptions. Independent review, full unit-server reproduction, CI and baseline evaluation remain outstanding. Report drafting produces no new experimental evidence.
+- Evidence: src/handoff_check.py, tests/test_python_checker.py, docs/python-checker.md, docs/member-b-report-draft.md and the local evidence log.

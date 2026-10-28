@@ -1,0 +1,32 @@
+Scope: local real Python checker and Bash integration
+Date: 28 October 2026
+Implementation commit: 1dc730b62683e9062d6ef31f023a98e2d70531f8
+Environment: macOS 15.7.4, Bash 3.2.57, Git 2.39.5, Python 3.12.14
+Python 3.12 was placed first on PATH for these executions.
+
+Command: bash scripts/test.sh
+Observed: all six existing interface test methods and 26 new real-checker/helper
+test methods passed.
+Runner output: Ran 32 tests in 6.614s; OK.
+Process exit code: 0.
+
+Command: bash scripts/demo.sh
+Normal fixture selected commit: 0106a6911dff60c68b2efa99b1051951f24c5262
+Observed: README.md, report.py and data/items.csv were regular files in the
+selected commit and generated ZIP. Result: PASS (0 required-file findings).
+Actual checker exit code: 0.
+
+Fault fixture selected commit: b87950f72ea6c684ad81f224c8e3ce91fb85bac1
+Observed: data/items.csv remained a local regular file with ignored status,
+but was missing from the selected commit and ZIP. Result: FAIL
+(1 required-file findings). A reason and suggested action were printed.
+Actual checker exit code: 1.
+
+Final demo output: Demo completed: both checker exit codes matched expectations.
+Demo process exit code: 0.
+
+The tests also asserted ERROR/2 with stderr-only output for invalid inputs,
+repository preservation and temporary-workspace cleanup in the exercised cases.
+These results were produced by local command execution, not by peer review.
+Independent review by Wen Chin, final complete unit-server execution, CI and
+manual-baseline evaluation remain pending.
