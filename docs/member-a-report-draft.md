@@ -80,3 +80,17 @@ The documented setup and complete workflow must also be reproduced on the unit s
 The final report must incorporate the team’s completed automated testing and CI evidence, together with the author’s results from the agreed manual-baseline comparison. Claims about correctness, diagnostic usefulness or workflow improvement must be supported by those results.
 
 No measured workflow improvement is claimed in this draft.
+
+Member A — AI Use Reflection Draft
+
+Our proposal preferred narrowly scoped AI comparison options and review suggestions. In practice, my use expanded to substantial drafts of the Bash implementation, interface tests, demonstration script and documentation. The final report therefore needs to acknowledge this change in delegation rather than describe AI assistance as limited to suggestions.
+
+AI assistance helped translate the handoff scenario into an explicit interface between Bash and Python. It also suggested handling for filenames containing spaces or newlines, selected-commit consistency, temporary workspaces and checker exit codes. These suggestions produced concrete implementation and verification tasks. However, their plausibility alone did not establish correctness.
+
+My recorded verification included command-line checks, missing-input cases, six isolated interface test methods and execution from a clean extraction using a new Python 3.12 environment. The clean-extraction run provided evidence that the available commands did not require the original virtual environment or tool repository history. Its scope remained limited: it did not exercise the real Python checker or complete demonstration.
+
+A limitation is that AI helped draft both implementation and tests. Agreement between them could preserve a shared mistaken assumption. Passing AI-assisted tests therefore needs to be supplemented by independently checked expectations, peer review and real-checker integration. Review records must identify the exact commits and scope checked; an earlier review cannot automatically validate later changes.
+
+The documentation process also required human attention. During copying, an incomplete shell here-document caused instructions and AI records to be written into the wrong document. Inspecting the Git diff exposed the misplaced content, which was corrected before committing. This showed that verification must cover how suggested commands and text are applied, as well as their intended design.
+
+The main lesson is to match claims to evidence. A test-double result supports interface behaviour, while a missing-checker error supports prerequisite handling. Neither establishes complete assessment correctness or workflow improvement. Before finalisation, I need to incorporate independent review, real-checker results, unit-server reproduction and the agreed baseline measurements. Any remaining limitations should remain explicit.

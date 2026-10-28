@@ -263,8 +263,8 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Owner: Lu Wenxi.
 - Checker: Yin Jiayu (independent review pending).
 - AI tool: OpenAI ChatGPT, https://chatgpt.com/.
-- Task and instructions: Draft Member A's scenario explanation, Bash workflow contribution and current verification summary for the final report.
-- AI output: An English contribution draft covering the controlled inventory scenario, Bash orchestration, intended demonstration, available evidence and remaining work.
+- Task and instructions: Draft Member A's scenario explanation, Bash workflow contribution, current verification summary and personal AI-use reflection for the final report.
+- AI output: An English contribution draft and AI-use reflection covering the controlled scenario, Bash orchestration, available evidence, expanded AI delegation, shared-assumption risks, the documentation-copying error and remaining verification work.
 - Evidence basis: The interface contract, submitted inventory example and recorded local verification results.
 - Human action: Lu Wenxi saved the draft in docs/member-a-report-draft.md. Detailed evidence cross-checking and independent review remain pending.
 - Verification boundary: This drafting activity produced no new implementation or experimental results.
