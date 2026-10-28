@@ -176,6 +176,21 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Remaining limitations: Completed PASS/FAIL assessment, Python integration, Python 3.12 unit-server verification, signal/cleanup-failure handling and measured workflow improvement remain unvalidated by this review.
 - Evidence: Yin Jiayu's review comment in MR !3, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/3.
 
+## Review follow-up — Bash archive preparation
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Independent checker: Yin Jiayu.
+- Reviewed version: 39021040cb486b8d754840aaa87945a3eb25ed8f, including ZIP implementation e56c5e83.
+- Reviewer-reported environment: macOS 15.7.4, Bash 3.2.57, Git 2.39.5 and Python 3.12.14 for the review harness.
+- Reviewer-reported results: All nine additional checks passed. Generated archives used the fixed selected commit. Absolute and caller-relative supplied ZIP paths, including spaces, worked. Supplied ZIP bytes, permissions and modification times remained unchanged. Missing ZIP and injected archive-command failure returned 2. Temporary workspaces were removed, and the exercised target-repository state remained unchanged.
+- Additional inspection: The reviewer checked the virtual-environment ignore rule and updated documentation.
+- Independent conclusion: No blocking issue was found in the Bash preparation stage; it is acceptable for stage-specific integration after recording this review.
+- Owner decision: Accepted for the reviewed Bash preparation scope, based on the independent findings.
+- Status update: This supplements the earlier review of 24b2d5e and resolves the pending supplementary review for the changes inspected at 3902104.
+- Evidence: Yin Jiayu's supplementary ZIP review dated 28 October 2026 in MR !3.
+- Remaining limitations: This acceptance does not establish real Python classification, complete end-to-end assessment, full unit-server workflow verification, signal handling or cleanup-failure behaviour. The development-placeholder exit code 2 is not PASS.
+
 ## Build — Bash invocation of the Python checker
 
 - Date: 26 October 2026.
@@ -208,6 +223,22 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review and any resulting changes.
 - Evidence: tests/test_bash_python_interface.py and docs/evidence/bash-python-interface-2026-10-26.txt.
 - Remaining risks: The test double does not implement required-file classification or diagnostics. These results do not validate the real checker, the complete pytest/CI workflow, unit-server execution or improvement over the manual baseline.
+
+## Review follow-up — Bash and Python invocation interface
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Independent checker: Yin Jiayu.
+- Reviewed version: c8cf660661e3cfece3b856707e5110de4dcbe495.
+- Reviewer-reported environment: macOS 15.7.4, Bash 3.2.57, Git 2.39.5 and Python 3.12.14, using a separate checkout.
+- Reviewer-reported results: Syntax and help checks returned 0. All six interface test methods passed and the test process returned 0. The reviewer checked the implementation and test expectations against the documented interface.
+- Reviewed scope: Six internal arguments, selected-commit checklist/tree/archive evidence, NUL-delimited evidence, supported exit-code and output-stream forwarding, unsupported exit handling, supplied ZIP preservation, exercised operational errors, cleanup and target-repository preservation.
+- Independent conclusion: The Bash-to-Python interface changes are acceptable for stage-specific integration; no code change was required in the exercised scope.
+- Owner decision: Accepted for the reviewed interface scope, based on the independent findings.
+- Status update: This resolves the pending independent review of the Build and Verify interface activities at c8cf660.
+- Integration handling: The append-only AI-use conflict was resolved with AI assistance, retaining both branches' records.
+- Evidence: Yin Jiayu's interface review dated 28 October 2026 in MR !4, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/4.
+- Remaining limitations: These tests use a controlled Python test double. Real-checker classification and diagnostics, a complete end-to-end demonstration and final unit-server workflow verification remain outside this acceptance.
 
 ## Build — Rebuildable inventory handoff demonstration
 
@@ -256,6 +287,23 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review.
 - Evidence: docs/evidence/clean-extraction-preflight-2026-10-27.txt and README.md.
 - Remaining risks: The real checker, demonstration fixture execution, full automated-test and CI workflow, and manual-baseline evaluation require further verification.
+
+## Review follow-up — Demo preflight and development README
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Independent checker: Yin Jiayu.
+- Reviewed version: 43e6751.
+- Reviewer-reported environment: macOS 15.7.4, Bash 3.2.57, Git 2.39.5 and a newly created Python 3.12.14 virtual environment.
+- Review method: The reviewer exported committed files with git archive and extracted them into a fresh directory without .git or .venv before creating the environment.
+- Reviewer-reported results: Both Bash syntax checks and CLI help returned 0. The inventory program reported 3 records and total quantity 10. All six isolated interface test methods passed. Demo preflight reported the missing real checker and returned 2, matching the development README.
+- Static inspection: The reviewer inspected submitted inputs, fixture construction, explicit normal/fault commits, retention of the local CSV and expected checker exit-code handling.
+- Independent conclusion: No blocking issue was found for the documented preflight stage.
+- Owner decision: Accepted for the reviewed development documentation and demo preflight scope. Complete demonstration runtime acceptance remains pending.
+- Status update: Independent review is recorded for the exercised scope of the demo, README and clean-extraction activities. Earlier entries retain their historical observations.
+- Integration handling: AI-assisted conflict resolution retained both the interface review and demo development records.
+- Evidence: Yin Jiayu's review dated 28 October 2026 in MR !5, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/5.
+- Remaining limitations: The run stopped before fixture construction. Successful complete demonstration, cleanup after fixture creation and final README outcomes require real-checker integration and verification.
 
 ## Report drafting — Member A contribution
 
@@ -315,3 +363,20 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Verification limits: Permission/I/O, EOF and unexpected internal-error branches are fault-injected. The corrupt compressed ZIP and unusual Git filenames use real files through the public Bash entry point. No new unit-server or CI execution is claimed.
 - Decisions still requiring human confirmation: Re-review of B1/B2 and the related S1-S4 changes; explicit acceptance or revision of the defensive duplicate/path policies identified in S5. Current policy tests document behaviour and are not proof of team agreement.
 - Evidence: src/handoff_check.py, tests/test_python_checker.py, docs/python-checker.md and MR !7. A clean ZIP extraction of c1f8c455eb28d41b1cf277778d6fa74d0df66153 passed all 45 tests, three Bash syntax checks and both demos in a fresh Python 3.12.14 environment; actual commands, output and limits are retained in docs/evidence/python-review-fixes-2026-10-28.txt.
+
+## Review follow-up — Report draft and server evidence
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Independent checker: Yin Jiayu.
+- Reviewed documentation version: 128330d.
+- Server-tested source version: d63f209516f26837da2b05496cb9137967abe448.
+- Review method: The reviewer cross-checked the README and Member A draft against the original local logs, interface implementation/tests and original unit-server preflight log.
+- Reviewer findings: The server log identifies Python 3.12.3, Bash 5.2.21 and Git 2.43.0, six successful interface test methods, the expected inventory output and missing-checker demo exit code 2. The README and draft distinguish these partial checks from a complete real-checker demonstration. The described Bash responsibilities match the implementation.
+- Independent conclusion: No blocking documentation inconsistency was found.
+- Review boundary: This was an evidence/documentation review. The reviewer did not independently rerun the remote server commands.
+- Owner decision: Accepted for the reviewed documentation and evidence-consistency scope. The report remains a working draft.
+- Status update: Independent documentation review is recorded for the report draft and server-evidence descriptions. Independent remote re-execution and complete workflow verification are not established by this review.
+- Integration handling: AI-assisted conflict resolution retained the demo review, report-drafting activity and unit-server partial-verification activity.
+- Evidence: Yin Jiayu's review dated 28 October 2026 in MR !6, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/6.
+- Remaining limitations: Update current-status text after real-checker integration, repeat complete clean-extraction verification on the unit server, and incorporate CI and baseline-evaluation results.
