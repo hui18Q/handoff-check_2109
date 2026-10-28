@@ -1,0 +1,127 @@
+Source commit: c3c06756e87f8f6f1695e01ccd5661f0a0cdc409
+Scope: local clean ZIP extraction with real Python checker
+Environment: macOS 15.7.4; Bash 3.2.57; Git 2.39.5; Python 3.12.14
+Before setup: no .git or .venv. A fresh venv was created.
+No network/package downloads were used. requirements.txt has no third-party dependencies.
+
+Command: /Users/suxl/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -m venv <clean-project-root>/.venv
+
+
+Exit code: 0
+
+Command: python3 --version
+Python 3.12.14
+
+
+Exit code: 0
+
+Command: python3 -m pip install --no-index --disable-pip-version-check -r requirements.txt
+
+WARNING: The directory '/Users/suxl/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+
+Exit code: 0
+
+Command: bash -n scripts/handoff_check.sh
+
+
+Exit code: 0
+
+Command: bash -n scripts/demo.sh
+
+
+Exit code: 0
+
+Command: bash -n scripts/test.sh
+
+
+Exit code: 0
+
+Command: bash scripts/test.sh
+
+test_exit_codes_streams_and_evidence (test_bash_python_interface.BashPythonInterfaceTests.test_exit_codes_streams_and_evidence) ... ok
+test_invalid_ref_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_invalid_ref_is_error) ... ok
+test_missing_checker_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_missing_checker_is_error) ... ok
+test_missing_supplied_zip_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_missing_supplied_zip_is_error) ... ok
+test_supplied_zip_paths_and_preservation (test_bash_python_interface.BashPythonInterfaceTests.test_supplied_zip_paths_and_preservation) ... ok
+test_unsupported_checker_exit_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_unsupported_checker_exit_is_error) ... ok
+test_case_sensitive_archive_match (test_python_checker.RealCheckerTests.test_case_sensitive_archive_match) ... ok
+test_checklist_schema_and_path_rejections (test_python_checker.RealCheckerTests.test_checklist_schema_and_path_rejections) ... ok
+test_complete_generated_archive (test_python_checker.RealCheckerTests.test_complete_generated_archive) ... ok
+test_corrupt_zip_is_error (test_python_checker.RealCheckerTests.test_corrupt_zip_is_error) ... ok
+test_directory_requirement_is_not_regular (test_python_checker.RealCheckerTests.test_directory_requirement_is_not_regular) ... ok
+test_duplicate_json_key_is_error (test_python_checker.RealCheckerTests.test_duplicate_json_key_is_error) ... ok
+test_duplicate_zip_entry_is_error (test_python_checker.RealCheckerTests.test_duplicate_zip_entry_is_error) ... ok
+test_export_ignore_omission (test_python_checker.RealCheckerTests.test_export_ignore_omission) ... ok
+test_invalid_archive_paths (test_python_checker.RealCheckerTests.test_invalid_archive_paths) ... ok
+test_invalid_git_evidence_rejected (test_python_checker.RealCheckerTests.test_invalid_git_evidence_rejected) ... ok
+test_invalid_ref_missing_archive_and_checklist (test_python_checker.RealCheckerTests.test_invalid_ref_missing_archive_and_checklist) ... ok
+test_malformed_json_is_error (test_python_checker.RealCheckerTests.test_malformed_json_is_error) ... ok
+test_missing_commit_file_retained_locally (test_python_checker.RealCheckerTests.test_missing_commit_file_retained_locally) ... ok
+test_no_arguments_is_error (test_python_checker.RealCheckerTests.test_no_arguments_is_error) ... ok
+test_selected_commit_and_committed_checklist (test_python_checker.RealCheckerTests.test_selected_commit_and_committed_checklist) ... ok
+test_spaces_and_newlines_in_required_names (test_python_checker.RealCheckerTests.test_spaces_and_newlines_in_required_names) ... ok
+test_supplied_archive_omission (test_python_checker.RealCheckerTests.test_supplied_archive_omission) ... ok
+test_supplied_archive_paths_and_preservation (test_python_checker.RealCheckerTests.test_supplied_archive_paths_and_preservation) ... ok
+test_symlink_in_commit_is_not_regular (test_python_checker.RealCheckerTests.test_symlink_in_commit_is_not_regular) ... ok
+test_top_level_zip_prefix_is_not_removed (test_python_checker.RealCheckerTests.test_top_level_zip_prefix_is_not_removed) ... ok
+test_unrelated_untracked_and_ignored_do_not_fail (test_python_checker.RealCheckerTests.test_unrelated_untracked_and_ignored_do_not_fail) ... ok
+test_working_absence_does_not_fail (test_python_checker.RealCheckerTests.test_working_absence_does_not_fail) ... ok
+test_working_symlink_ancestor_not_followed (test_python_checker.RealCheckerTests.test_working_symlink_ancestor_not_followed) ... ok
+test_zip_crc_error_prevents_verdict (test_python_checker.RealCheckerTests.test_zip_crc_error_prevents_verdict) ... ok
+test_zip_special_file_is_not_regular (test_python_checker.RealCheckerTests.test_zip_special_file_is_not_regular) ... ok
+test_zip_symlink_does_not_satisfy_regular_file (test_python_checker.RealCheckerTests.test_zip_symlink_does_not_satisfy_regular_file) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 7.797s
+
+OK
+
+Exit code: 0
+
+Command: bash scripts/demo.sh
+
+=== Complete selected commit ===
+Expected checker exit code: 0
+Selected commit: 06f74f16e8016eccce3990b07b7ace15d4fe80b9
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "!!"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+Actual checker exit code: 0
+
+=== Required CSV exists locally but is absent from commit ===
+Expected checker exit code: 1
+Selected commit: e08aa13e55fb28cc2de180f6fbe06ef6f4e6cd79
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+FAIL "data/items.csv"
+  working tree: regular; Git status: "!!"
+  selected commit: missing; ZIP: missing
+  Reason: a required regular file is missing or has an unsupported type in the selected commit or ZIP.
+  Suggested action: track a regular file at this path, commit it, select that commit and rebuild the handoff ZIP.
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: FAIL (1 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+Actual checker exit code: 1
+
+Demo completed: both checker exit codes matched expectations.
+
+
+Exit code: 0
+
+{'no_temporary_workspace': True, 'no_demo_or_test_fixture': True}
+Independent peer review and final complete unit-server execution remain pending.

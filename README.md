@@ -194,6 +194,11 @@ Total quantity: 10
 - `docs/evidence/python-checker-2026-10-28.txt` records the exact source
   commit, commands, environment and actual local output. These local
   results do not replace final unit-server verification or peer review.
+- A clean ZIP extraction of `c3c0675` was checked locally with a fresh
+  Python 3.12.14 virtual environment and no Git history. All 32 tests and
+  both real-checker demonstration cases passed. No temporary fixture or
+  checker workspace remained. The full output is retained in
+  `docs/evidence/python-clean-extraction-2026-10-28.txt`.
 - The following earlier records describe the pre-checker snapshot and
   retain their original limited scope.
 

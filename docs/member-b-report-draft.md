@@ -72,7 +72,8 @@ should add evaluation results; Member A should add final server evidence.
 
 The Member B change introduces the Python checker, a sample checklist,
 real-checker regression tests, a dependency-free test entry point and
-design/verification notes. The feature branch and merge request should
-be recorded after pushing. Earlier reviews of Member A's changes are
+design/verification notes. The implementation branch is
+`feature-python-checker-jiayu`; its merge request link should be added
+after creation. Earlier reviews of Member A's changes are
 retained in MR !1, !2, !3, !4, !5 and !6 with their stated scopes. Wen Chin
 must independently review this Python implementation before merge.
