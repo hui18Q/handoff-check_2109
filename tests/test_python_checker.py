@@ -1,15 +1,19 @@
 """Real-checker tests with explicit expected verdicts, not a Python test double."""
 
 import importlib.util
+import contextlib
+import io
 import json
 import os
 from pathlib import Path
 import shutil
 import stat
+import struct
 import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 import warnings
 import zipfile
 
@@ -187,7 +191,7 @@ class RealCheckerTests(unittest.TestCase):
         self.run_bash("--zip", str(archive), expected=1)
 
     def test_invalid_archive_paths(self):
-        for bad in ("../escape.txt", "/absolute.txt", "a//b.txt", "C:/file.txt", "back\\slash.txt"):
+        for bad in ("../escape.txt", "/absolute.txt", "a//b.txt"):
             with self.subTest(path=bad):
                 archive = self.make_zip(self.complete_entries() + [(bad, "invalid")])
                 self.run_bash("--zip", str(archive), expected=2)
@@ -259,6 +263,143 @@ class RealCheckerTests(unittest.TestCase):
         result = subprocess.run([sys.executable, str(PROJECT / "src/handoff_check.py")], capture_output=True, text=True)
         self.assertEqual(result.returncode, 2)
         self.assertEqual(result.stdout, "")
+
+    def test_corrupt_deflated_zip_is_error_not_fail(self):
+        archive = self.root / "broken compressed.zip"
+        with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED) as package:
+            for name, contents in self.complete_entries():
+                package.writestr(name, contents)
+        with zipfile.ZipFile(archive) as package:
+            entry = package.getinfo("README.md")
+            offset = entry.header_offset
+        data = bytearray(archive.read_bytes())
+        name_size, extra_size = struct.unpack_from("<HH", data, offset + 26)
+        # BTYPE=3 is invalid DEFLATE, unlike a stored-entry CRC mismatch.
+        data[offset + 30 + name_size + extra_size] = 0xFF
+        archive.write_bytes(data)
+        result = self.run_bash("--zip", str(archive), expected=2)
+        self.assertIn(str(archive), result.stderr)
+        self.assertNotIn("Traceback", result.stderr)
+
+    def test_unrelated_unusual_status_names_are_context_only(self):
+        names = ["notes\\draft.txt", "C:notes.txt", "ignored\\cache.txt", "D:cache.txt"]
+        (self.repo / ".gitignore").write_text("ignored*\nD:*\n")
+        self.commit("Ignore unusual context names")
+        for name in names:
+            (self.repo / name).write_text("not required")
+        result = self.run_bash()
+        for name in names:
+            self.assertIn(checker.quoted(name), result.stdout)
+
+    def test_status_rename_preserves_raw_names(self):
+        evidence = self.root / "status.bin"
+        evidence.write_bytes(b"R  C:new\\name.txt\0old\\name.txt\0")
+        statuses = checker.read_status(evidence)
+        self.assertIn("C:new\\name.txt", statuses)
+        self.assertIn("old\\name.txt", statuses)
+
+    def test_unrelated_unusual_tree_and_zip_names_do_not_fail(self):
+        for name in ("back\\slash.txt", "C:notes.txt"):
+            (self.repo / name).write_text("not required")
+        self.commit("Unusual but unrelated tracked names")
+        self.run_bash()
+        archive = self.make_zip(self.complete_entries() + [
+            ("C:/file.txt", "not a checklist path"), ("back\\slash.txt", "not required")])
+        self.run_bash("--zip", str(archive))
+
+    def test_local_permission_failure_is_informational(self):
+        with mock.patch.object(checker.Path, "lstat", side_effect=PermissionError("denied")):
+            self.assertEqual(checker.working_kind(self.repo, "README.md"), "inaccessible")
+
+    def test_local_io_failure_does_not_change_verdict(self):
+        args = self.internal_arguments()
+        with mock.patch.object(checker.Path, "lstat", side_effect=OSError("local I/O error")):
+            report, code = checker.assess(args)
+        self.assertEqual(code, 0)
+        self.assertIn("working tree: inaccessible", report)
+
+    def internal_arguments(self):
+        from argparse import Namespace
+        status = self.root / "status.bin"
+        tree = self.root / "tree.bin"
+        status.write_bytes(self.git("status", "--porcelain=v1", "-z", "--untracked-files=all", "--ignored"))
+        tree.write_bytes(self.git("ls-tree", "-r", "-z", "--full-tree", "HEAD"))
+        return Namespace(repo=self.repo, commit=self.git("rev-parse", "HEAD").decode().strip(),
+                         checklist=self.repo / "handoff-check.json", status_file=status,
+                         tree_file=tree, archive=self.make_zip(self.complete_entries()))
+
+    def test_checklist_error_names_source_and_position(self):
+        cases = [('{"required_files":["README.md",123]}', "required_files[1]"),
+                 ('{"required_files":["README.md","README.md"]}', "required_files[1]"),
+                 ('{\nnot JSON}', "line 2"),
+                 ('{"required_files":["/etc/passwd"]}', "Absolute paths")]
+        for contents, detail in cases:
+            with self.subTest(contents=contents):
+                args = self.internal_arguments()
+                args.checklist = self.root / "invalid checklist.json"
+                args.checklist.write_text(contents)
+                with self.assertRaises(checker.InputError) as raised:
+                    checker.assess(args)
+                self.assertIn(str(args.checklist), str(raised.exception))
+                self.assertIn(detail, str(raised.exception))
+
+    def test_bad_zip_error_names_input(self):
+        archive = self.root / "bad archive.zip"
+        archive.write_bytes(b"not ZIP")
+        result = self.run_bash("--zip", str(archive), expected=2)
+        self.assertIn(str(archive), result.stderr)
+
+    def test_bad_repository_error_names_input(self):
+        args = self.internal_arguments()
+        args.repo = self.root / "absent repository"
+        with self.assertRaises(checker.InputError) as raised:
+            checker.assess(args)
+        self.assertIn(str(args.repo), str(raised.exception))
+
+    def test_archive_eof_error_names_input(self):
+        archive = self.make_zip(self.complete_entries())
+        with mock.patch.object(checker.zipfile.ZipFile, "testzip", side_effect=EOFError("truncated stream")):
+            with self.assertRaises(checker.InputError) as raised:
+                checker.read_archive(archive)
+        self.assertIn(str(archive), str(raised.exception))
+
+    def test_fail_reason_names_each_actual_location(self):
+        args = self.internal_arguments()
+        args.archive = self.make_zip([("README.md", "present")])
+        report, code = checker.assess(args)
+        self.assertEqual(code, 1)
+        reason = next(line for line in report.splitlines() if "Reason:" in line)
+        self.assertIn("ZIP: missing", reason)
+        self.assertNotIn("selected commit:", reason)
+        args.tree_file.write_bytes(b"")
+        report, code = checker.assess(args)
+        self.assertEqual(code, 1)
+        self.assertIn("selected commit: missing; ZIP: missing", report.split("Reason:")[-1])
+
+    def test_commit_only_failure_reason_does_not_blame_zip(self):
+        args = self.internal_arguments()
+        args.tree_file.write_bytes(b"")
+        report, code = checker.assess(args)
+        self.assertEqual(code, 1)
+        reasons = [line for line in report.splitlines() if "Reason:" in line]
+        self.assertEqual(len(reasons), 2)
+        for reason in reasons:
+            self.assertIn("selected commit: missing", reason)
+            self.assertNotIn("ZIP:", reason)
+
+    def test_unexpected_internal_exception_returns_error_without_traceback(self):
+        stdout, stderr = io.StringIO(), io.StringIO()
+        args = self.internal_arguments()
+        argv = []
+        for option, value in vars(args).items():
+            argv.extend(["--" + option.replace("_", "-"), str(value)])
+        with mock.patch.object(checker, "assess", side_effect=TypeError("internal bug")):
+            with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                code = checker.main(argv)
+        self.assertEqual(code, 2)
+        self.assertEqual(stdout.getvalue(), "")
+        self.assertIn("ERROR:", stderr.getvalue())
+        self.assertNotIn("Traceback", stderr.getvalue())
 
 
 if __name__ == "__main__":

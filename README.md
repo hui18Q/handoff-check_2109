@@ -67,9 +67,9 @@ bash scripts/test.sh
 echo $?
 ```
 
-Expected: 32 test methods pass, the runner prints `OK`, and the process
+Expected: 45 test methods pass, the runner prints `OK`, and the process
 returns 0. This includes six isolated Bash interface test methods and
-26 methods exercising the real checker or its validation helpers.
+39 methods exercising the real checker or its validation/error-handling helpers.
 These are standard-library `unittest` tests; no test dependency is needed.
 
 Normal and failure assessments write reports to stdout. Invalid inputs
@@ -189,7 +189,7 @@ Total quantity: 10
 ## Current verification status
 
 - The real checker was exercised locally on 28 October 2026 using Python
-  3.12.14. All 32 current test methods passed. Both real-checker demo cases
+  3.12.14. The initial 32 test methods passed. Both real-checker demo cases
   produced their expected 0/1 exit codes and the demo returned 0.
 - `docs/evidence/python-checker-2026-10-28.txt` records the exact source
   commit, commands, environment and actual local output. These local
@@ -219,7 +219,11 @@ Total quantity: 10
 - Demonstration fixture construction and complete assessments were not
   exercised in those historical pre-checker runs. They have now been
   exercised locally with the real checker as recorded above.
-- The real Python checker still requires independent review by Wen Chin.
+- Chin Wen Hui independently reviewed `77dc8fa` in MR !7, reproduced two
+  blocking defects and requested changes. The follow-up adds 13 regression
+  methods (45 total); all 45 passed locally, as did both demo cases. The
+  fixes require her re-review before merge. Defensive input policies are
+  documented separately for team confirmation in `docs/python-checker.md`.
 - Complete automated testing, CI integration, full unit-server workflow verification
   from a clean extraction, and evaluation against the manual baseline
   remain pending.

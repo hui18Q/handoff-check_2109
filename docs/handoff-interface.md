@@ -58,6 +58,14 @@ entries.
 
 Preserve filename case and spaces. Do not silently trim or rewrite paths.
 
+The Python implementation additionally proposes a portable-checklist policy
+that rejects literal backslashes and drive-like prefixes. This is not a
+restriction on unrelated raw Git/ZIP names. Duplicate JSON keys and
+duplicate/conflicting ZIP entries are rejected to avoid ambiguity; ZIP
+absolute/traversal/empty-component/NUL paths are rejected as invalid input.
+These defensive extensions remain subject to team confirmation in MR !7,
+rather than being attributed to the proposal. See `docs/python-checker.md`.
+
 ## Bash responsibilities
 
 - Validate command-line arguments and required commands.
@@ -112,16 +120,27 @@ automatic removal of a ZIP's top-level directory is outside this version.
 Validate inputs before issuing a PASS or FAIL verdict. An ERROR prevents
 a successful integrity verdict.
 
-An unrelated untracked or ignored file must not independently cause FAIL.
+An unrelated untracked or ignored file must not independently cause FAIL
+or ERROR. Parse status record structure, preserving names as supplied by Git
+without applying checklist portability restrictions. Tree/ZIP names with
+literal backslashes or drive-like prefixes are also preserved for exact
+matching; unrelated such entries must not end the assessment.
 Working-tree absence alone must not cause FAIL when the selected commit
-and archive both satisfy the requirement.
+and archive both satisfy the requirement. If local file-type inspection
+raises an I/O or permission error, report `inaccessible` as context.
 
 The report identifies the selected commit and provides per-file evidence
 for the working tree, selected commit and archive. Each FAIL finding
 includes its reason and a suggested next action.
+Each reason names the actual failing location(s) and state, rather than
+blaming both locations when only one is missing or unsupported. Unrelated
+status paths are listed with escaped names and status codes as context.
 
 Write completed assessment reports to standard output. Write operational
 and invalid-input errors to standard error.
+Input errors name the affected source/path, with checklist indices or JSON
+line/column where available. Invalid compressed streams, CRC failures and
+truncated archives produce ERROR/2 without a completed PASS/FAIL verdict.
 
 ## Safety and reproducibility
 

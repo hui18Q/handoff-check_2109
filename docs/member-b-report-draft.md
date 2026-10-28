@@ -49,7 +49,7 @@ arbitrarily supplied tree/status files.
 
 The runtime uses the Python 3.12 standard library and needs no third-party
 runtime packages. The current tests use unittest, allowing the existing
-six interface test methods and 26 real-checker/helper methods to run
+six interface test methods and 39 real-checker/helper methods to run
 together without dependencies. The proposed pytest dependency was not
 needed for this implementation; any later CI/test additions must be pinned
 and documented by the team.
@@ -64,7 +64,17 @@ both expected checker outcomes occurred. The evidence log identifies the
 tested source and exact commands. These results support the tested local
 behaviour; they do not establish measured efficiency improvements.
 
-Independent peer review, complete final unit-server reproduction, CI and
+Chin Wen Hui independently reviewed the initial revision in MR !7 and
+reproduced corrupt-DEFLATE exit-code handling and unrelated-name validation
+defects. The follow-up catches archive stream failures as ERROR/2, preserves
+raw context names, treats inaccessible working-tree paths as context, labels
+input errors and reports the actual failing locations. Thirteen regression
+methods were added; all 45 tests and both demos passed locally. Permission,
+EOF and unexpected-error branches use fault injection, not universal
+operating-system validation. Defensive duplicate/path policies are proposed
+extensions awaiting team confirmation, not proposal requirements.
+
+Re-review of the fixes, complete final unit-server reproduction, CI and
 the agreed manual-baseline comparison remain to be completed. Member C
 should add evaluation results; Member A should add final server evidence.
 
@@ -73,7 +83,8 @@ should add evaluation results; Member A should add final server evidence.
 The Member B change introduces the Python checker, a sample checklist,
 real-checker regression tests, a dependency-free test entry point and
 design/verification notes. The implementation branch is
-`feature-python-checker-jiayu`; its merge request link should be added
-after creation. Earlier reviews of Member A's changes are
-retained in MR !1, !2, !3, !4, !5 and !6 with their stated scopes. Wen Chin
-must independently review this Python implementation before merge.
+`feature-python-checker-jiayu`; the changes and peer review are in
+[MR !7](https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/7).
+Earlier reviews of Member A's changes are retained in MR !1, !2, !3, !4,
+!5 and !6 with their stated scopes. Chin Wen Hui must re-review the
+follow-up revision before merge.
