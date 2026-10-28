@@ -224,6 +224,11 @@ Total quantity: 10
   methods (45 total); all 45 passed locally, as did both demo cases. The
   fixes require her re-review before merge. Defensive input policies are
   documented separately for team confirmation in `docs/python-checker.md`.
+- A clean ZIP export of fix commit `c1f8c45` was checked in a new Python
+  3.12.14 virtual environment without Git history. All 45 tests, three Bash
+  syntax checks and both demo cases passed, with no test/demo or temporary
+  checker workspace remaining. Actual commands and output are retained in
+  `docs/evidence/python-review-fixes-2026-10-28.txt`.
 - Complete automated testing, CI integration, full unit-server workflow verification
   from a clean extraction, and evaluation against the manual baseline
   remain pending.
