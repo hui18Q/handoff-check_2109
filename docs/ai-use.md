@@ -256,3 +256,19 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent review.
 - Evidence: docs/evidence/clean-extraction-preflight-2026-10-27.txt and README.md.
 - Remaining risks: The real checker, demonstration fixture execution, full automated-test and CI workflow, and manual-baseline evaluation require further verification.
+
+## Report drafting — Member A contribution
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Draft Member A's scenario explanation, Bash workflow contribution and current verification summary for the final report.
+- AI output: An English contribution draft covering the controlled inventory scenario, Bash orchestration, intended demonstration, available evidence and remaining work.
+- Evidence basis: The interface contract, submitted inventory example and recorded local verification results.
+- Human action: Lu Wenxi saved the draft in docs/member-a-report-draft.md. Detailed evidence cross-checking and independent review remain pending.
+- Verification boundary: This drafting activity produced no new implementation or experimental results.
+- Status: Working draft awaiting review and integration into the final group report.
+- Decision: Pending review and any resulting revisions.
+- Evidence: docs/member-a-report-draft.md and the evidence paths cited within it.
+- Remaining risks: Update the draft after real-checker integration and evaluation, verify its claims against evidence, and fit it to the final report requirements and page limit.
