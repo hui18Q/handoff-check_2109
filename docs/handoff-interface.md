@@ -134,3 +134,32 @@ project. Clean up that workspace after success or failure.
 Use Bash and Python 3.12. The runtime uses Python standard-library modules.
 Demonstration fixtures must be rebuildable offline from submitted files
 without depending on the tool repository's existing Git history.
+
+## Bash integration status — 26 October 2026
+
+The Bash workflow now invokes `src/handoff_check.py` using the six internal
+arguments documented above. The Python executable is `python3` from PATH
+and must be Python 3.12. Activate the project's Python 3.12 virtual
+environment before running an assessment.
+
+Help remains available without the checker. A missing or unreadable
+checker produces ERROR with exit code 2.
+
+Completed assessment output is supplied by Python. Bash forwards the
+checker's standard output and standard error, and preserves exit codes
+0, 1 and 2 when cleanup succeeds. An unsupported checker exit code or
+cleanup failure produces ERROR with exit code 2.
+
+The isolated interface tests can be run with:
+
+```bash
+python3 tests/test_bash_python_interface.py -v
+```
+
+These tests create temporary Git fixtures and a temporary tool copy with
+a Python test double. They check argument delivery, selected-commit
+evidence, exit codes, output streams, archive handling and cleanup.
+
+The real Python checker's classification and diagnostic behaviour still
+require integration testing. Passing these interface tests does not
+establish the completed checker's correctness or measured improvement.

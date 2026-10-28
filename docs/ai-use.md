@@ -190,3 +190,52 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Status update: This supplements the earlier review of 24b2d5e and resolves the pending supplementary review for the changes inspected at 3902104.
 - Evidence: Yin Jiayu's supplementary ZIP review dated 28 October 2026 in MR !3.
 - Remaining limitations: This acceptance does not establish real Python classification, complete end-to-end assessment, full unit-server workflow verification, signal handling or cleanup-failure behaviour. The development-placeholder exit code 2 is not PASS.
+
+## Build — Bash invocation of the Python checker
+
+- Date: 26 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Connect the existing Bash preparation workflow to the proposed Python interface, preserve its supported exit codes and retain temporary-workspace cleanup.
+- AI output: A complete revised Bash script containing Python 3.12 validation, checker-file validation, the six-argument invocation and exit-code handling.
+- Contract: Inputs and PASS/FAIL/ERROR meanings follow the proposal and docs/handoff-interface.md. Python remains responsible for checklist validation, file assessment and findings.
+- Human verification: Lu Wenxi saved the script, ran Bash syntax and help checks, confirmed the missing-checker error returned 2, and confirmed no temporary workspace remained. The isolated interface tests subsequently passed under Python 3.12.16.
+- Status: Locally verified for the recorded scope; independent review and real-checker integration are pending.
+- Decision: Pending independent review and any resulting changes.
+- Evidence: scripts/handoff_check.sh and docs/evidence/bash-python-interface-2026-10-26.txt.
+- Remaining risks: The real Python implementation has not been exercised through this invocation. Complete assessment behaviour, unit-server execution and additional failure handling require verification.
+
+## Verify — Isolated Bash and Python interface tests
+
+- Date: 26 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Verify Bash orchestration while keeping the real Python checker separate from an isolated test double.
+- AI output: A standard-library unittest suite that creates temporary tool copies, Git repositories, archives and a controlled Python interface double.
+- Expected behaviour: Preserve supported checker exit codes and output streams; use the selected commit's checklist and tree; preserve raw NUL-delimited evidence; resolve supplied ZIP paths correctly; preserve target files and supplied ZIPs; clean temporary workspaces; report operational errors with exit code 2.
+- Human verification: Lu Wenxi saved and executed the suite on macOS using Python 3.12.16, Bash 3.2.57(1)-release and Git 2.50.1. All six test methods passed and the test process exited with code 0.
+- Tested cases: Supported exit codes 0/1/2 and evidence delivery; supplied ZIP paths and preservation; missing checker; unsupported checker exit; missing supplied ZIP; invalid ref.
+- Reproduction: Run python3 tests/test_bash_python_interface.py -v from the project root. Fixtures are constructed from submitted code without requiring the tool repository's existing Git history.
+- Source state: The recorded run exercised uncommitted changes on feature-handoff-python-integration based on commit 39021040cb486b8d754840aaa87945a3eb25ed8f.
+- Status: Local interface tests passed; independent review is pending.
+- Decision: Pending independent review and any resulting changes.
+- Evidence: tests/test_bash_python_interface.py and docs/evidence/bash-python-interface-2026-10-26.txt.
+- Remaining risks: The test double does not implement required-file classification or diagnostics. These results do not validate the real checker, the complete pytest/CI workflow, unit-server execution or improvement over the manual baseline.
+
+## Review follow-up — Bash and Python invocation interface
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Independent checker: Yin Jiayu.
+- Reviewed version: c8cf660661e3cfece3b856707e5110de4dcbe495.
+- Reviewer-reported environment: macOS 15.7.4, Bash 3.2.57, Git 2.39.5 and Python 3.12.14, using a separate checkout.
+- Reviewer-reported results: Syntax and help checks returned 0. All six interface test methods passed and the test process returned 0. The reviewer checked the implementation and test expectations against the documented interface.
+- Reviewed scope: Six internal arguments, selected-commit checklist/tree/archive evidence, NUL-delimited evidence, supported exit-code and output-stream forwarding, unsupported exit handling, supplied ZIP preservation, exercised operational errors, cleanup and target-repository preservation.
+- Independent conclusion: The Bash-to-Python interface changes are acceptable for stage-specific integration; no code change was required in the exercised scope.
+- Owner decision: Accepted for the reviewed interface scope, based on the independent findings.
+- Status update: This resolves the pending independent review of the Build and Verify interface activities at c8cf660.
+- Integration handling: The append-only AI-use conflict was resolved with AI assistance, retaining both branches' records.
+- Evidence: Yin Jiayu's interface review dated 28 October 2026 in MR !4, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/4.
+- Remaining limitations: These tests use a controlled Python test double. Real-checker classification and diagnostics, a complete end-to-end demonstration and final unit-server workflow verification remain outside this acceptance.
