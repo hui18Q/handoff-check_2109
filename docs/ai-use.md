@@ -175,3 +175,18 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Scope boundary: This review does not cover ZIP handling introduced in e56c5e8 or the later virtual-environment ignore rule in 79be3eb. Supplementary review of the current branch remains pending.
 - Remaining limitations: Completed PASS/FAIL assessment, Python integration, Python 3.12 unit-server verification, signal/cleanup-failure handling and measured workflow improvement remain unvalidated by this review.
 - Evidence: Yin Jiayu's review comment in MR !3, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/3.
+
+## Review follow-up — Bash archive preparation
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Independent checker: Yin Jiayu.
+- Reviewed version: 39021040cb486b8d754840aaa87945a3eb25ed8f, including ZIP implementation e56c5e83.
+- Reviewer-reported environment: macOS 15.7.4, Bash 3.2.57, Git 2.39.5 and Python 3.12.14 for the review harness.
+- Reviewer-reported results: All nine additional checks passed. Generated archives used the fixed selected commit. Absolute and caller-relative supplied ZIP paths, including spaces, worked. Supplied ZIP bytes, permissions and modification times remained unchanged. Missing ZIP and injected archive-command failure returned 2. Temporary workspaces were removed, and the exercised target-repository state remained unchanged.
+- Additional inspection: The reviewer checked the virtual-environment ignore rule and updated documentation.
+- Independent conclusion: No blocking issue was found in the Bash preparation stage; it is acceptable for stage-specific integration after recording this review.
+- Owner decision: Accepted for the reviewed Bash preparation scope, based on the independent findings.
+- Status update: This supplements the earlier review of 24b2d5e and resolves the pending supplementary review for the changes inspected at 3902104.
+- Evidence: Yin Jiayu's supplementary ZIP review dated 28 October 2026 in MR !3.
+- Remaining limitations: This acceptance does not establish real Python classification, complete end-to-end assessment, full unit-server workflow verification, signal handling or cleanup-failure behaviour. The development-placeholder exit code 2 is not PASS.
