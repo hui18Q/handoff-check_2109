@@ -1,0 +1,77 @@
++ set -u
++ set -o pipefail
++ repo_path=
++ target_ref=HEAD
++ checklist_path=handoff-check.json
++ zip_path=
++ tool_root=
++ temp_workspace=
++ '[' 2 -gt 0 ']'
++ case "$1" in
++ require_value --repo /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu
++ '[' 2 -lt 2 ']'
++ '[' -z /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu ']'
++ case "$2" in
++ repo_path=/Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu
++ shift 2
++ '[' 0 -gt 0 ']'
++ '[' -z /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu ']'
++ validate_checklist_path
++ case "$checklist_path" in
++ case "/$checklist_path/" in
++ validate_repository
++ local inside_work_tree
++ local repo_prefix
++ command -v git
++ '[' '!' -d /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu ']'
+++ git -C /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu rev-parse --is-inside-work-tree
++ inside_work_tree=true
++ '[' true '!=' true ']'
+++ git -C /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu rev-parse --show-prefix
++ repo_prefix=
++ '[' -n '' ']'
+++ git -C /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu rev-parse --show-toplevel
++ repo_root=/Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu
++ repo_path=/Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu
++ resolve_target_commit
+++ git -C /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu rev-parse --verify --end-of-options 'HEAD^{commit}'
++ commit_id=379cf2236e8dfd73d855ac043bd7c074e4068d88
++ initialize_workspace
++ local required_command
++ for required_command in dirname mktemp rm
++ command -v dirname
++ for required_command in dirname mktemp rm
++ command -v mktemp
++ for required_command in dirname mktemp rm
++ command -v rm
++++ dirname -- scripts/handoff_check.sh
+++ cd -- scripts/..
+++ pwd -P
++ tool_root=/Users/apple/Desktop/MY-T06-06
++ trap cleanup EXIT
++ trap 'operational_error "Interrupted by SIGHUP."' HUP
++ trap 'operational_error "Interrupted by SIGINT."' INT
++ trap 'operational_error "Interrupted by SIGTERM."' TERM
+++ mktemp -d /Users/apple/Desktop/MY-T06-06/.handoff-tmp.XXXXXXXX
++ temp_workspace=/Users/apple/Desktop/MY-T06-06/.handoff-tmp.i6OyteG4
++ checklist_file=/Users/apple/Desktop/MY-T06-06/.handoff-tmp.i6OyteG4/checklist.json
++ status_file=/Users/apple/Desktop/MY-T06-06/.handoff-tmp.i6OyteG4/status.bin
++ tree_file=/Users/apple/Desktop/MY-T06-06/.handoff-tmp.i6OyteG4/tree.bin
++ collect_evidence
++ git -C /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu cat-file blob 379cf2236e8dfd73d855ac043bd7c074e4068d88:handoff-check.json
++ GIT_OPTIONAL_LOCKS=0
++ git -c core.fsmonitor=false -C /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu status --porcelain=v1 -z --untracked-files=all --ignored
++ git -C /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu ls-tree -r -z --full-tree 379cf2236e8dfd73d855ac043bd7c074e4068d88
++ printf 'Repository: %s\n' /Users/apple/Desktop/MY-T06-06/.scenario-runs/bash-evidence.bNGitjxu
++ printf 'Selected commit: %s\n' 379cf2236e8dfd73d855ac043bd7c074e4068d88
++ printf 'Temporary workspace: %s\n' /Users/apple/Desktop/MY-T06-06/.handoff-tmp.i6OyteG4
++ printf 'Checklist and Git evidence collected.\n'
++ printf 'ERROR: Archive and Python checks are not implemented in this development step.\n'
+ERROR: Archive and Python checks are not implemented in this development step.
++ exit 2
++ cleanup
++ local exit_code=2
++ trap - EXIT
++ '[' -n /Users/apple/Desktop/MY-T06-06/.handoff-tmp.i6OyteG4 ']'
++ rm -rf -- /Users/apple/Desktop/MY-T06-06/.handoff-tmp.i6OyteG4
++ exit 2
