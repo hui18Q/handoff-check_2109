@@ -1,0 +1,2 @@
+# Runtime and current unittest suites use the Python 3.12 standard library.
+# No third-party packages are required. Pin any future test/CI dependencies here.

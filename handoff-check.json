@@ -1,0 +1,10 @@
+{
+  "required_files": [
+    "README.md",
+    "scripts/handoff_check.sh",
+    "scripts/demo.sh",
+    "src/handoff_check.py",
+    "scenarios/inventory-report/report.py",
+    "scenarios/inventory-report/data/items.csv"
+  ]
+}
