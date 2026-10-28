@@ -1,0 +1,36 @@
+Scope: local clean-extraction setup and interface checks
+Source commit: 917960b09626b7185faf0a701274a731f89f5122
+Full checker demonstration and unit-server verification remain pending.
+
+Command: python3.12 -m venv .venv
+Python 3.12.16
+Executable: /Users/apple/Desktop/MY-T06-06/.scenario-runs/clean-readme.djPGES2P/project/.venv/bin/python3
+Inside venv: True
+Bash: 3.2.57(1)-release
+git version 2.50.1 (Apple Git-155)
+
+Command: bash scripts/demo.sh
+ERROR: Python checker is missing or unreadable: /Users/apple/Desktop/MY-T06-06/.scenario-runs/clean-readme.djPGES2P/project/src/handoff_check.py
+Demo exit code: 2
+
+Command: python3 scenarios/inventory-report/report.py
+Records: 3
+Total quantity: 10
+
+Command: python3 tests/test_bash_python_interface.py -v
+test_exit_codes_streams_and_evidence (__main__.BashPythonInterfaceTests.test_exit_codes_streams_and_evidence) ... ok
+test_invalid_ref_is_error (__main__.BashPythonInterfaceTests.test_invalid_ref_is_error) ... ok
+test_missing_checker_is_error (__main__.BashPythonInterfaceTests.test_missing_checker_is_error) ... ok
+test_missing_supplied_zip_is_error (__main__.BashPythonInterfaceTests.test_missing_supplied_zip_is_error) ... ok
+test_supplied_zip_paths_and_preservation (__main__.BashPythonInterfaceTests.test_supplied_zip_paths_and_preservation) ... ok
+test_unsupported_checker_exit_is_error (__main__.BashPythonInterfaceTests.test_unsupported_checker_exit_is_error) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 3.048s
+
+OK
+Interface test exit code: 0
+
+Completed the recorded local clean-extraction checks.
+
+Verification process exit code: 0

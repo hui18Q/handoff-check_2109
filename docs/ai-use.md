@@ -239,3 +239,68 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Integration handling: The append-only AI-use conflict was resolved with AI assistance, retaining both branches' records.
 - Evidence: Yin Jiayu's interface review dated 28 October 2026 in MR !4, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/4.
 - Remaining limitations: These tests use a controlled Python test double. Real-checker classification and diagnostics, a complete end-to-end demonstration and final unit-server workflow verification remain outside this acceptance.
+
+## Build — Rebuildable inventory handoff demonstration
+
+- Date: 27 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Draft an end-to-end demonstration that rebuilds normal and missing-file inventory scenarios from submitted files without relying on existing Git history.
+- AI output: scripts/demo.sh, including prerequisite checks, temporary fixture construction, two selected commits, checker invocation, expected exit-code checks and cleanup.
+- Intended behaviour: The complete selected commit should produce checker exit code 0. The commit omitting the required CSV should produce checker exit code 1 while retaining the CSV locally. The demonstration should exit with 0 only when both expected outcomes occur.
+- Human verification: Lu Wenxi saved the script and ran it using Python 3.12.16. Bash syntax validation returned 0. With the real Python checker absent, the script reported the missing checker and returned 2.
+- Verification boundary: Execution stopped during prerequisite validation. Fixture construction, both checker assessments and cleanup after fixture creation were not exercised by this run.
+- Status: Syntax and missing-checker preflight checked locally; complete demonstration and independent review are pending.
+- Decision: Pending independent review and executable end-to-end verification.
+- Evidence: scripts/demo.sh and docs/evidence/demo-preflight-2026-10-27.txt.
+- Remaining risks: The demonstration must be checked with the real Python implementation, coordinated with the team's fixture conventions, and verified from a clean extraction on the unit server.
+
+## Build — Development README and reproduction instructions
+
+- Date: 27 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Draft English setup, demonstration and interface-test instructions that accurately describe the current development snapshot.
+- AI output: A README covering Python 3.12 virtual-environment setup, demonstration commands, expected outcomes, the public CLI, scope and current verification status.
+- Human verification: Lu Wenxi saved the README and displayed its Git diff for inspection. The documented interface-test and missing-checker outcomes refer to previously recorded local runs.
+- Verification boundary: The README instructions have not yet been followed from a clean extraction. The real checker and complete demonstration remain unverified.
+- Status: Development documentation drafted; independent review and clean-extraction verification are pending.
+- Decision: Pending independent review and reproduction checks.
+- Evidence: README.md, docs/evidence/bash-python-interface-2026-10-26.txt and docs/evidence/demo-preflight-2026-10-27.txt.
+- Remaining risks: Setup instructions, dependencies and expected output must be updated after real-checker and team test-workflow integration, then verified on the unit server.
+
+## Verify — Local clean-extraction reproduction
+
+- Date: 27 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Check the documented setup and available commands from an extraction containing submitted files without Git history or an existing virtual environment.
+- AI output: Commands to export the committed project, extract it, create a new Python 3.12 virtual environment, execute available checks and capture their output.
+- Source commit: 917960b09626b7185faf0a701274a731f89f5122.
+- Human verification: Lu Wenxi confirmed the extraction initially contained no .git or .venv, created a fresh virtual environment, and executed the recorded commands on macOS using Python 3.12.16, Bash 3.2.57(1)-release and Git 2.50.1.
+- Results: The interpreter path pointed to the extracted project's virtual environment. The inventory program reported 3 records and total quantity 10. All six isolated interface test methods passed with exit code 0. The demonstration reported the absent Python checker and returned the expected exit code 2. The verification process returned 0.
+- Verification boundary: These results establish the recorded local setup, example execution, interface tests and missing-checker preflight. They do not establish complete checker assessments or successful end-to-end demonstration.
+- Status: Recorded local clean-extraction checks passed; independent review and unit-server verification remain pending.
+- Decision: Pending independent review.
+- Evidence: docs/evidence/clean-extraction-preflight-2026-10-27.txt and README.md.
+- Remaining risks: The real checker, demonstration fixture execution, full automated-test and CI workflow, and manual-baseline evaluation require further verification.
+
+## Review follow-up — Demo preflight and development README
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Independent checker: Yin Jiayu.
+- Reviewed version: 43e6751.
+- Reviewer-reported environment: macOS 15.7.4, Bash 3.2.57, Git 2.39.5 and a newly created Python 3.12.14 virtual environment.
+- Review method: The reviewer exported committed files with git archive and extracted them into a fresh directory without .git or .venv before creating the environment.
+- Reviewer-reported results: Both Bash syntax checks and CLI help returned 0. The inventory program reported 3 records and total quantity 10. All six isolated interface test methods passed. Demo preflight reported the missing real checker and returned 2, matching the development README.
+- Static inspection: The reviewer inspected submitted inputs, fixture construction, explicit normal/fault commits, retention of the local CSV and expected checker exit-code handling.
+- Independent conclusion: No blocking issue was found for the documented preflight stage.
+- Owner decision: Accepted for the reviewed development documentation and demo preflight scope. Complete demonstration runtime acceptance remains pending.
+- Status update: Independent review is recorded for the exercised scope of the demo, README and clean-extraction activities. Earlier entries retain their historical observations.
+- Integration handling: AI-assisted conflict resolution retained both the interface review and demo development records.
+- Evidence: Yin Jiayu's review dated 28 October 2026 in MR !5, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/5.
+- Remaining limitations: The run stopped before fixture construction. Successful complete demonstration, cleanup after fixture creation and final README outcomes require real-checker integration and verification.
