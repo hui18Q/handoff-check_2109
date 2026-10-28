@@ -59,6 +59,16 @@ Demonstration syntax validation passed. With the real checker absent, demonstrat
 
 These results provide evidence for the recorded local setup, example execution and isolated interface behaviour. They do not establish the real checker’s classification or diagnostic correctness, complete demonstration behaviour, or execution on the unit server.
 
+Unit-Server Partial Verification
+
+On 28 October 2026, a clean extraction of commit d63f209516f26837da2b05496cb9137967abe448 was checked on fit2109s2.rep.monash.edu. Before setup, the extraction contained neither Git history nor an existing virtual environment.
+
+A new Python 3.12.3 virtual environment was created successfully. The server used Linux, Bash 5.2.21 and Git 2.43.0. Both Bash syntax checks and the CLI help command passed. The inventory example reported three records and a total quantity of ten, and all six isolated interface test methods passed with exit code zero.
+
+The demonstration reported the absent real Python checker and returned the expected exit code two. The verification process returned zero because the exercised checks matched their expectations. This establishes the recorded server setup, interface tests and prerequisite handling, rather than successful complete checker assessments or an end-to-end demonstration.
+
+The original server log is retained in docs/evidence/unit-server-preflight-2026-10-28.txt. Real-checker integration, complete demonstration execution and full workflow verification on the unit server remain pending.
+
 Evidence Sources
 
 The scenario and its reproduction procedure are documented in docs/scenario.md.

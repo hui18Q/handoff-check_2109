@@ -272,3 +272,20 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending review and any resulting revisions.
 - Evidence: docs/member-a-report-draft.md and the evidence paths cited within it.
 - Remaining risks: Update the draft after real-checker integration and evaluation, verify its claims against evidence, and fit it to the final report requirements and page limit.
+
+## Verify — Unit-server partial reproduction
+
+- Date: 28 October 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Prepare and execute scoped checks on the unit server from a clean export, then retain the original results.
+- AI output: Commands for archive export, transfer, clean extraction, virtual-environment setup, available checks, log capture and documentation updates.
+- Source commit: d63f209516f26837da2b05496cb9137967abe448.
+- Human verification: Lu Wenxi executed the commands on fit2109s2.rep.monash.edu using Python 3.12.3, Bash 5.2.21 and Git 2.43.0, inspected the output and downloaded the original log.
+- Results: The extraction initially contained no .git or .venv. Environment creation, both Bash syntax checks, CLI help, inventory execution and all six isolated interface test methods passed. Demo preflight reported the absent checker and returned 2. The verification process returned 0.
+- Verification boundary: The interface tests use a controlled Python test double. Complete real-checker assessments and demonstration fixture execution were not exercised.
+- Status: Recorded unit-server partial checks passed; independent review and complete workflow verification remain pending.
+- Decision: Pending independent review.
+- Evidence: docs/evidence/unit-server-preflight-2026-10-28.txt, README.md and docs/member-a-report-draft.md.
+- Remaining risks: Repeat clean-extraction verification after real-checker and full test-workflow integration; complete the demonstration and baseline evaluation.

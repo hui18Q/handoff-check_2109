@@ -175,6 +175,13 @@ Total quantity: 10
 
 ## Current verification status
 
+- A clean extraction of commit `d63f209` was checked on the unit server
+  using a new Python 3.12.3 virtual environment, Bash 5.2.21 and Git 2.43.0.
+  Both Bash syntax checks, CLI help, the inventory example and all six
+  isolated interface test methods passed. Demo preflight returned the
+  expected missing-checker exit code 2. Complete workflow verification
+  remains pending.
+
 - The inventory example ran successfully using Python 3.12.16.
 - Local setup, inventory execution and all six isolated interface test
   methods were verified from a clean extraction of commit `917960b`
@@ -186,7 +193,7 @@ Total quantity: 10
   yet been exercised through `scripts/demo.sh`.
 - Independent review of the new interface and demonstration changes is
   pending.
-- Complete automated testing, CI integration, unit-server verification
+- Complete automated testing, CI integration, full unit-server workflow verification
   from a clean extraction, and evaluation against the manual baseline
   remain pending.
 
@@ -195,6 +202,7 @@ Local evidence is recorded in:
 - `docs/evidence/bash-python-interface-2026-10-26.txt`
 - `docs/evidence/demo-preflight-2026-10-27.txt`
 - `docs/evidence/clean-extraction-preflight-2026-10-27.txt`
+- `docs/evidence/unit-server-preflight-2026-10-28.txt`
 
 AI assistance, human checks, review decisions and remaining risks are
 recorded in `docs/ai-use.md`.
