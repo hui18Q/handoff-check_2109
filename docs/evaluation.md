@@ -47,7 +47,9 @@ global configuration disabled, `core.autocrlf=false`, no hooks and no
 signing; author and committer are `Handoff Fixture <fixture@example.invalid>`
 at `2026-10-20T10:00:00+11:00`; supplied ZIPs use fixed timestamps, Unix
 `0644` modes and no compression. Requires Git ≥ 2.32. Unit server Git
-2.43.0 (confirmed by Lu Wenxi, 2026-11-04).
+2.43.0 (confirmed by Lu Wenxi, 2026-11-04). Running the generator on the
+unit server, and obtaining the Section 2.3 identifiers there, is not yet
+verified.
 
 ### 2.2 Reproduction commands
 
@@ -199,6 +201,22 @@ evaluation fixture contains one.
   extra judgement not in the table (e.g. re-checking a path) is counted and
   described in the notes column.
 
+Counting rationale. Judgements fall into two groups:
+
+- **Shared recording judgements**, counted identically for both methods:
+  verdict (J9 / K1), missing path (J10 / K2a), location (J11 / K2b), next
+  action (J12 / K2c), invalid input for ERROR (J10 / K3) and each context
+  line (J5 / K4). Both methods must record these to complete a case.
+- **Manual-only intermediate checks**, J1–J4 and J6–J8: validating the ref
+  and checklist, noting required-path status, and checking each required path
+  in the commit and archive. This is the inspection work the checker performs
+  automatically, so the judgement difference between the methods comes from
+  these points only.
+
+In the table below, checker judgements equal the shared count; manual
+judgements equal the shared count plus the manual-only checks (15, 15, 15,
+15, 5, 1, 15 and 12 for cases 01–08).
+
 Procedure minimum per case (reference only; record what actually happened):
 
 | Case | Manual commands | Manual judgements | Checker commands | Checker judgements |
@@ -215,7 +233,8 @@ Procedure minimum per case (reference only; record what actually happened):
 ## 5. Handoff Check procedure
 
 Start state: Python 3.12 virtual environment active; fixtures regenerated;
-terminal in the **tool project root**; `INPUTS.txt` read.
+terminal in the checker worktree `../checker-71d7472` (Section 5.1);
+`INPUTS.txt` read.
 
 | Step | Command | Judgement points (count) |
 |---|---|---|
@@ -226,8 +245,29 @@ Counting is deliberately conservative towards the checker: reading and
 recording the report counts as a judgement even when the report states the
 answer directly.
 
-Record the checker version used (commit ID of the tool project). Until MR !7
-is merged the reviewed copy at commit `71d7472` is used.
+The checker version is fixed for all measured runs (Section 5.1).
+
+### 5.1 Assessed implementation
+
+All measured runs use one checker version: commit
+`71d7472d7e920b2bba64327e9b69c3c18ecacd60`, reviewed and approved in MR !7.
+Each participant creates a worktree at that exact commit, from the project
+root:
+
+```bash
+git fetch origin
+git worktree add ../checker-71d7472 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+```
+
+Checker commands (C1, C2) are run from `../checker-71d7472`. Each raw-log
+block records the output of:
+
+```bash
+git -C ../checker-71d7472 rev-parse HEAD
+```
+
+Measurement does not switch versions, even if MR !7 or later checker changes
+are merged while measurement is in progress.
 
 ## 6. Timing
 
@@ -328,7 +368,8 @@ the manual baseline. Timing is reported as indicative only.
 
 ## 9. Raw logs (to be completed)
 
-One block per run, headed `member / case / method / order / date / tool commit`,
+One block per run, headed `member / case / method / order / date / checker commit`
+(the output of `git -C ../checker-71d7472 rev-parse HEAD`, Section 5.1),
 containing the exact commands and their full output.
 
 ## 10. Threats to validity and protocol changes
@@ -352,10 +393,15 @@ containing the exact commands and their full output.
 - **Baseline blind spot.** `python3 -m zipfile -l` cannot show symlink or
   other file types; no fixture tests this, so the baseline is not penalised
   for it.
-- **Tool version.** The pilot used the reviewed copy at commit `71d7472`
-  before MR !7 was merged; measured runs record the actual checker commit.
+- **Tool version.** The pilot and all measured runs use checker commit
+  `71d7472d7e920b2bba64327e9b69c3c18ecacd60` (Section 5.1). The results
+  describe that version only; checker changes merged later are not covered
+  and would need the affected cases to be re-run.
 
 Protocol changes after this draft:
 
 - 2026-11-04, before any measured run: quoted checker command paths; aligned
   judgement granularity (reviewer: Lu Wenxi).
+- 2026-11-04, before any measured run: froze the assessed checker at commit
+  `71d7472d7e920b2bba64327e9b69c3c18ecacd60` (Section 5.1); added the
+  counting rationale to Section 4.4 (reviewer: Lu Wenxi).
