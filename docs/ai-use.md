@@ -371,3 +371,18 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Pending independent evidence review.
 - Evidence: docs/evidence/local-real-checker-2026-11-04.txt and docs/evidence/unit-server-real-checker-2026-11-04.txt.
 - Remaining risks: Obtain independent evidence review, confirm the final integrated revision matches the tested implementation, and complete CI and manual-baseline evaluation.
+
+## Verify — CI configuration and runner review
+
+- Date: 4 November 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent record review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Interpret the CI configuration, pipeline failure and runner screenshots, and draft an evidence-based review record.
+- AI output: A scoped diagnosis, runner-inspection guidance and an English review record.
+- Human verification: Lu Wenxi inspected the committed YAML using Git and viewed the pipeline failure and runner pages. No CI job was executed as part of this review.
+- Findings: The smoke job has no matching runner and no execution log. Project runner #922 was Offline. The configuration prints environment versions but does not execute the full tests or demonstration.
+- Status: CI execution remains blocked; follow-up work has been requested from the CI author.
+- Decision: No acceptance of successful CI execution. Independent review of this record is pending.
+- Evidence: docs/evidence/ci-review-2026-11-04.md and pipeline #166423.
+- Remaining risks: Runner compatibility and job matching remain unresolved. Successful smoke execution and complete test/demo CI execution require actual logs and follow-up review.
