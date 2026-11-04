@@ -25,6 +25,7 @@ import io
 import json
 import os
 from pathlib import Path
+import shlex
 import subprocess
 import sys
 import zipfile
@@ -205,10 +206,11 @@ def build_case(case_dir, number):
 
 
 def checker_command(repo, ref, zip_path):
-    command = f"bash scripts/handoff_check.sh --repo {repo} --ref {ref} --checklist {CHECKLIST}"
+    command = ["bash", "scripts/handoff_check.sh", "--repo", str(repo),
+               "--ref", ref, "--checklist", CHECKLIST]
     if zip_path is not None:
-        command += f" --zip {zip_path}"
-    return command
+        command += ["--zip", str(zip_path)]
+    return shlex.join(command)
 
 
 def inputs_text(case_id, repo, ref, zip_path, manual_zip, command):

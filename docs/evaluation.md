@@ -46,7 +46,8 @@ Determinism: file contents are fixed LF bytes; Git runs with system and
 global configuration disabled, `core.autocrlf=false`, no hooks and no
 signing; author and committer are `Handoff Fixture <fixture@example.invalid>`
 at `2026-10-20T10:00:00+11:00`; supplied ZIPs use fixed timestamps, Unix
-`0644` modes and no compression. Requires Git ≥ 2.32.
+`0644` modes and no compression. Requires Git ≥ 2.32. Unit server Git
+2.43.0 (confirmed by Lu Wenxi, 2026-11-04).
 
 ### 2.2 Reproduction commands
 
@@ -180,7 +181,7 @@ non-required paths.
 | M4 | `git ls-tree -r REF` | **J6** each required path present with mode `100644`/`100755`? (n) | — |
 | M5a | only if no ZIP is supplied: `git archive --format=zip -o ../manual-handoff.zip REF` | — | — |
 | M5b | `python3 -m zipfile -l ZIP` (`../handoff.zip` or `../manual-handoff.zip`) | **J7** archive readable? (1)<br>**J8** each required path listed as an exact file entry? (n) | J7 No → ERROR, go to M6 |
-| M6 | (record in results sheet) | **J9** verdict by rules 1–5 (1)<br>**J10** FAIL: where each missing path is absent — commit, archive or both (1 per missing path); ERROR: which input or command is invalid (1)<br>**J11** FAIL: next action for each missing path (1 per missing path) | stop timer |
+| M6 | (record in results sheet) | **J9** verdict by rules 1–5 (1)<br>**J10** FAIL: missing path recorded (1 per missing path); ERROR: which input or command is invalid (1)<br>**J11** FAIL: where the missing path is absent — commit, archive or both (1 per missing path)<br>**J12** FAIL: next action for the missing path (1 per missing path) | stop timer |
 
 `git archive -o` must write to `../`, never inside `repo/`; a ZIP inside the
 working tree would itself appear as an untracked file.
@@ -203,12 +204,12 @@ Procedure minimum per case (reference only; record what actually happened):
 | Case | Manual commands | Manual judgements | Checker commands | Checker judgements |
 |---|---|---|---|---|
 | case-01 | 6 | 16 | 2 | 1 |
-| case-02 | 6 | 18 | 2 | 2 |
-| case-03 | 6 | 18 | 2 | 2 |
+| case-02 | 6 | 19 | 2 | 4 |
+| case-03 | 6 | 19 | 2 | 4 |
 | case-04 | 6 | 18 | 2 | 3 |
 | case-05 | 2 | 7 | 2 | 2 |
 | case-06 | 1 | 3 | 2 | 2 |
-| case-07 | 5 | 18 | 2 | 2 |
+| case-07 | 5 | 19 | 2 | 4 |
 | case-08 | 5 | 14 | 2 | 2 |
 
 ## 5. Handoff Check procedure
@@ -219,7 +220,7 @@ terminal in the **tool project root**; `INPUTS.txt` read.
 | Step | Command | Judgement points (count) |
 |---|---|---|
 | C1 | the checker command from `INPUTS.txt`, e.g.<br>`bash scripts/handoff_check.sh --repo …/case-NN/repo --ref REF --checklist handoff-check.json [--zip …/handoff.zip]` | — |
-| C2 | `echo $?` | **K1** verdict and exit code read and consistent (1)<br>**K2** FAIL: path, location and action recorded from each finding (1 per finding)<br>**K3** ERROR: invalid input identified from the message (1)<br>**K4** each context line confirmed as not affecting the verdict (1 per line) |
+| C2 | `echo $?` | **K1** verdict and exit code read and consistent (1)<br>**K2a** FAIL: missing path recorded from each finding (1 per finding)<br>**K2b** FAIL: location recorded from each finding (1 per finding)<br>**K2c** FAIL: next action recorded from each finding (1 per finding)<br>**K3** ERROR: invalid input identified from the message (1)<br>**K4** each context line confirmed as not affecting the verdict (1 per line) |
 
 Counting is deliberately conservative towards the checker: reading and
 recording the report counts as a judgement even when the report states the
@@ -354,4 +355,7 @@ containing the exact commands and their full output.
 - **Tool version.** The pilot used the reviewed copy at commit `71d7472`
   before MR !7 was merged; measured runs record the actual checker commit.
 
-Protocol changes after this draft: none.
+Protocol changes after this draft:
+
+- 2026-11-04, before any measured run: quoted checker command paths; aligned
+  judgement granularity (reviewer: Lu Wenxi).
