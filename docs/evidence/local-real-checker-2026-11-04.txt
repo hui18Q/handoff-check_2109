@@ -1,0 +1,123 @@
+Scope: local real-checker integration tests and demonstration
+Source commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Wed Nov  4 02:45:15 UTC 2026
+Darwin
+Bash: 3.2.57(1)-release
+git version 2.50.1 (Apple Git-155)
+
+Command: python3.12 -m venv .venv
+Python 3.12.16
+Executable: /Users/apple/Desktop/MY-T06-06/.scenario-runs/real-integration.D38odrwJ/project/.venv/bin/python3
+Inside venv: True
+
+Command: install declared requirements without network access
+
+Checking Bash syntax
+Command: bash -n scripts/handoff_check.sh
+Command: bash -n scripts/demo.sh
+Command: bash -n scripts/test.sh
+
+Command: bash scripts/test.sh
+test_exit_codes_streams_and_evidence (test_bash_python_interface.BashPythonInterfaceTests.test_exit_codes_streams_and_evidence) ... ok
+test_invalid_ref_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_invalid_ref_is_error) ... ok
+test_missing_checker_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_missing_checker_is_error) ... ok
+test_missing_supplied_zip_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_missing_supplied_zip_is_error) ... ok
+test_supplied_zip_paths_and_preservation (test_bash_python_interface.BashPythonInterfaceTests.test_supplied_zip_paths_and_preservation) ... ok
+test_unsupported_checker_exit_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_unsupported_checker_exit_is_error) ... ok
+test_archive_eof_error_names_input (test_python_checker.RealCheckerTests.test_archive_eof_error_names_input) ... ok
+test_bad_repository_error_names_input (test_python_checker.RealCheckerTests.test_bad_repository_error_names_input) ... ok
+test_bad_zip_error_names_input (test_python_checker.RealCheckerTests.test_bad_zip_error_names_input) ... ok
+test_case_sensitive_archive_match (test_python_checker.RealCheckerTests.test_case_sensitive_archive_match) ... ok
+test_checklist_error_names_source_and_position (test_python_checker.RealCheckerTests.test_checklist_error_names_source_and_position) ... ok
+test_checklist_schema_and_path_rejections (test_python_checker.RealCheckerTests.test_checklist_schema_and_path_rejections) ... ok
+test_commit_only_failure_reason_does_not_blame_zip (test_python_checker.RealCheckerTests.test_commit_only_failure_reason_does_not_blame_zip) ... ok
+test_complete_generated_archive (test_python_checker.RealCheckerTests.test_complete_generated_archive) ... ok
+test_corrupt_deflated_zip_is_error_not_fail (test_python_checker.RealCheckerTests.test_corrupt_deflated_zip_is_error_not_fail) ... ok
+test_corrupt_zip_is_error (test_python_checker.RealCheckerTests.test_corrupt_zip_is_error) ... ok
+test_directory_requirement_is_not_regular (test_python_checker.RealCheckerTests.test_directory_requirement_is_not_regular) ... ok
+test_duplicate_json_key_is_error (test_python_checker.RealCheckerTests.test_duplicate_json_key_is_error) ... ok
+test_duplicate_zip_entry_is_error (test_python_checker.RealCheckerTests.test_duplicate_zip_entry_is_error) ... ok
+test_export_ignore_omission (test_python_checker.RealCheckerTests.test_export_ignore_omission) ... ok
+test_fail_reason_names_each_actual_location (test_python_checker.RealCheckerTests.test_fail_reason_names_each_actual_location) ... ok
+test_invalid_archive_paths (test_python_checker.RealCheckerTests.test_invalid_archive_paths) ... ok
+test_invalid_git_evidence_rejected (test_python_checker.RealCheckerTests.test_invalid_git_evidence_rejected) ... ok
+test_invalid_ref_missing_archive_and_checklist (test_python_checker.RealCheckerTests.test_invalid_ref_missing_archive_and_checklist) ... ok
+test_local_io_failure_does_not_change_verdict (test_python_checker.RealCheckerTests.test_local_io_failure_does_not_change_verdict) ... ok
+test_local_permission_failure_is_informational (test_python_checker.RealCheckerTests.test_local_permission_failure_is_informational) ... ok
+test_malformed_json_is_error (test_python_checker.RealCheckerTests.test_malformed_json_is_error) ... ok
+test_missing_commit_file_retained_locally (test_python_checker.RealCheckerTests.test_missing_commit_file_retained_locally) ... ok
+test_no_arguments_is_error (test_python_checker.RealCheckerTests.test_no_arguments_is_error) ... ok
+test_selected_commit_and_committed_checklist (test_python_checker.RealCheckerTests.test_selected_commit_and_committed_checklist) ... ok
+test_spaces_and_newlines_in_required_names (test_python_checker.RealCheckerTests.test_spaces_and_newlines_in_required_names) ... ok
+test_status_rename_preserves_raw_names (test_python_checker.RealCheckerTests.test_status_rename_preserves_raw_names) ... ok
+test_supplied_archive_omission (test_python_checker.RealCheckerTests.test_supplied_archive_omission) ... ok
+test_supplied_archive_paths_and_preservation (test_python_checker.RealCheckerTests.test_supplied_archive_paths_and_preservation) ... ok
+test_symlink_in_commit_is_not_regular (test_python_checker.RealCheckerTests.test_symlink_in_commit_is_not_regular) ... ok
+test_top_level_zip_prefix_is_not_removed (test_python_checker.RealCheckerTests.test_top_level_zip_prefix_is_not_removed) ... ok
+test_unexpected_internal_exception_returns_error_without_traceback (test_python_checker.RealCheckerTests.test_unexpected_internal_exception_returns_error_without_traceback) ... ok
+test_unrelated_untracked_and_ignored_do_not_fail (test_python_checker.RealCheckerTests.test_unrelated_untracked_and_ignored_do_not_fail) ... ok
+test_unrelated_unusual_status_names_are_context_only (test_python_checker.RealCheckerTests.test_unrelated_unusual_status_names_are_context_only) ... ok
+test_unrelated_unusual_tree_and_zip_names_do_not_fail (test_python_checker.RealCheckerTests.test_unrelated_unusual_tree_and_zip_names_do_not_fail) ... ok
+test_working_absence_does_not_fail (test_python_checker.RealCheckerTests.test_working_absence_does_not_fail) ... ok
+test_working_symlink_ancestor_not_followed (test_python_checker.RealCheckerTests.test_working_symlink_ancestor_not_followed) ... ok
+test_zip_crc_error_prevents_verdict (test_python_checker.RealCheckerTests.test_zip_crc_error_prevents_verdict) ... ok
+test_zip_special_file_is_not_regular (test_python_checker.RealCheckerTests.test_zip_special_file_is_not_regular) ... ok
+test_zip_symlink_does_not_satisfy_regular_file (test_python_checker.RealCheckerTests.test_zip_symlink_does_not_satisfy_regular_file) ... ok
+
+----------------------------------------------------------------------
+Ran 45 tests in 16.009s
+
+OK
+Test suite exit code: 0
+
+Command: bash scripts/demo.sh
+
+=== Complete selected commit ===
+Expected checker exit code: 0
+Selected commit: ec09cbe865a97e2587f2456a438c800c0ab86037
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "!!"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+Actual checker exit code: 0
+
+=== Required CSV exists locally but is absent from commit ===
+Expected checker exit code: 1
+Selected commit: 1dd2a505bbae33a44247117395afd03313cb6ae3
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+FAIL "data/items.csv"
+  working tree: regular; Git status: "!!"
+  selected commit: missing; ZIP: missing
+  Reason: required regular file unavailable at selected commit: missing; ZIP: missing.
+  Suggested action: track a regular file at this path, commit it, select that commit and rebuild the handoff ZIP.
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: FAIL (1 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+Actual checker exit code: 1
+
+Demo completed: both checker exit codes matched expectations.
+Demo exit code: 0
+
+Checking temporary-workspace cleanup
+PASS: No checker or scenario temporary entries remain.
+
+Working-tree status after checks:
+
+Completed local real-checker integration verification.
+
+Verification process exit code: 0

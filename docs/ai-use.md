@@ -354,3 +354,20 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Integration handling: AI-assisted conflict resolution retained the demo review, report-drafting activity and unit-server partial-verification activity.
 - Evidence: Yin Jiayu's review dated 28 October 2026 in MR !6, https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/6.
 - Remaining limitations: Update current-status text after real-checker integration, repeat complete clean-extraction verification on the unit server, and incorporate CI and baseline-evaluation results.
+
+## Verify — Member A real-checker integration
+
+- Date: 4 November 2026.
+- Owner: Lu Wenxi.
+- Checker: Yin Jiayu (independent evidence review pending).
+- AI tool: OpenAI ChatGPT, https://chatgpt.com/.
+- Task and instructions: Execute the real Bash/Python workflow in an isolated working copy, record test and demonstration results, and check temporary-workspace cleanup.
+- AI output: Commands for a detached worktree, a fresh Python 3.12 environment, offline requirements installation, syntax checks, regression tests, demonstration execution and log capture.
+- Tested source commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60.
+- Human verification: Lu Wenxi executed the commands on macOS using Python 3.12.16, Bash 3.2.57 and Git 2.50.1, inspected the resulting log and copied the original log into the evidence directory.
+- Results: All three Bash syntax checks passed. All 45 test methods passed with exit code 0. The complete handoff returned PASS/0. The missing-CSV handoff returned FAIL/1 with location-specific findings and a suggested action. The demonstration returned 0. No checker or scenario temporary entries remained, and the working-tree status was clean.
+- Verification boundary: This run used a detached Git worktree of the Python feature branch. It was not a clean ZIP extraction, unit-server run or verification of the current master branch.
+- Status: Recorded local real-checker integration passed; independent evidence review and complete unit-server verification remain pending.
+- Decision: Pending independent evidence review.
+- Evidence: docs/evidence/local-real-checker-2026-11-04.txt.
+- Remaining risks: Verify the same source from a clean extraction on the unit server, confirm the final integrated revision, and complete CI and baseline evaluation.
