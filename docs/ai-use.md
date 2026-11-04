@@ -361,13 +361,13 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Owner: Lu Wenxi.
 - Checker: Yin Jiayu (independent evidence review pending).
 - AI tool: OpenAI ChatGPT, https://chatgpt.com/.
-- Task and instructions: Execute the real Bash/Python workflow in an isolated working copy, record test and demonstration results, and check temporary-workspace cleanup.
-- AI output: Commands for a detached worktree, a fresh Python 3.12 environment, offline requirements installation, syntax checks, regression tests, demonstration execution and log capture.
+- Task and instructions: Verify the real Bash/Python workflow locally and from a clean ZIP extraction on the unit server, retaining actual test, demonstration and cleanup results.
+- AI output: Commands for an isolated local worktree, clean archive export and checksum verification, SSH transfer, fresh Python environments, offline requirements installation, syntax checks, tests, demonstration, cleanup checks and original-log capture.
 - Tested source commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60.
-- Human verification: Lu Wenxi executed the commands on macOS using Python 3.12.16, Bash 3.2.57 and Git 2.50.1, inspected the resulting log and copied the original log into the evidence directory.
-- Results: All three Bash syntax checks passed. All 45 test methods passed with exit code 0. The complete handoff returned PASS/0. The missing-CSV handoff returned FAIL/1 with location-specific findings and a suggested action. The demonstration returned 0. No checker or scenario temporary entries remained, and the working-tree status was clean.
-- Verification boundary: This run used a detached Git worktree of the Python feature branch. It was not a clean ZIP extraction, unit-server run or verification of the current master branch.
-- Status: Recorded local real-checker integration passed; independent evidence review and complete unit-server verification remain pending.
+- Human verification: Lu Wenxi executed the local checks using Python 3.12.16, Bash 3.2.57 and Git 2.50.1, then executed the clean-extraction checks on fit2109s2.rep.monash.edu using Python 3.12.3, Bash 5.2.21 and Git 2.43.0. Both original logs were retained.
+- Results: All three Bash syntax checks and all 45 test methods passed in both environments. Each complete handoff returned PASS/0; each missing-CSV handoff returned FAIL/1 with findings and a suggested action. Both demonstrations returned 0 and temporary-workspace cleanup checks passed. The local worktree remained clean. The server ZIP checksum matched, and the extraction initially contained neither .git nor .venv.
+- Verification boundary: Both runs assessed source commit 71d7472d7e920b2bba64327e9b69c3c18ecacd60. These results do not establish CI execution, measured manual-baseline improvement or correctness of a different final integrated revision.
+- Status: Recorded local integration and unit-server clean-extraction tests and demonstration passed; independent evidence review is pending.
 - Decision: Pending independent evidence review.
-- Evidence: docs/evidence/local-real-checker-2026-11-04.txt.
-- Remaining risks: Verify the same source from a clean extraction on the unit server, confirm the final integrated revision, and complete CI and baseline evaluation.
+- Evidence: docs/evidence/local-real-checker-2026-11-04.txt and docs/evidence/unit-server-real-checker-2026-11-04.txt.
+- Remaining risks: Obtain independent evidence review, confirm the final integrated revision matches the tested implementation, and complete CI and manual-baseline evaluation.
