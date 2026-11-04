@@ -348,8 +348,11 @@ ERROR cases:
 
 ### 8.6 Measure 5: reproducibility
 
-Same fixtures, same checker commit, Python 3.12, clean `git archive`
-extraction of the project.
+Same fixtures and Python 3.12 in both environments. GitLab CI and the unit
+server both run the frozen checker commit
+`71d7472d7e920b2bba64327e9b69c3c18ecacd60` (Section 5.1). The final
+submitted project is re-checked separately from a clean `git archive`
+extraction before submission.
 
 | Case | GitLab CI exit | Unit server exit | stdout identical? | stderr identical after normalisation? |
 |---|---|---|---|---|
@@ -405,3 +408,7 @@ Protocol changes after this draft:
 - 2026-11-04, before any measured run: froze the assessed checker at commit
   `71d7472d7e920b2bba64327e9b69c3c18ecacd60` (Section 5.1); added the
   counting rationale to Section 4.4 (reviewer: Lu Wenxi).
+- 2026-11-04, before any measured run: Section 8.6 reproducibility runs use
+  the frozen checker commit on both GitLab CI and the unit server; the final
+  submitted project is re-checked separately from a clean `git archive`
+  extraction.
