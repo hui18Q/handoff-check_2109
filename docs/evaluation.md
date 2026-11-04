@@ -114,16 +114,20 @@ against the checklist and actual Git behaviour and ticks the last column
 (proposal §5). If Lu disagrees, the row is discussed and the decision is
 logged in Section 10; a row is never changed to match a tool output.
 
+All eight rows checked by Lu Wenxi on 2026-11-04 (MR !10 follow-up review of
+commit aa6de9c, checker 71d7472; evidence attached to MR !10:
+`expected-outcome-evidence.txt`, `fixture-generation.txt`).
+
 | Case | Verdict | Exit | Missing path / invalid input | Where absent | Context that must not cause FAIL | Expected next action | Proposal rule | Checked by Lu Wenxi |
 |---|---|---|---|---|---|---|---|---|
-| case-01 | PASS | 0 | — | — | none | none | §3 PASS definition | ☐ |
-| case-02 | FAIL | 1 | `data/items.csv` | selected commit **and** archive | `data/items.csv` is `??` locally (evidence, not a pass) | add and commit `data/items.csv`, select the new commit, rebuild the ZIP | §3 "missing from the target tree … will fail" | ☐ |
-| case-03 | FAIL | 1 | `data/items.csv` | archive only (in commit as `100644`) | — | remove the `export-ignore` rule for `data/items.csv`, commit, rebuild the ZIP | §3 "missing from … archive will fail" | ☐ |
-| case-04 | PASS | 0 | — | — | `notes/todo.txt` (`??`), `report.log` (`!!`) | none | §3 "unrelated untracked or ignored files … will not automatically fail" | ☐ |
-| case-05 | ERROR | 2 | checklist entry 3 `"../data/items.csv"` (parent traversal) | — (no PASS/FAIL verdict) | — | correct the entry to `data/items.csv` and commit the checklist | §3 checklist validation | ☐ |
-| case-06 | ERROR | 2 | target ref `v1.0` does not resolve | — (no PASS/FAIL verdict) | — | select an existing commit/ref or create the tag | §3 ERROR = invalid input | ☐ |
-| case-07 | FAIL | 1 | `data/items.csv` | supplied archive only (in commit) | — | rebuild the ZIP from the selected commit (or add the file to it) | §3 supplied-ZIP presence; §4 "must produce FAIL (exit 1)" | ☐ |
-| case-08 | ERROR | 2 | supplied `handoff.zip` is not a readable ZIP | — (no PASS/FAIL verdict) | — | re-create or re-copy the archive | §3 "invalid or unreadable archives will produce ERROR" | ☐ |
+| case-01 | PASS | 0 | — | — | none | none | §3 PASS definition | ☑ |
+| case-02 | FAIL | 1 | `data/items.csv` | selected commit **and** archive | `data/items.csv` is `??` locally (evidence, not a pass) | add and commit `data/items.csv`, select the new commit, rebuild the ZIP | §3 "missing from the target tree … will fail" | ☑ |
+| case-03 | FAIL | 1 | `data/items.csv` | archive only (in commit as `100644`) | — | remove the `export-ignore` rule for `data/items.csv`, commit, rebuild the ZIP | §3 "missing from … archive will fail" | ☑ |
+| case-04 | PASS | 0 | — | — | `notes/todo.txt` (`??`), `report.log` (`!!`) | none | §3 "unrelated untracked or ignored files … will not automatically fail" | ☑ |
+| case-05 | ERROR | 2 | checklist entry 3 `"../data/items.csv"` (parent traversal) | — (no PASS/FAIL verdict) | — | correct the entry to `data/items.csv` and commit the checklist | §3 checklist validation | ☑ |
+| case-06 | ERROR | 2 | target ref `v1.0` does not resolve | — (no PASS/FAIL verdict) | — | select an existing commit/ref or create the tag | §3 ERROR = invalid input | ☑ |
+| case-07 | FAIL | 1 | `data/items.csv` | supplied archive only (in commit) | — | rebuild the ZIP from the selected commit (or add the file to it) | §3 supplied-ZIP presence; §4 "must produce FAIL (exit 1)" | ☑ |
+| case-08 | ERROR | 2 | supplied `handoff.zip` is not a readable ZIP | — (no PASS/FAIL verdict) | — | re-create or re-copy the archive | §3 "invalid or unreadable archives will produce ERROR" | ☑ |
 
 Verification evidence for the checker (expected listings, from the 2026-11-04
 dry run of the Section 4 commands):
