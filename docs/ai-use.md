@@ -338,6 +338,32 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Evidence: docs/evidence/unit-server-preflight-2026-10-28.txt, README.md and docs/member-a-report-draft.md.
 - Remaining risks: Repeat clean-extraction verification after real-checker and full test-workflow integration; complete the demonstration and baseline evaluation.
 
+## Design / Build / Verify - Member B Python checker
+
+- Date: 28 October 2026.
+- Owner: Yin Jiayu. Independent checker: Wen Chin (review pending).
+- Tool: OpenAI Codex.
+- Task/instructions: Implement the agreed six-argument Python checker; validate checklist paths and raw Git/ZIP evidence; return PASS/0, FAIL/1 or ERROR/2; run real local checks before reporting results.
+- Output: Python implementation, regression tests, sample checklist, standard-library test runner, design notes and a draft Member B report contribution.
+- Design choices proposed for review: Keep exact ZIP path matching; reject ambiguous JSON/ZIP duplicates; treat unrelated status as context; retain selected-commit requirements; do not claim content/provenance validation. Alternatives and scope are documented in docs/python-checker.md.
+- Executed verification: 32 local test methods passed using Python 3.12.14. The real checker produced the expected PASS/0 and FAIL/1 demo outcomes and the demo returned 0. Exact commands/results are in docs/evidence/python-checker-2026-10-28.txt.
+- Verification method: Automated local executions and source inspection in this assisted session. These executions are not an independent human peer review. Wen Chin must check expectations and reproduce the branch before merge.
+- Decision: Proposed implementation retained for review; final owner/peer acceptance remains pending. No verification or personal design decisions are attributed to a human who has not yet performed them.
+- Remaining risks: Implementation and tests were drafted in the same session and may share assumptions. Independent review, full unit-server reproduction, CI and baseline evaluation remain outstanding. Report drafting produces no new experimental evidence.
+- Evidence: src/handoff_check.py, tests/test_python_checker.py, docs/python-checker.md, docs/member-b-report-draft.md and the local evidence log.
+
+## Verify / Revise - Member B peer-review corrections
+
+- Date: 28 October 2026.
+- Owner: Yin Jiayu. Independent reviewer: Chin Wen Hui (wchi0071).
+- Tool: OpenAI Codex.
+- Trigger: Chin Wen Hui reviewed commit 77dc8fa63136d092ce4eee1cefc2b76271664119 in MR !7, reproduced B1/B2 and requested changes. Her review is independent evidence, not replaced by the local assisted checks below.
+- Assisted work: Reproduced the reported corrupt-DEFLATE and raw-status-name failures with regression tests, revised exception/context handling and diagnostics, and updated the documented policy boundaries.
+- Results: Added 13 regression methods; all 45 local methods passed under Python 3.12.14, and both demo cases produced expected 0/1 exits with demo exit 0. The new tests failed against the original implementation before the fixes were applied.
+- Verification limits: Permission/I/O, EOF and unexpected internal-error branches are fault-injected. The corrupt compressed ZIP and unusual Git filenames use real files through the public Bash entry point. No new unit-server or CI execution is claimed.
+- Decisions still requiring human confirmation: Re-review of B1/B2 and the related S1-S4 changes; explicit acceptance or revision of the defensive duplicate/path policies identified in S5. Current policy tests document behaviour and are not proof of team agreement.
+- Evidence: src/handoff_check.py, tests/test_python_checker.py, docs/python-checker.md and MR !7. A clean ZIP extraction of c1f8c455eb28d41b1cf277778d6fa74d0df66153 passed all 45 tests, three Bash syntax checks and both demos in a fresh Python 3.12.14 environment; actual commands, output and limits are retained in docs/evidence/python-review-fixes-2026-10-28.txt.
+
 ## Review follow-up — Report draft and server evidence
 
 - Date: 28 October 2026.
@@ -359,7 +385,8 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 
 - Date: 4 November 2026.
 - Owner: Lu Wenxi.
-- Checker: Yin Jiayu (independent evidence review pending).
+- Originally planned checker: Yin Jiayu.
+- Independent reviewer: Chin Wen Hui (wchi0071); see the 5 November 2026 MR !8 follow-up below.
 - AI tool: OpenAI ChatGPT, https://chatgpt.com/.
 - Task and instructions: Verify the real Bash/Python workflow locally and from a clean ZIP extraction on the unit server, retaining actual test, demonstration and cleanup results.
 - AI output: Commands for an isolated local worktree, clean archive export and checksum verification, SSH transfer, fresh Python environments, offline requirements installation, syntax checks, tests, demonstration, cleanup checks and original-log capture.
@@ -367,22 +394,42 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Human verification: Lu Wenxi executed the local checks using Python 3.12.16, Bash 3.2.57 and Git 2.50.1, then executed the clean-extraction checks on fit2109s2.rep.monash.edu using Python 3.12.3, Bash 5.2.21 and Git 2.43.0. Both original logs were retained.
 - Results: All three Bash syntax checks and all 45 test methods passed in both environments. Each complete handoff returned PASS/0; each missing-CSV handoff returned FAIL/1 with findings and a suggested action. Both demonstrations returned 0 and temporary-workspace cleanup checks passed. The local worktree remained clean. The server ZIP checksum matched, and the extraction initially contained neither .git nor .venv.
 - Verification boundary: Both runs assessed source commit 71d7472d7e920b2bba64327e9b69c3c18ecacd60. These results do not establish CI execution, measured manual-baseline improvement or correctness of a different final integrated revision.
-- Status: Recorded local integration and unit-server clean-extraction tests and demonstration passed; independent evidence review is pending.
-- Decision: Pending independent evidence review.
+- Initial status (4 November 2026): Recorded local integration and unit-server clean-extraction tests and demonstration passed; independent evidence review is pending.
+- Initial decision (4 November 2026): Pending independent evidence review.
 - Evidence: docs/evidence/local-real-checker-2026-11-04.txt and docs/evidence/unit-server-real-checker-2026-11-04.txt.
-- Remaining risks: Obtain independent evidence review, confirm the final integrated revision matches the tested implementation, and complete CI and manual-baseline evaluation.
+- Initial remaining risks (4 November 2026): Obtain independent evidence review, confirm the final integrated revision matches the tested implementation, and complete CI and manual-baseline evaluation.
 
 ## Verify — CI configuration and runner review
 
 - Date: 4 November 2026.
 - Owner: Lu Wenxi.
-- Checker: Yin Jiayu (independent record review pending).
+- Originally planned checker: Yin Jiayu.
+- Independent reviewer: Chin Wen Hui (wchi0071); see the 5 November 2026 MR !8 follow-up below.
 - AI tool: OpenAI ChatGPT, https://chatgpt.com/.
 - Task and instructions: Interpret the CI configuration, pipeline failure and runner screenshots, and draft an evidence-based review record.
 - AI output: A scoped diagnosis, runner-inspection guidance and an English review record.
 - Human verification: Lu Wenxi inspected the committed YAML using Git and viewed the pipeline failure and runner pages. No CI job was executed as part of this review.
 - Findings: The smoke job has no matching runner and no execution log. Project runner #922 was Offline. The configuration prints environment versions but does not execute the full tests or demonstration.
-- Status: CI execution remains blocked; follow-up work has been requested from the CI author.
-- Decision: No acceptance of successful CI execution. Independent review of this record is pending.
+- Initial status (4 November 2026): CI execution remains blocked; follow-up work has been requested from the CI author.
+- Initial decision (4 November 2026): No acceptance of successful CI execution. Independent review of this record is pending.
 - Evidence: docs/evidence/ci-review-2026-11-04.md and pipeline #166423.
-- Remaining risks: Runner compatibility and job matching remain unresolved. Successful smoke execution and complete test/demo CI execution require actual logs and follow-up review.
+- Initial remaining risks (4 November 2026): Runner compatibility and job matching remain unresolved. Successful smoke execution and complete test/demo CI execution require actual logs and follow-up review.
+
+## Review follow-up — MR !8 evidence and CI smoke
+
+- Date: 5 November 2026.
+- Owner: Lu Wenxi.
+- Independent reviewer: Chin Wen Hui (wchi0071). Her review assessed commit 6074230 in MR !8; confirmation of this updated documentation remains pending.
+- Review method: Chin read all four changed files and compared the two retained logs with her independent WSL2/Linux run of the same checker source, 71d7472d7e920b2bba64327e9b69c3c18ecacd60. She did not rerun the macOS or unit-server commands.
+- Accepted evidence: The recorded 45 test methods, normal PASS/0, missing-CSV FAIL/1, demo exit 0 and cleanup results were accepted for the documented source and environments. This is an evidence-consistency review, not independent remote re-execution.
+- Changes requested: Update the outdated CI status, synchronise master, and identify the actual independent reviewer. The original local/server logs remain unchanged; individual syntax-check exit codes have not been retrospectively added.
+- Later CI evidence: On 4 November, pipeline #166423 job #519084 passed for smoke commit 58a6a491b21661dce097b72ec5b0687c1dccdce8 on project runner #922 using the Docker executor and python:3.12.16-slim. The log printed Python 3.12.16, Git 2.47.3 and Bash 5.2.37.
+- Human review: Lu inspected the committed YAML and existing successful job log, requested MR !9 description corrections, and approved the smoke scope after correction. MR !9 was merged. Lu did not independently rerun that job.
+- Current CI status: Follow-up items 1, 2, 3 and 6 are resolved for the observed smoke execution. Items 4 and 5 remain open: full test/demo CI and verified failure propagation. Smoke success does not establish execution of project tests or the demonstration.
+- Integration handling: Master ea76aaf was merged into this branch without conflicts. Both Member B AI-use entries and Member A's existing records were retained.
+- AI assistance: OpenAI ChatGPT helped interpret the review, draft these corrections and prepare Git/document-update commands. This documentation update produces no new runtime or timing evidence.
+- Owner decision: Retain the accepted verification evidence and smoke-scope result; modify the status and reviewer records as requested. The revised MR remains subject to follow-up review.
+- Remaining risks: Runner host/process availability, full CI, measured manual-baseline evaluation and final submitted-revision verification remain separate work.
+- Evidence: MR !8 review; MR !9 review and merge; docs/evidence/ci-review-2026-11-04.md; the unchanged local and unit-server logs.
+- Review link: https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/merge_requests/8
+- Smoke job: https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/jobs/519084
