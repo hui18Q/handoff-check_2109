@@ -1,0 +1,581 @@
+Script started on 2026-11-05 21:08:40+08:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="91" LINES="29"]
+[?2004h]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate && cd ~[27m[7m/[27m[7mfit2109/checker-71d7472[27m[A]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd ~/fit2109/checker-71d7472
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mbash scripts/handoff_check.sh --r[27m[7me[27m[7mpo $F/case-07/repo --ref main --checklist handoff-check.json --zip $F/case-07/handoff.zip[27m[Abash scripts/handoff_check.sh --repo $F/case-07/repo --ref main --checklist handoff-check.json --zip $F/case-07/handoff.zip
+[?2004lSelected commit: 65476cfa6ddead9da2d38752e3b744bc752e2293
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+FAIL "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: missing
+  Reason: required regular file unavailable at ZIP: missing.
+  Suggested action: inspect archive paths and export-ignore/packaging rules, then rebuild a ZIP containing this exact regular-file path.
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: FAIL (1 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mecho $?[27mecho $?
+[?2004l1
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mecho $F[27m
+[7mscript -q $L/case-07-manual.log[27m[A((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ echo $F
+script -q $L/case-07-manual.log
+[?2004l/home/chinw/fit2109/MY-T06-06/.scenario-runs/eval-fixtures
+[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate &[27m[7m&[27m[7m cd $F/case-07/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-07/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [7mgit rev-parse --verify main^{commit}[27m
+[7mgit show main:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r main[27m
+[7mpython3 -m zipfile -l ../handoff.zip[27m[A[A[A[A[C[C[Cgit rev-parse --verify main^{commit}
+git show main:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r main
+python3 -m zipfile -l ../handoff.zip
+[?2004l65476cfa6ddead9da2d38752e3b744bc752e2293
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob 0fb70959ed3cddd691277dd6fdba00c322d3f190	data/items.csv
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+File Name                                             Modified             Size
+README.md                                      2026-10-20 10:00:00          202
+report.py                                      2026-10-20 10:00:00          306
+handoff-check.json                             2026-10-20 10:00:00           85
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mecho $F[27m
+[7mscript -q $L/case-07-manual.log[27m[A[C[C[C[Cecho $F
+script -q $L/case-07-manual.log
+[?2004l/home/chinw/fit2109/MY-T06-06/.scenario-runs/eval-fixtures
+[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fi[27m[7mt[27m[7m2109/review/.venv-mr7/bin/activate && cd $F/case-07/r[27m[7me[27m[7mpo[27m[A[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-07/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [7mgit rev-parse [27m[7m-[27m[7m-verify main^{commit} [27m
+[7mgit show main:handoff-check.json | python3 -m json.too[27m[7ml[27m[7m [27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r main[27m
+[7mpython3 -m zipfile -l ../handoff.zip[27m[A[A[A[A[A[A[C[C[C[Cgit rev-parse --verify main^{commit}
+git show main:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r main
+python3 -m zipfile -l ../handoff.zip
+[?2004l65476cfa6ddead9da2d38752e3b744bc752e2293
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob 0fb70959ed3cddd691277dd6fdba00c322d3f190	data/items.csv
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+File Name                                             Modified             Size
+README.md                                      2026-10-20 10:00:00          202
+report.py                                      2026-10-20 10:00:00          306
+handoff-check.json                             2026-10-20 10:00:00           85
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-07/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-08-manual.log[27m[C[C[C[Cscript -q $L/case-08-manual.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fi[27m[7mt[27m[7m2109/review/.venv-mr7/bin/activate && cd $F/case-08/r[27m[7me[27m[7mpo[27m[A[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-08/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ [7mgit rev-parse [27m[7m-[27m[7m-verify main^{commit} [27m
+[7mgit show main:handoff-check.json | python3 -m json.too[27m[7ml[27m[7m [27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r main[27m
+[7mpython3 -m zipfile -l ../handoff.zip[27m[A[A[A[A[A[A[C[C[C[Cgit rev-parse --verify main^{commit}
+git show main:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r main
+python3 -m zipfile -l ../handoff.zip
+[?2004ld3c40e761dc83c9c4b5939a094eb58454fce7ded
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob 0fb70959ed3cddd691277dd6fdba00c322d3f190	data/items.csv
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__main__.py", line 4, in <module>
+    main()
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 2333, in main
+    with ZipFile(src, 'r', metadata_encoding=encoding) as zf:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 1396, in __init__
+    self._RealGetContents()
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 1463, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-08-checker.log[27m[C[C[C[Cscript -q $L/case-08-checker.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fi[27m[7mt[27m[7m2109/review/.venv-mr7/bin/activate && cd ~/fit2109/ch[27m[7me[27m[7mcker-71d7472[27m[A[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd ~/fit2109/checker-71d7472
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mbash scripts/handoff_check.sh --repo $F/case-08/re[27m[7mp[27m[7mo --ref main --checklist handoff-check.json --zip $F/[27m[7mc[27m[7mase-08/handoff.zip[27m[A[A[C[C[C[Cbash scripts/handoff_check.sh --repo $F/case-08/repo --ref main --checklist handoff-check.json --zip $F/case-08/handoff.zip
+[?2004lERROR: ZIP archive "/home/chinw/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-08/handoff.zip": File is not a zip file
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mecho $?[27m[C[C[C[Cecho $?
+[?2004l2
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-01-checker.log[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscript -q $L/case-01-checker.log [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kg
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd ~/fit2109/checker-71d7472[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd ~/fit2109/checker-71d7472
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mbash scripts/handoff_check.sh --[27m[7mr[27m[7mepo $F/case-01/repo --ref main --checklist handoff-check.json[27m[Abash scripts/handoff_check.sh --repo $F/case-01/repo --ref main --checklist handoff-check.json
+[?2004lSelected commit: 92f067b25ee433ac8b5931dd33b254e65e72581b
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mecho $?[27mecho $?
+[?2004l0
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-01-manual.log[27mscript -q $L/case-01-manual.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd $F/case-01/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-01/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [7mgit rev-parse --verify main^{commit}[27m
+[7mgit show main:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r main[27m
+[7mgit archive --format=zip -o ../manual-handoff.zip main[27m
+[7mpython3 -m zipfile -l ../manual-handoff.zip[27m[A[A[A[A[A[C[C[C[Cgit rev-parse --verify main^{commit}
+git show main:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r main
+git archive --format=zip -o ../manual-handoff.zip main
+python3 -m zipfile -l ../manual-handoff.zip
+[?2004l92f067b25ee433ac8b5931dd33b254e65e72581b
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob 0fb70959ed3cddd691277dd6fdba00c322d3f190	data/items.csv
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+File Name                                             Modified             Size
+README.md                                      2026-10-20 07:00:00          202
+data/                                          2026-10-20 07:00:00            0
+data/items.csv                                 2026-10-20 07:00:00           40
+handoff-check.json                             2026-10-20 07:00:00           85
+report.py                                      2026-10-20 07:00:00          306
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-01/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-02-manual.log[27mscript -q $L/case-02-manual.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd $F/case-02/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-02/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [7mgit rev-parse --verify main^{commit}[27m
+[7mgit show main:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r main[27m
+[7mgit archive --format=zip -o ../manual-handoff.zip main[27m
+[7mpython3 -m zipfile -l ../manual-handoff.zip[27m[A[A[A[A[A[C[C[C[Cgit rev-parse --verify main^{commit}
+git show main:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r main
+git archive --format=zip -o ../manual-handoff.zip main
+python3 -m zipfile -l ../manual-handoff.zip
+[?2004l68edbabdc81c7325b2088dbb95a0fd352ff36876
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+[31m??[m data/items.csv
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+File Name                                             Modified             Size
+README.md                                      2026-10-20 07:00:00          202
+handoff-check.json                             2026-10-20 07:00:00           85
+report.py                                      2026-10-20 07:00:00          306
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-02/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-06-manual.log[27mscript -q $L/case-06-manual.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd $F/case-06/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-06/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[00m$ [7mgit rev-parse --verify v1.0^{commit}[27m
+[7mgit show v1.0:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r v1.0[27m
+[7mgit archive --format=zip -o ../manual-handoff.zip v1.0[27m
+[7mpython3 -m zipfile -l ../manual-handoff.zip[27m[A[A[A[A[A[C[C[C[Cgit rev-parse --verify v1.0^{commit}
+git show v1.0:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r v1.0
+git archive --format=zip -o ../manual-handoff.zip v1.0
+python3 -m zipfile -l ../manual-handoff.zip
+[?2004lfatal: Needed a single revision
+fatal: invalid object name 'v1.0'.
+Expecting value: line 1 column 1 (char 0)
+fatal: Not a valid object name v1.0
+fatal: not a valid object name: v1.0
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__main__.py", line 4, in <module>
+    main()
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 2333, in main
+    with ZipFile(src, 'r', metadata_encoding=encoding) as zf:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 1396, in __init__
+    self._RealGetContents()
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 1463, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-02-checker.log[27m[C[C[C[Cscript -q $L/case-02-checker.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fi[27m[7mt[27m[7m2109/review/.venv-mr7/bin/activate && cd ~/fit2109/ch[27m[7me[27m[7mcker-71d7472[27m[A[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd ~/fit2109/checker-71d7472
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mbash scripts/handoff_check.sh --repo $F/case-02/re[27m[7mp[27m[7mo --ref main --checklist handoff-check.json [27m
+[7mecho $?[27m[A[Abash scripts/handoff_check.sh --repo $F/case-02/repo --ref main --checklist handoff-check.json
+echo $?
+[?2004lSelected commit: 68edbabdc81c7325b2088dbb95a0fd352ff36876
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+FAIL "data/items.csv"
+  working tree: regular; Git status: "??"
+  selected commit: missing; ZIP: missing
+  Reason: required regular file unavailable at selected commit: missing; ZIP: missing.
+  Suggested action: track a regular file at this path, commit it, select that commit and rebuild the handoff ZIP.
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: FAIL (1 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+1
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-03-checker.log[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscript -q $L/case-03-checker.log [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kg
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd ~/fit2109/checker-71d7472[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd ~/fit2109/checker-71d7472
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mbash scripts/handoff_check.sh --[27m[7mr[27m[7mepo $F/case-03/repo --ref main --checklist handoff-check.json [27m
+[7mecho $?[27m[A[A((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ bash scripts/handoff_check.sh --repo $F/case-03/repo --ref main --checklist handoff-check.json
+echo $?
+[?2004lSelected commit: b48d716ebb570b4c4e419d940652de922ce1a8fb
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+FAIL "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: missing
+  Reason: required regular file unavailable at ZIP: missing.
+  Suggested action: inspect archive paths and export-ignore/packaging rules, then rebuild a ZIP containing this exact regular-file path.
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: FAIL (1 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+1
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-03-checker.log[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscript -q $L/case-03-checker.log [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kg
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd ~/fit2109/checker-71d7472[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd ~/fit2109/checker-71d7472
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-03-manual.log[27mscript -q $L/case-03-manual.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd $F/case-03/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-03/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-03/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-03/repo[00m$ [7mgit rev-parse --verify main^{commit}[27m
+[7mgit show main:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r main[27m
+[7mgit archive --format=zip -o ../manual-handoff.zip main[27m
+[7mpython3 -m zipfile -l ../manual-handoff.zip[27m[A[A[A[A[A[C[C[C[Cgit rev-parse --verify main^{commit}
+git show main:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r main
+git archive --format=zip -o ../manual-handoff.zip main
+python3 -m zipfile -l ../manual-handoff.zip
+[?2004lb48d716ebb570b4c4e419d940652de922ce1a8fb
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+100644 blob 7d2c7c33c011a107bef91f9f6a0eb27af0862b6a	.gitattributes
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob 0fb70959ed3cddd691277dd6fdba00c322d3f190	data/items.csv
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+File Name                                             Modified             Size
+.gitattributes                                 2026-10-20 07:00:00           29
+README.md                                      2026-10-20 07:00:00          202
+data/                                          2026-10-20 07:00:00            0
+handoff-check.json                             2026-10-20 07:00:00           85
+report.py                                      2026-10-20 07:00:00          306
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-03/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-03/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K[A[K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-04-manual.log[27mscript -q $L/case-04-manual.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd $F/case-04/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-04/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-04/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-04/repo[00m$ [7mgit rev-parse --verify main^{commit}[27m
+[7mgit show main:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r main[27m
+[7mgit archive --format=zip -o ../manual-handoff.zip main[27m
+[7mpython3 -m zipfile -l ../manual-handoff.zip[27m[A[A[A[A[A[C[C[C[Cgit rev-parse --verify main^{commit}
+git show main:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r main
+git archive --format=zip -o ../manual-handoff.zip main
+python3 -m zipfile -l ../manual-handoff.zip
+[?2004ld7d3a9dd32a41a550eec314cee9faf4ea8821d43
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+[31m??[m notes/todo.txt
+[31m!![m report.log
+100644 blob 397b4a7624e35fa60563a9c03b1213d93f7b6546	.gitignore
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob 0fb70959ed3cddd691277dd6fdba00c322d3f190	data/items.csv
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+File Name                                             Modified             Size
+.gitignore                                     2026-10-20 07:00:00            6
+README.md                                      2026-10-20 07:00:00          202
+data/                                          2026-10-20 07:00:00            0
+data/items.csv                                 2026-10-20 07:00:00           40
+handoff-check.json                             2026-10-20 07:00:00           85
+report.py                                      2026-10-20 07:00:00          306
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-04/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-04/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-04-checker.log[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscript -q $L/case-04-checker.log [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kg
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd ~/fit2109/checker-71d7472[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd ~/fit2109/checker-71d7472
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mbash scripts/handoff_check.sh --[27m[7mr[27m[7mepo $F/case-04/repo --ref main --checklist handoff-check.json [27m
+[7mecho $?[27m[A[A((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ bash scripts/handoff_check.sh --repo $F/case-04/repo --ref main --checklist handoff-check.json
+echo $?
+[?2004lSelected commit: d7d3a9dd32a41a550eec314cee9faf4ea8821d43
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 2 (informational; do not determine the verdict)
+  Context: "notes/todo.txt"; Git status: "??"
+  Context: "report.log"; Git status: "!!"
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+0
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-05-checker.log[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscript -q $L/case-05-checker.log [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kg
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd ~/fit2109/checker-71d7472[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd ~/fit2109/checker-71d7472
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mbash scripts/handoff_check.sh --[27m[7mr[27m[7mepo $F/case-05/repo --ref main --checklist handoff-check.json [27m
+[7mecho $?[27m[A[A((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ bash scripts/handoff_check.sh --repo $F/case-05/repo --ref main --checklist handoff-check.json
+echo $?
+[?2004lERROR: Checklist "/home/chinw/fit2109/checker-71d7472/.handoff-tmp.YPSwQEiu/checklist.json": required_files[2]: Non-canonical repository-relative path: "../data/items.csv"
+2
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-05-manual.log[27mscript -q $L/case-05-manual.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd $F/case-05/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-05/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-05/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-05/repo[00m$ [7mgit rev-parse --verify main^{commit}[27m
+[7mgit show main:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r main[27m
+[7mgit archive --format=zip -o ../manual-handoff.zip main[27m
+[7mpython3 -m zipfile -l ../manual-handoff.zip[27m[A[A[A[A[A[C[C[C[Cgit rev-parse --verify main^{commit}
+git show main:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r main
+git archive --format=zip -o ../manual-handoff.zip main
+python3 -m zipfile -l ../manual-handoff.zip
+[?2004ldf81a70abb2df6fb63ccd65bf1b91a7e7e1953d4
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "../data/items.csv"
+    ]
+}
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob 0fb70959ed3cddd691277dd6fdba00c322d3f190	data/items.csv
+100644 blob 11a58a7ca97f6f39decdcd82b0ec59a6e6c0b2e3	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+File Name                                             Modified             Size
+README.md                                      2026-10-20 07:00:00          202
+data/                                          2026-10-20 07:00:00            0
+data/items.csv                                 2026-10-20 07:00:00           40
+handoff-check.json                             2026-10-20 07:00:00           88
+report.py                                      2026-10-20 07:00:00          306
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-05/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-05/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-06-manual.log[27mscript -q $L/case-06-manual.log
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd $F/case-06/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-06/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[00m$ [7mgit rev-parse --verify v1.0^{commit}[27m
+[7mgit show v1.0:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r v1.0[27m
+[7mgit archive --format=zip -o ../manual-handoff.zip v1.0[27m
+[7mpython3 -m zipfile -l ../manual-handoff.zip[27m[A[A[A[A[A[C[C[C[Cgit rev-parse --verify v1.0^{commit}
+git show v1.0:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r v1.0
+git archive --format=zip -o ../manual-handoff.zip v1.0
+python3 -m zipfile -l ../manual-handoff.zip
+[?2004lfatal: Needed a single revision
+fatal: invalid object name 'v1.0'.
+Expecting value: line 1 column 1 (char 0)
+fatal: Not a valid object name v1.0
+fatal: not a valid object name: v1.0
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__main__.py", line 4, in <module>
+    main()
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 2333, in main
+    with ZipFile(src, 'r', metadata_encoding=encoding) as zf:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 1396, in __init__
+    self._RealGetContents()
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 1463, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mscript -q $L/case-06-checker.log[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscript -q $L/case-06-checker.log [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kg
+[?2004l[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd ~/fit2109/checker-71d7472[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd ~/fit2109/checker-71d7472
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mbash scripts/handoff_check.sh --[27m[7mr[27m[7mepo $F/case-06/repo --ref v1.0 --checklist handoff-check.json [27m
+[7mecho $?[27m[A[A((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ bash scripts/handoff_check.sh --repo $F/case-06/repo --ref v1.0 --checklist handoff-check.json
+echo $?
+[?2004lERROR: Ref does not resolve to an available commit: v1.0
+2
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ exit
+[?2004lexit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7mcd ~/fit2109/MY-T06-06[27m
+[7mls $L | wc -l[27m
+[7mwc -l docs/evaluation-runs/chin/results.csv[27m
+[7mcat docs/evaluation-runs/chin/results.csv[27m[A[A[A((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ cd ~/fit2109/MY-T06-06
+ls $L | wc -l
+wc -l docs/evaluation-runs/chin/results.csv
+cat docs/evaluation-runs/chin/results.csv
+[?2004l16
+15 docs/evaluation-runs/chin/results.csv
+chin,case-07,checker,1st,FAIL,1,data/items.csv,archive only,rebuild ZIP containing data/items.csv (check packaging/export-ignore rules),2,4,50,No AI used while the timer was running. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08). First command failed due to an environment variable setup error and was re-run.
+chin,case-07,manual,2nd,FAIL,,data/items.csv,archive only,Rebuild handoff.zip to include data/items.csv,5,19,40,No AI used while the timer was running. Required file exists in main but is missing from handoff.zip. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-08,manual,1st,FAIL,,handoff.zip,invalid archive,Replace handoff.zip with a valid ZIP archive,5,16,61,No AI used while the timer was running. zipfile.BadZipFile: File is not a zip file. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-01,checker,1st,PASS,0,,none,No action required,2,4,45,No AI used while the timer was running. All 3 required files passed. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-01,manual,2nd,PASS,,,none,No action required,6,20,40,No AI used while the timer was running. All 3 required files present in Git and ZIP. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-02,manual,1st,FAIL,,data/items.csv,commit and archive,Track and commit data/items.csv then rebuild ZIP,6,20,37,No AI used while the timer was running. File is untracked and missing from main and ZIP. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-02,checker,2nd,FAIL,1,data/items.csv,commit and archive,Track and commit data/items.csv then rebuild ZIP,2,4,38,No AI used while the timer was running. File is untracked and missing from commit and ZIP. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-03,checker,1st,FAIL,1,data/items.csv,archive only,Rebuild ZIP to include data/items.csv (check export-ignore rules),2,4,31,No AI used while the timer was running. File exists in commit but is missing from archive. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-03,manual,2nd,FAIL,,data/items.csv,archive only,Check export-ignore rules and rebuild ZIP including data/items.csv,6,20,30,data/items.csv exists in commit but is absent from generated ZIP.
+chin,case-04,manual,1st,PASS,,,none,No action required,6,20,33,unrelated untracked and ignored files do not affect verdict.
+chin,case-04,checker,2nd,PASS,0,,none,No action required,2,4,29,2 unrelated Git status paths do not affect verdict.
+chin,case-05,checker,1st,FAIL,2,../data/items.csv,invalid checklist,Correct required_files[2] to data/items.csv in handoff-check.json,2,4,32,non-canonical repository-relative path in checklist.
+chin,case-05,manual,2nd,FAIL,,../data/items.csv,invalid checklist,Correct required_files[2] to data/items.csv in handoff-check.json,6,17,29,non-canonical path in checklist.
+chin,case-06,manual,1st,FAIL,,v1.0,invalid ref,Create or restore the v1.0 Git reference,6,5,30,invalid ref; continued after stop condition.
+chin,case-06,checker,2nd,FAIL,2,v1.0,invalid ref,Create or restore the v1.0 Git reference,2,4,28,v1.0 does not resolve to an available commit
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [K((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [H[2J((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ cd ~/fit2109/MY-T06-06
+cp docs/evaluation-runs/chin/results.csv /tmp/results-backup.csv
+python3 - <<'EOF'
+import csv
+p = 'docs/evaluation-runs/chin/results.csv'
+H = ['member','case','method','order','verdict','exit','missing_path_or_invalid_input','where_absent','next_action','commands','judgements','time_s','notes'] 
+rows = [r for r in csv.reader(open(p, encoding='utf-8')) if r and r[0] != 'member']
+if not any(r[1] == 'case-08' and r[2] == 'checker' for r in rows):
+    i = next(i for i, r in enumerate(rows) if r[1] == 'case-08' and r[2] == 'manual')
+    rows.insert(i + 1, ['chin','case-08','checker','2nd','FAIL','2','handoff.zip','invalid archive', 
+                        'Replace handoff.zip with a valid ZIP archive','2','4','50','ZIP is not a valid archive.']) 
+AI = 'No AI used while the timer was running.'
+REP = 'Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).' 
+[7mfor r in rows:[27m
+[7m    n = r[12].strip().lstrip('; ').strip()[27m
+[7m    if not n.startswith(AI):[27m
+[7m        n = f'{AI} {n}'[27m
+[7m    if REP not in n:[27m
+[7m        n = f'{n.rstrip(".")}. {REP}'[27m
+[7m    r[12] = n[27m
+[7mwith open(p, 'w', newline='', encoding='utf-8') as f:[27m
+[7m    w = csv.writer(f, lineterminator='\n')[27m
+[7m    w.writerow(H)[27m
+[7m    w.writerows(rows)[27m
+[7mprint('data rows:', len(rows))[27m
+[7mEOF[27m
+[7mwc -l docs/evaluation-runs/chin/results.csv[27m
+[7mcat docs/evaluation-runs/chin/results.csv[27m[A[A[A[A[A[A[A[A[A[A[A[A[A[Afor r in rows:
+    n = r[12].strip().lstrip('; ').strip()
+    if not n.startswith(AI):
+        n = f'{AI} {n}'
+    if REP not in n:
+        n = f'{n.rstrip(".")}. {REP}'
+    r[12] = n
+with open(p, 'w', newline='', encoding='utf-8') as f:
+    w = csv.writer(f, lineterminator='\n')
+    w.writerow(H)
+    w.writerows(rows)
+print('data rows:', len(rows))
+EOF
+wc -l docs/evaluation-runs/chin/results.csv
+cat docs/evaluation-runs/chin/results.csv
+[?2004ldata rows: 16
+17 docs/evaluation-runs/chin/results.csv
+member,case,method,order,verdict,exit,missing_path_or_invalid_input,where_absent,next_action,commands,judgements,time_s,notes
+chin,case-07,checker,1st,FAIL,1,data/items.csv,archive only,rebuild ZIP containing data/items.csv (check packaging/export-ignore rules),2,4,50,No AI used while the timer was running. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08). First command failed due to an environment variable setup error and was re-run.
+chin,case-07,manual,2nd,FAIL,,data/items.csv,archive only,Rebuild handoff.zip to include data/items.csv,5,19,40,No AI used while the timer was running. Required file exists in main but is missing from handoff.zip. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-08,manual,1st,FAIL,,handoff.zip,invalid archive,Replace handoff.zip with a valid ZIP archive,5,16,61,No AI used while the timer was running. zipfile.BadZipFile: File is not a zip file. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-08,checker,2nd,FAIL,2,handoff.zip,invalid archive,Replace handoff.zip with a valid ZIP archive,2,4,50,No AI used while the timer was running. ZIP is not a valid archive. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-01,checker,1st,PASS,0,,none,No action required,2,4,45,No AI used while the timer was running. All 3 required files passed. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-01,manual,2nd,PASS,,,none,No action required,6,20,40,No AI used while the timer was running. All 3 required files present in Git and ZIP. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-02,manual,1st,FAIL,,data/items.csv,commit and archive,Track and commit data/items.csv then rebuild ZIP,6,20,37,No AI used while the timer was running. File is untracked and missing from main and ZIP. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-02,checker,2nd,FAIL,1,data/items.csv,commit and archive,Track and commit data/items.csv then rebuild ZIP,2,4,38,No AI used while the timer was running. File is untracked and missing from commit and ZIP. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-03,checker,1st,FAIL,1,data/items.csv,archive only,Rebuild ZIP to include data/items.csv (check export-ignore rules),2,4,31,No AI used while the timer was running. File exists in commit but is missing from archive. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-03,manual,2nd,FAIL,,data/items.csv,archive only,Check export-ignore rules and rebuild ZIP including data/items.csv,6,20,30,No AI used while the timer was running. data/items.csv exists in commit but is absent from generated ZIP. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-04,manual,1st,PASS,,,none,No action required,6,20,33,No AI used while the timer was running. unrelated untracked and ignored files do not affect verdict. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-04,checker,2nd,PASS,0,,none,No action required,2,4,29,No AI used while the timer was running. 2 unrelated Git status paths do not affect verdict. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-05,checker,1st,FAIL,2,../data/items.csv,invalid checklist,Correct required_files[2] to data/items.csv in handoff-check.json,2,4,32,No AI used while the timer was running. non-canonical repository-relative path in checklist. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-05,manual,2nd,FAIL,,../data/items.csv,invalid checklist,Correct required_files[2] to data/items.csv in handoff-check.json,6,17,29,No AI used while the timer was running. non-canonical path in checklist. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-06,manual,1st,FAIL,,v1.0,invalid ref,Create or restore the v1.0 Git reference,6,5,30,No AI used while the timer was running. invalid ref; continued after stop condition. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+chin,case-06,checker,2nd,FAIL,2,v1.0,invalid ref,Create or restore the v1.0 Git reference,2,4,28,No AI used while the timer was running. v1.0 does not resolve to an available commit. Repeat run: all cases were seen once before in an earlier unrecorded attempt (done in case order 01-08).
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ [7mcd ~/fit2109/MY-T06-06[27m
+[7mgit status --short[27m
+[7mgit add docs/evaluation-runs/chin[27m
+[7mgit commit -m 'eval: add Chin Wen Hui measured runs (16) with raw session logs' \[27m
+[7m  -m 'Sixteen timed runs in the docs/evaluation.md §7 order (case-07 first), using frozen [27m[7mc[27m[7mhecker 71d7472. Each run was recorded with script; results.csv holds the participant-reco[27m[7mr[27m[7mded verdict, diagnosis, command and judgement counts and stopwatch times.' \ [27m
+[7m  -m 'Notes on every row: no AI was used while the timer was running, and all cases had be[27m[7me[27m[7mn seen once before in an earlier unrecorded attempt (case order 01-08), which was discard[27m[7me[27m[7md. A blank-line paste error removed the header and the case-08 checker row from the file;[27m[7m [27m[7mboth were restored from the values recorded at the time.' [27m
+[7mgit push -u origin eval-runs-chin[27m[A[A[A[A[A[A[A[A[A[A[A((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06[00m$ cd ~/fit2109/MY-T06-06
+git status --short
+git add docs/evaluation-runs/chin
+git commit -m 'eval: add Chin Wen Hui measured runs (16) with raw session logs' \
+  -m 'Sixteen timed runs in the docs/

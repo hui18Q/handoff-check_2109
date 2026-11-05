@@ -1,0 +1,35 @@
+Script started on 2026-11-05 21:56:24+08:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="90" LINES="23"]
+[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd $F/case-05/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-05/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-05/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-05/repo[00m$ [7mgit rev-parse --verify main^{commit}[27m
+[7mgit show main:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r main[27m
+[7mgit archive --format=zip -o ../manual-handoff.zip main[27m
+[7mpython3 -m zipfile -l ../manual-handoff.zip[27m[A[A[A[A[A[C[C[C[Cgit rev-parse --verify main^{commit}
+git show main:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r main
+git archive --format=zip -o ../manual-handoff.zip main
+python3 -m zipfile -l ../manual-handoff.zip
+[?2004ldf81a70abb2df6fb63ccd65bf1b91a7e7e1953d4
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "../data/items.csv"
+    ]
+}
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob 0fb70959ed3cddd691277dd6fdba00c322d3f190	data/items.csv
+100644 blob 11a58a7ca97f6f39decdcd82b0ec59a6e6c0b2e3	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+File Name                                             Modified             Size
+README.md                                      2026-10-20 07:00:00          202
+data/                                          2026-10-20 07:00:00            0
+data/items.csv                                 2026-10-20 07:00:00           40
+handoff-check.json                             2026-10-20 07:00:00           88
+report.py                                      2026-10-20 07:00:00          306
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-05/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-05/repo[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-05 21:57:40+08:00 [COMMAND_EXIT_CODE="0"]
