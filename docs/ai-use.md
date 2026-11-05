@@ -338,6 +338,32 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Evidence: docs/evidence/unit-server-preflight-2026-10-28.txt, README.md and docs/member-a-report-draft.md.
 - Remaining risks: Repeat clean-extraction verification after real-checker and full test-workflow integration; complete the demonstration and baseline evaluation.
 
+## Design / Build / Verify - Member B Python checker
+
+- Date: 28 October 2026.
+- Owner: Yin Jiayu. Independent checker: Wen Chin (review pending).
+- Tool: OpenAI Codex.
+- Task/instructions: Implement the agreed six-argument Python checker; validate checklist paths and raw Git/ZIP evidence; return PASS/0, FAIL/1 or ERROR/2; run real local checks before reporting results.
+- Output: Python implementation, regression tests, sample checklist, standard-library test runner, design notes and a draft Member B report contribution.
+- Design choices proposed for review: Keep exact ZIP path matching; reject ambiguous JSON/ZIP duplicates; treat unrelated status as context; retain selected-commit requirements; do not claim content/provenance validation. Alternatives and scope are documented in docs/python-checker.md.
+- Executed verification: 32 local test methods passed using Python 3.12.14. The real checker produced the expected PASS/0 and FAIL/1 demo outcomes and the demo returned 0. Exact commands/results are in docs/evidence/python-checker-2026-10-28.txt.
+- Verification method: Automated local executions and source inspection in this assisted session. These executions are not an independent human peer review. Wen Chin must check expectations and reproduce the branch before merge.
+- Decision: Proposed implementation retained for review; final owner/peer acceptance remains pending. No verification or personal design decisions are attributed to a human who has not yet performed them.
+- Remaining risks: Implementation and tests were drafted in the same session and may share assumptions. Independent review, full unit-server reproduction, CI and baseline evaluation remain outstanding. Report drafting produces no new experimental evidence.
+- Evidence: src/handoff_check.py, tests/test_python_checker.py, docs/python-checker.md, docs/member-b-report-draft.md and the local evidence log.
+
+## Verify / Revise - Member B peer-review corrections
+
+- Date: 28 October 2026.
+- Owner: Yin Jiayu. Independent reviewer: Chin Wen Hui (wchi0071).
+- Tool: OpenAI Codex.
+- Trigger: Chin Wen Hui reviewed commit 77dc8fa63136d092ce4eee1cefc2b76271664119 in MR !7, reproduced B1/B2 and requested changes. Her review is independent evidence, not replaced by the local assisted checks below.
+- Assisted work: Reproduced the reported corrupt-DEFLATE and raw-status-name failures with regression tests, revised exception/context handling and diagnostics, and updated the documented policy boundaries.
+- Results: Added 13 regression methods; all 45 local methods passed under Python 3.12.14, and both demo cases produced expected 0/1 exits with demo exit 0. The new tests failed against the original implementation before the fixes were applied.
+- Verification limits: Permission/I/O, EOF and unexpected internal-error branches are fault-injected. The corrupt compressed ZIP and unusual Git filenames use real files through the public Bash entry point. No new unit-server or CI execution is claimed.
+- Decisions still requiring human confirmation: Re-review of B1/B2 and the related S1-S4 changes; explicit acceptance or revision of the defensive duplicate/path policies identified in S5. Current policy tests document behaviour and are not proof of team agreement.
+- Evidence: src/handoff_check.py, tests/test_python_checker.py, docs/python-checker.md and MR !7. A clean ZIP extraction of c1f8c455eb28d41b1cf277778d6fa74d0df66153 passed all 45 tests, three Bash syntax checks and both demos in a fresh Python 3.12.14 environment; actual commands, output and limits are retained in docs/evidence/python-review-fixes-2026-10-28.txt.
+
 ## Review follow-up — Report draft and server evidence
 
 - Date: 28 October 2026.
