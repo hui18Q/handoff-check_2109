@@ -1,0 +1,16 @@
+Selected commit: 68edbabdc81c7325b2088dbb95a0fd352ff36876
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+FAIL "data/items.csv"
+  working tree: regular; Git status: "??"
+  selected commit: missing; ZIP: missing
+  Reason: required regular file unavailable at selected commit: missing; ZIP: missing.
+  Suggested action: track a regular file at this path, commit it, select that commit and rebuild the handoff ZIP.
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: FAIL (1 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.

@@ -1,0 +1,1 @@
+ERROR: Checklist "<CHECKER>/<TMP>/checklist.json": required_files[2]: Non-canonical repository-relative path: "../data/items.csv"
