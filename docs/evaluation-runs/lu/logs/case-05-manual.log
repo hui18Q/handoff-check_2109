@@ -1,0 +1,17 @@
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034h((.venv) ) %n@%m %1~ %# PS1='manual> '
+manual> git rev-parse --verify 'main^{commit}'
+df81a70abb2df6fb63ccd65bf1b91a7e7e1953d4
+manual> git show main:handoff-check.json | python3 -m json.tool
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "../data/items.csv"
+    ]
+}
+manual> s[Kexit
+exit
