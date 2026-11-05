@@ -1,11 +1,43 @@
 stages:
-  - smoke
+  - test
 
-ci-smoke:
-  stage: smoke
+variables:
+  DEBIAN_FRONTEND: noninteractive
+
+default:
   image: python:3.12.16-slim
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq --no-install-recommends git > /dev/null
+    - python3 -m venv .venv
+    - . .venv/bin/activate
+    - python3 -m pip install --disable-pip-version-check --quiet -r requirements.txt
+    - mkdir -p ci-logs
+    - python3 --version > ci-logs/environment.txt
+    - git --version >> ci-logs/environment.txt
+    - bash --version | head -n 1 >> ci-logs/environment.txt
+    - cat ci-logs/environment.txt
+
+# Output goes to the job log and to ci-logs/. pipefail makes the job fail
+# with test.sh/demo.sh's exit code instead of tee's.
+unit-tests:
+  stage: test
   script:
-    - apt-get update -qq && apt-get install -y -qq --no-install-recommends git > /dev/null
-    - python3 --version
-    - git --version
-    - bash --version | head -1
+    - bash -o pipefail -c 'bash scripts/test.sh 2>&1 | tee ci-logs/test.log'
+  artifacts:
+    when: always
+    name: "unit-tests-$CI_COMMIT_SHORT_SHA"
+    paths:
+      - ci-logs/
+    expire_in: 30 days
+
+demo:
+  stage: test
+  script:
+    - bash -o pipefail -c 'bash scripts/demo.sh 2>&1 | tee ci-logs/demo.log'
+  artifacts:
+    when: always
+    name: "demo-$CI_COMMIT_SHORT_SHA"
+    paths:
+      - ci-logs/
+    expire_in: 30 days
