@@ -11,7 +11,12 @@ Optional column:
     flags   semicolon-separated labels (e.g. "ai-assisted;time-corrected").
             Rows with any flag are dropped in the "excluding flagged rows" view.
 
+If the member directory also holds the original results.csv, its diagnostic
+fields (missing_path_or_invalid_input, where_absent, next_action) are joined by
+case and method to compute the diagnosis measures (evaluation.md §8.4).
+
 Use --exclude-member NAME (repeatable) for a sensitivity check without that member.
+Use --repro DIR_A DIR_B to compare two scripts/repro_eval.sh outputs (§8.6).
 Standard library only; requires Python 3.12 like the rest of the project.
 """
 
@@ -36,6 +41,29 @@ REQUIRED = (
 )
 METHODS = ("manual", "checker")
 
+# evaluation.md §3: where the missing file is absent (FAIL cases), the invalid
+# input that an ERROR diagnosis must name, and the context-only case.
+EXPECTED_WHERE = {"case-02": "both", "case-03": "archive", "case-07": "archive"}
+INVALID_INPUT = {"case-05": "../data/items.csv", "case-06": "v1.0", "case-08": "handoff.zip"}
+MISSING_PATH = "data/items.csv"
+CONTEXT_CASES = ("case-04",)
+NO_ACTION = {"", "-", "none", "n/a", "na", "no action required"}
+
+
+def norm_where(text: str) -> str:
+    t = text.lower()
+    if "both" in t or ("commit" in t and ("archive" in t or "zip" in t)):
+        return "both"
+    if "archive" in t or "zip" in t:
+        return "archive"
+    if "commit" in t:
+        return "commit"
+    return ""
+
+
+def norm_case(text: str) -> str:
+    return f"case-{text.strip()[-2:]}"
+
 
 @dataclass(frozen=True)
 class Row:
@@ -49,6 +77,10 @@ class Row:
     judgements: int
     time_s: float
     flags: tuple[str, ...]
+    order: str = ""
+    missing: str | None = None   # None: no results.csv diagnostics available
+    where: str | None = None
+    action: str | None = None
 
     @property
     def correct(self) -> bool:
@@ -58,13 +90,37 @@ class Row:
     def recorded_correct(self) -> bool:
         return self.recorded == self.expected
 
+    @property
+    def has_diagnosis(self) -> bool:
+        return self.missing is not None
+
+    @property
+    def fail_diagnosis_complete(self) -> bool:
+        return (MISSING_PATH in (self.missing or "")
+                and norm_where(self.where or "") == EXPECTED_WHERE.get(self.case)
+                and (self.action or "").strip().lower() not in NO_ACTION)
+
+    @property
+    def names_invalid_input(self) -> bool:
+        return INVALID_INPUT.get(self.case, "\0") in (self.missing or "")
+
 
 class InputError(Exception):
     pass
 
 
+def load_diagnostics(path: Path) -> dict[tuple[str, str], dict[str, str]]:
+    raw = path.parent / "results.csv"
+    if not raw.exists():
+        return {}
+    with raw.open(newline="", encoding="utf-8") as fh:
+        return {(norm_case(r["case"]), r["method"].strip().lower()): r
+                for r in csv.DictReader(fh)}
+
+
 def load_member(path: Path) -> list[Row]:
     member = path.parent.name
+    diag = load_diagnostics(path)
     with path.open(newline="", encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
         missing = [c for c in REQUIRED if c not in (reader.fieldnames or [])]
@@ -75,11 +131,13 @@ def load_member(path: Path) -> list[Row]:
             method = raw["method"].strip().lower()
             if method not in METHODS:
                 raise InputError(f"{path}:{lineno}: unknown method {raw['method']!r}")
+            case = norm_case(raw["case"])
+            d = diag.get((case, method))
             try:
                 rows.append(
                     Row(
                         member=member,
-                        case=raw["case"].strip(),
+                        case=case,
                         method=method,
                         expected=raw["expected_verdict"].strip().upper(),
                         analysis=raw["analysis_verdict"].strip().upper(),
@@ -90,6 +148,10 @@ def load_member(path: Path) -> list[Row]:
                         flags=tuple(
                             f.strip() for f in (raw.get("flags") or "").split(";") if f.strip()
                         ),
+                        order=(raw.get("order") or "").strip().lower(),
+                        missing=None if d is None else d.get("missing_path_or_invalid_input", ""),
+                        where=None if d is None else d.get("where_absent", ""),
+                        action=None if d is None else d.get("next_action", ""),
                     )
                 )
             except ValueError as exc:
@@ -174,7 +236,94 @@ def errors_table(rows: list[Row]) -> list[str]:
     return out
 
 
-def report(rows: list[Row], excluded: set[str]) -> str:
+def _count(rows: list[Row], cases, test, needs_diagnosis: bool = False) -> str:
+    rs = [r for r in rows if r.case in cases]
+    if needs_diagnosis:
+        rs = [r for r in rs if r.has_diagnosis]
+    if not rs:
+        return "n/a" if needs_diagnosis else "–"
+    return f"{sum(test(r) for r in rs)}/{len(rs)}"
+
+
+def _median_split(rs: list[Row]) -> str:
+    if not rs:
+        return "–"
+    first = [r.time_s for r in rs if r.order.startswith("1")]
+    second = [r.time_s for r in rs if r.order.startswith("2")]
+    parts = [_fmt(statistics.median(x)) if x else "–" for x in (first, second)]
+    return f"{_fmt(statistics.median(r.time_s for r in rs))} ({parts[0]} / {parts[1]})"
+
+
+def report_table(rows: list[Row], repro: str | None = None) -> list[str]:
+    """The Section 3 table of the final report, one row per measure."""
+    by = {m: [r for r in rows if r.method == m] for m in METHODS}
+    fail_cases, error_cases = tuple(EXPECTED_WHERE), tuple(INVALID_INPUT)
+
+    def cell(m: str, kind: str) -> str:
+        rs = by[m]
+        if not rs:
+            return "–"
+        if kind == "correct":
+            return f"{sum(r.correct for r in rs)}/{len(rs)}"
+        if kind == "false_fail":
+            return _count(rs, CONTEXT_CASES, lambda r: r.analysis == "FAIL")
+        if kind == "fail_diag":
+            return _count(rs, fail_cases, lambda r: r.fail_diagnosis_complete, True)
+        if kind == "error_named":
+            return _count(rs, error_cases, lambda r: r.names_invalid_input, True)
+        if kind == "commands":
+            return _fmt(statistics.median(r.commands for r in rs))
+        if kind == "judgements":
+            return _fmt(statistics.median(r.judgements for r in rs))
+        if kind == "time":
+            return _median_split(rs)
+        raise ValueError(kind)
+
+    labels = [
+        ("Correct verdicts", "correct"),
+        ("False FAIL on unrelated files", "false_fail"),
+        ("FAIL diagnoses with path, location and action", "fail_diag"),
+        ("ERROR runs naming the invalid input", "error_named"),
+        ("Commands per case (median)", "commands"),
+        ("Judgements per case (median)", "judgements"),
+        ("Time per case, s (median; first / second position)", "time"),
+    ]
+    out = ["| Measure | Manual baseline | Handoff Check |", "|---|---|---|"]
+    out += [f"| {label} | {cell('manual', k)} | {cell('checker', k)} |" for label, k in labels]
+    out.append(f"| Identical CI and unit-server results (of 8) | — | {repro or 'not run'} |")
+    return out
+
+
+def compare_repro(a: Path, b: Path) -> tuple[str, list[str]]:
+    """Compare two repro_eval.sh output directories case by case (§8.6)."""
+    for d in (a, b):
+        if not (d / "summary.csv").exists():
+            raise InputError(f"{d}: no summary.csv (not a repro_eval.sh output)")
+    lines = [
+        f"A: {a}", f"B: {b}", "",
+        "| Case | Exit A | Exit B | Same fixture commit | stdout identical | stderr identical (normalised) |",
+        "|---|---|---|---|---|---|",
+    ]
+    with (a / "summary.csv").open(encoding="utf-8") as fa, (b / "summary.csv").open(encoding="utf-8") as fb:
+        sa = {r["case"]: r for r in csv.DictReader(fa)}
+        sb = {r["case"]: r for r in csv.DictReader(fb)}
+    same = 0
+    for case in sorted(set(sa) | set(sb)):
+        ra, rb = sa.get(case), sb.get(case)
+        if ra is None or rb is None:
+            lines.append(f"| {case} | {ra and ra['exit'] or '–'} | {rb and rb['exit'] or '–'} | – | – | – |")
+            continue
+        commit = (ra["commit"], ra["zip_sha256"]) == (rb["commit"], rb["zip_sha256"])
+        out_eq = (a / f"{case}.stdout").read_bytes() == (b / f"{case}.stdout").read_bytes()
+        err_eq = (a / f"{case}.stderr").read_bytes() == (b / f"{case}.stderr").read_bytes()
+        ok = commit and out_eq and err_eq and ra["exit"] == rb["exit"]
+        same += ok
+        yn = lambda v: "yes" if v else "**no**"
+        lines.append(f"| {case} | {ra['exit']} | {rb['exit']} | {yn(commit)} | {yn(out_eq)} | {yn(err_eq)} |")
+    return f"{same}/{len(set(sa) | set(sb))}", lines
+
+
+def report(rows: list[Row], excluded: set[str], repro: tuple[str, list[str]] | None = None) -> str:
     members = sorted({r.member for r in rows})
     flagged = [r for r in rows if r.flags]
     clean = [r for r in rows if not r.flags]
@@ -187,6 +336,15 @@ def report(rows: list[Row], excluded: set[str]) -> str:
         lines.append(f"Members excluded: {', '.join(sorted(excluded))}")
     lines += [
         f"Rows: {len(rows)} ({len(flagged)} flagged)",
+        "",
+        "## Report Section 3 table — all rows",
+        "",
+        *report_table(rows, repro[0] if repro else None),
+        "",
+        "## Report Section 3 table — excluding flagged rows",
+        "",
+        *(report_table(clean, repro[0] if repro else None) if flagged
+          else ["No flagged rows; identical to the table above."]),
         "",
         "## By method — all rows",
         "",
@@ -209,6 +367,8 @@ def report(rows: list[Row], excluded: set[str]) -> str:
         lines += ["## Flagged rows", "", "| Member | Case | Method | Flags |", "|---|---|---|---|"]
         lines += [f"| {r.member} | {r.case} | {r.method} | {'; '.join(r.flags)} |" for r in flagged]
         lines.append("")
+    if repro:
+        lines += ["## Reproducibility (§8.6)", "", *repro[1], ""]
     return "\n".join(lines)
 
 
@@ -218,15 +378,18 @@ def main(argv: list[str] | None = None) -> int:
                     help="directory containing one sub-directory per member")
     ap.add_argument("--exclude-member", action="append", default=[], metavar="NAME",
                     help="leave a member out (sensitivity check); repeatable")
+    ap.add_argument("--repro", nargs=2, type=Path, metavar=("DIR_A", "DIR_B"),
+                    help="compare two scripts/repro_eval.sh output directories")
     ap.add_argument("--out", type=Path, help="write Markdown here instead of stdout")
     args = ap.parse_args(argv)
     excluded = set(args.exclude_member)
     try:
         rows = load_all(args.root, excluded)
+        repro = compare_repro(*args.repro) if args.repro else None
     except InputError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
-    text = report(rows, excluded)
+    text = report(rows, excluded, repro)
     if args.out:
         args.out.write_text(text, encoding="utf-8")
     else:
