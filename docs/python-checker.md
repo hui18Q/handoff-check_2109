@@ -71,8 +71,9 @@ The reviewer/team should confirm or request changes before merge.
 Errors from each input reader name the source (Checklist, Tree evidence,
 Status evidence or ZIP archive) and its path. Checklist schema errors
 include the `required_files[index]`; malformed JSON retains its line and
-column. The checklist path is the committed copy supplied by Bash, not
-an uncommitted working-tree edit. Invalid DEFLATE/CRC/truncated archives
+column. The public command labels errors with the requested checklist
+path and ref; the checker still reads the committed copy supplied by Bash,
+not an uncommitted working-tree edit. Invalid DEFLATE/CRC/truncated archives
 return ERROR/2 without a traceback or completed verdict. Unexpected
 internal exceptions also return ERROR/2 rather than masquerading as FAIL/1.
 

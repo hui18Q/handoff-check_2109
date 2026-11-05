@@ -171,7 +171,7 @@ validate_python() {
 
 collect_evidence() {
     if ! git -C "$repo_root" cat-file blob "${commit_id}:${checklist_path}" > "$checklist_file"; then
-        operational_error "Cannot read checklist from the selected commit: $checklist_path"
+        operational_error "Cannot read checklist from the selected commit: $checklist_path @ $target_ref"
     fi
 
     if ! GIT_OPTIONAL_LOCKS=0 git -c core.fsmonitor=false -C "$repo_root" \
@@ -211,7 +211,7 @@ prepare_archive() {
 run_checker() {
     local checker_exit
 
-    python3 "$checker_script" \
+    HANDOFF_CHECKLIST_SOURCE="$checklist_path @ $target_ref" python3 "$checker_script" \
         --repo "$repo_root" \
         --commit "$commit_id" \
         --checklist "$checklist_file" \

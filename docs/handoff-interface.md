@@ -101,6 +101,12 @@ python3 src/handoff_check.py \
 All internal file paths are absolute. `CHECKLIST_FILE` contains the
 checklist obtained from the selected commit.
 
+Bash also supplies the diagnostic-only `HANDOFF_CHECKLIST_SOURCE`
+environment variable (`<checklist path> @ <ref>`) to Python. Checklist
+errors report that source, not the temporary copy; the copy is still the
+only checklist file read by Python. Direct invocations without this
+variable label errors with the supplied file path.
+
 Python validates the checklist, reads the supplied evidence, inspects
 working-tree file types and ZIP entries, compares required paths, and
 formats the findings.

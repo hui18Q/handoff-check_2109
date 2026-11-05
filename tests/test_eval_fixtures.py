@@ -160,7 +160,10 @@ class EvaluationFixtureTests(CheckerAssertions):
         self.assertIn('Context: "report.log"; Git status: "!!"', result.stdout)
 
     def test_case_05_parent_traversal_checklist_is_error(self):
-        self.assert_error(self.run_case("case-05"), '"../data/items.csv"')
+        result = self.run_case("case-05")
+        self.assert_error(result, '"../data/items.csv"')
+        self.assertIn("handoff-check.json @ main", result.stderr)
+        self.assertNotIn(".handoff-tmp.", result.stderr)
 
     def test_case_06_invalid_ref_is_error(self):
         self.assert_error(self.run_case("case-06"), "v1.0")

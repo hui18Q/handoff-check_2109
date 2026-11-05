@@ -218,6 +218,18 @@ class RealCheckerTests(unittest.TestCase):
         self.commit("Invalid JSON")
         self.run_bash(expected=2)
 
+    def test_checklist_error_names_user_path_and_ref_not_temporary_copy(self):
+        (self.repo / "review list.json").write_text('{"required_files":["../data/items.csv"]}\n')
+        self.commit("Invalid alternate checklist")
+        self.git("tag", "review/bad")
+        with mock.patch.dict(self.env, {"HANDOFF_CHECKLIST_SOURCE": "ignored parent value"}):
+            first = self.run_bash("--checklist", "review list.json", "--ref", "review/bad", expected=2)
+            second = self.run_bash("--checklist", "review list.json", "--ref", "review/bad", expected=2)
+        self.assertIn("review list.json @ review/bad", first.stderr)
+        self.assertIn("required_files[0]", first.stderr)
+        self.assertNotIn(".handoff-tmp.", first.stderr)
+        self.assertEqual(first.stderr, second.stderr)
+
     def test_duplicate_json_key_is_error(self):
         (self.repo / "handoff-check.json").write_text('{"required_files":["absent"],"required_files":["README.md"]}')
         self.commit("Ambiguous JSON")
