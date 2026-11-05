@@ -1,0 +1,26 @@
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034h((.venv) ) %n@%m %1~ %# PS1='checker> '
+checker> bash scripts/handoff_check.sh --repo "/Users/apple/Desktop/MY-T06-06/.s cenario-runs/eval-lu.TYi7l93p/project/.scenario-runs/eval-fixtures/case-04/repo"  --ref main --checklist handoff-check.json
+Selected commit: d7d3a9dd32a41a550eec314cee9faf4ea8821d43
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 2 (informational; do not determine the verdict)
+  Context: "notes/todo.txt"; Git status: "??"
+  Context: "report.log"; Git status: "!!"
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+checker> echo $?
+0
+checker> exit
+exit

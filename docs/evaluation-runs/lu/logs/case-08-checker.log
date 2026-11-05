@@ -1,0 +1,11 @@
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034h((.venv) ) %n@%m %1~ %# PS1='checker> '
+checker> bash scripts/handoff_check.sh --repo "/Users/apple/Desktop/MY-T06-06/.s cenario-runs/eval-lu.TYi7l93p/project/.scenario-runs/eval-fixtures/case-08/repo"  --ref main --checklist handoff-check.json --zip "/Users/apple/Desktop/MY-T06-06 /.scenario-runs/eval-lu.TYi7l93p/project/.scenario-runs/eval-fixtures/case-08/ha ndoff.zip"
+ERROR: ZIP archive "/Users/apple/Desktop/MY-T06-06/.scenario-runs/eval-lu.TYi7l93p/project/.scenario-runs/eval-fixtures/case-08/handoff.zip": File is not a zip file
+checker> echo $?
+2
+checker> exit
+exit
