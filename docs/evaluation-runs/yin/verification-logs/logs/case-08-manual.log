@@ -1,0 +1,81 @@
+Local command check: case-08 / manual / 1st
+15.7.4 / Python 3.12.14 / git version 2.39.5 (Apple Git-154) / GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)
+Checker 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Fixture d3c40e761dc83c9c4b5939a094eb58454fce7ded
+$ git rev-parse --verify 'main^{commit}'
+[stdout]
+d3c40e761dc83c9c4b5939a094eb58454fce7ded
+
+[stderr]
+
+[shell status] 0
+J1 ref resolves: true
+$ git show 'main:handoff-check.json' | python3 -m json.tool
+[stdout]
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+
+[stderr]
+
+[shell status] 0
+J2 checklist shape: true
+J3 "README.md": valid
+J3 "report.py": valid
+J3 "data/items.csv": valid
+$ git status --short --untracked-files=all --ignored
+[stdout]
+
+[stderr]
+
+[shell status] 0
+J4 README.md: not listed
+J4 report.py: not listed
+J4 data/items.csv: not listed
+$ git ls-tree -r 'main'
+[stdout]
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob 0fb70959ed3cddd691277dd6fdba00c322d3f190	data/items.csv
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+
+[stderr]
+
+[shell status] 0
+J6 README.md in commit: true
+J6 report.py in commit: true
+J6 data/items.csv in commit: true
+$ python3 -m zipfile -l '../handoff.zip'
+[stdout]
+
+[stderr]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/suxl/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__main__.py", line 4, in <module>
+    main()
+  File "/Users/suxl/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py", line 2308, in main
+    with ZipFile(src, 'r', metadata_encoding=encoding) as zf:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/suxl/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py", line 1371, in __init__
+    self._RealGetContents()
+  File "/Users/suxl/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py", line 1438, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+
+[shell status] 1
+J7 ZIP readable: false
+J9 ERROR
+J10 handoff.zip
+Verdict: ERROR
+Missing path or invalid input: handoff.zip
+Where absent: not applicable
+Next action: Replace the invalid ZIP with a valid archive.
+Commands: 5
+Recorded judgement checks: 14
+Local wall time (s): 0.076318
+Local automated execution; command and rule-check wall time, not participant timing. Log: logs/case-08-manual.log

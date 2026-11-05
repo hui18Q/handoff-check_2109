@@ -1,0 +1,40 @@
+Local command check: case-07 / checker / 1st
+15.7.4 / Python 3.12.14 / git version 2.39.5 (Apple Git-154) / GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)
+Checker 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Fixture 65476cfa6ddead9da2d38752e3b744bc752e2293
+$ bash scripts/handoff_check.sh --repo /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/mac-check-vzuOWE/fixtures/case-07/repo --ref main --checklist handoff-check.json --zip /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/mac-check-vzuOWE/fixtures/case-07/handoff.zip
+$ echo $?
+[stdout]
+Selected commit: 65476cfa6ddead9da2d38752e3b744bc752e2293
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+FAIL "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: missing
+  Reason: required regular file unavailable at ZIP: missing.
+  Suggested action: inspect archive paths and export-ignore/packaging rules, then rebuild a ZIP containing this exact regular-file path.
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: FAIL (1 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+1
+
+[stderr]
+
+[shell status] 0
+K1 FAIL / exit 1
+K2a data/items.csv
+K2b archive
+K2c inspect archive paths and export-ignore/packaging rules, then rebuild a ZIP containing this exact regular-file path.
+Verdict: FAIL
+Missing path or invalid input: data/items.csv
+Where absent: archive
+Next action: inspect archive paths and export-ignore/packaging rules, then rebuild a ZIP containing this exact regular-file path.
+Commands: 2
+Recorded judgement checks: 4
+Local wall time (s): 0.093356
+Local automated execution; command and rule-check wall time, not participant timing. Log: logs/case-07-checker.log

@@ -1,0 +1,83 @@
+Local command check: case-02 / manual / 1st
+15.7.4 / Python 3.12.14 / git version 2.39.5 (Apple Git-154) / GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)
+Checker 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Fixture 68edbabdc81c7325b2088dbb95a0fd352ff36876
+$ git rev-parse --verify 'main^{commit}'
+[stdout]
+68edbabdc81c7325b2088dbb95a0fd352ff36876
+
+[stderr]
+
+[shell status] 0
+J1 ref resolves: true
+$ git show 'main:handoff-check.json' | python3 -m json.tool
+[stdout]
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+
+[stderr]
+
+[shell status] 0
+J2 checklist shape: true
+J3 "README.md": valid
+J3 "report.py": valid
+J3 "data/items.csv": valid
+$ git status --short --untracked-files=all --ignored
+[stdout]
+?? data/items.csv
+
+[stderr]
+
+[shell status] 0
+J4 README.md: not listed
+J4 report.py: not listed
+J4 data/items.csv: ??
+$ git ls-tree -r 'main'
+[stdout]
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+
+[stderr]
+
+[shell status] 0
+J6 README.md in commit: true
+J6 report.py in commit: true
+J6 data/items.csv in commit: false
+$ git archive --format=zip -o '../manual-handoff.zip' 'main'
+[stdout]
+
+[stderr]
+
+[shell status] 0
+$ python3 -m zipfile -l '../manual-handoff.zip'
+[stdout]
+File Name                                             Modified             Size
+README.md                                      2026-10-20 07:00:00          202
+handoff-check.json                             2026-10-20 07:00:00           85
+report.py                                      2026-10-20 07:00:00          306
+
+[stderr]
+
+[shell status] 0
+J7 ZIP readable: true
+J8 README.md in ZIP: true
+J8 report.py in ZIP: true
+J8 data/items.csv in ZIP: false
+J9 FAIL
+J10 data/items.csv
+J11 selected commit and archive
+J12 Add and commit data/items.csv, then rebuild the ZIP.
+Verdict: FAIL
+Missing path or invalid input: data/items.csv
+Where absent: selected commit and archive
+Next action: Add and commit data/items.csv, then rebuild the ZIP.
+Commands: 6
+Recorded judgement checks: 19
+Local wall time (s): 0.084877
+Local automated execution; command and rule-check wall time, not participant timing. Log: logs/case-02-manual.log

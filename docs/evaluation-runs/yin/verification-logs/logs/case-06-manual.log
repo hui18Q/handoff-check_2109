@@ -1,0 +1,22 @@
+Local command check: case-06 / manual / 1st
+15.7.4 / Python 3.12.14 / git version 2.39.5 (Apple Git-154) / GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)
+Checker 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Fixture b7e74af8afc475937da3e91c519828ece6b71414
+$ git rev-parse --verify 'v1.0^{commit}'
+[stdout]
+
+[stderr]
+fatal: Needed a single revision
+
+[shell status] 128
+J1 ref resolves: false
+J9 ERROR
+J10 v1.0
+Verdict: ERROR
+Missing path or invalid input: ref v1.0
+Where absent: not applicable
+Next action: Use an existing Git ref.
+Commands: 1
+Recorded judgement checks: 3
+Local wall time (s): 0.009225
+Local automated execution; command and rule-check wall time, not participant timing. Log: logs/case-06-manual.log
