@@ -29,12 +29,16 @@ def input_source(label):
     """Keep operational/format failures tied to the input being read."""
     def decorate(reader):
         @wraps(reader)
-        def read(path):
+        def read(path, *, display_path=None):
             try:
                 return reader(path)
             except (OSError, ValueError, RuntimeError, NotImplementedError,
                     zipfile.BadZipFile, zipfile.LargeZipFile, zlib.error, EOFError) as exc:
-                raise InputError(f"{label} {quoted(str(path))}: {exc}") from exc
+                source = path if display_path is None else display_path
+                # The label already identifies the input; OSError may otherwise
+                # include the physical filename of its temporary copy.
+                detail = (exc.strerror or str(exc)) if isinstance(exc, OSError) else str(exc)
+                raise InputError(f"{label} {quoted(str(source))}: {detail}") from exc
         return read
     return decorate
 
@@ -223,7 +227,9 @@ def assess(args):
         raise InputError(f"Repository {quoted(str(args.repo))}: root is not an accessible directory.")
 
     # Finish validation before printing any assessment or PASS/FAIL result.
-    required = read_checklist(args.checklist)
+    required = read_checklist(
+        args.checklist, display_path=os.environ.get("HANDOFF_CHECKLIST_SOURCE") or None
+    )
     tree = read_tree(args.tree_file)
     statuses = read_status(args.status_file)
     archive = read_archive(args.archive)
