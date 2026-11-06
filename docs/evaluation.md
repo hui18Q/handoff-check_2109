@@ -360,7 +360,21 @@ extraction before submission.
 
 | Case | GitLab CI exit | Unit server exit | stdout identical? | stderr identical after normalisation? |
 |---|---|---|---|---|
-| case-01 … case-08 | | | | |
+| case-01 | 0 | 0 | yes | yes |
+| case-02 | 1 | 1 | yes | yes |
+| case-03 | 1 | 1 | yes | yes |
+| case-04 | 0 | 0 | yes | yes |
+| case-05 | 2 | 2 | yes | yes |
+| case-06 | 2 | 2 | yes | yes |
+| case-07 | 1 | 1 | yes | yes |
+| case-08 | 2 | 2 | yes | yes |
+
+Run on 2026-11-06 with `scripts/repro_eval.sh` at project commit 24bcfbb:
+GitLab CI pipeline #168569 (Python 3.12.16, Git 2.47.3, Bash 5.2.37) and the
+unit server `fit2109s2.rep.monash.edu` (Python 3.12.3, Git 2.43.0, Bash 5.2.21).
+All eight cases were identical, and the fixture commit IDs and ZIP hashes in
+both environments equal Section 2.3. Raw outputs are in
+`docs/evaluation-runs/reproducibility/`.
 
 Normalisation for comparison: replace the fixture root with `<FIXTURES>` and
 `.handoff-tmp.XXXXXXXX` with `<TMP>` (case-05's error message names the
@@ -416,3 +430,7 @@ Protocol changes after this draft:
   the frozen checker commit on both GitLab CI and the unit server; the final
   submitted project is re-checked separately from a clean `git archive`
   extraction.
+- 2026-11-06, after all measured runs: the §8.6 normalisation also replaces
+  the exported checker directory with `<CHECKER>`, because case-05's error
+  names the temporary checklist inside it and that directory differs between
+  machines. The comparison was otherwise run as specified.

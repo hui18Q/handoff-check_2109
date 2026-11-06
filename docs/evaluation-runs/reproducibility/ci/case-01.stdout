@@ -1,0 +1,14 @@
+Selected commit: 92f067b25ee433ac8b5931dd33b254e65e72581b
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.

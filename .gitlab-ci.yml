@@ -41,3 +41,16 @@ demo:
     paths:
       - ci-logs/
     expire_in: 30 days
+
+reproducibility:
+  stage: test
+  when: manual
+  variables:
+    GIT_DEPTH: "0"
+  script:
+    - bash -o pipefail -c 'bash scripts/repro_eval.sh ci-logs/repro-ci 2>&1 | tee ci-logs/repro.log'
+  artifacts:
+    when: always
+    name: "repro-$CI_COMMIT_SHORT_SHA"
+    paths: [ci-logs/]
+    expire_in: 30 days
