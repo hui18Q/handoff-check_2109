@@ -67,10 +67,12 @@ bash scripts/test.sh
 echo $?
 ```
 
-Expected: 45 test methods pass, the runner prints `OK`, and the process
-returns 0. This includes six isolated Bash interface test methods and
-39 methods exercising the real checker or its validation/error-handling helpers.
-These are standard-library `unittest` tests; no test dependency is needed.
+Expected: 90 test methods are discovered: six isolated Bash interface
+tests, 40 real-checker/helper tests, 21 evaluation-fixture and edge-case tests,
+and 23 aggregation tests. All 90 passed in the reviewed Linux environment;
+the runner prints `OK` and returns 0. A filesystem-dependent non-UTF-8
+filename test may be skipped where its fixture cannot be created; report
+any skip explicitly. The suites use standard-library `unittest`.
 
 Normal and failure assessments write reports to stdout. Invalid inputs
 write an error to stderr and return 2, without a PASS/FAIL report. Each
@@ -186,7 +188,38 @@ Records: 3
 Total quantity: 10
 ```
 
-## Current verification status
+## Current verification status — 6 November 2026
+
+- The reviewed integrated snapshot is commit
+  `075625db8834f14b83f46266b3475937fcd07fe3`. [Pipeline #169231](https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/pipelines/169231)
+  is displayed as passed. The configured default jobs run the tests and demonstration;
+  the frozen-checker reproducibility job is separately triggered.
+- An assistant-executed check of this snapshot's ZIP in a fresh Linux
+  extraction using Python 3.12.14 passed all 90 tests and the demonstration.
+  These checks are separate from contributor macOS execution and course
+  unit-server verification.
+- Lu Wenxi verified frozen checker commit `71d7472` locally and from a
+  clean extraction on the unit server on 4 November. Both environments
+  passed the then-current 45-test suite and demonstration. Evidence is in
+  `docs/evidence/local-real-checker-2026-11-04.txt` and
+  `docs/evidence/unit-server-real-checker-2026-11-04.txt`, reviewed in MR !8.
+- Evaluation contains 48 method runs from three members. Results,
+  qualifications, the 14-pair flagged-exclusion view and the additional
+  six-pair sensitivity view are documented in `docs/evaluation.md`.
+  The generated aggregate is `docs/evaluation-runs/summary.md`.
+- Stored CI and unit-server outputs for the frozen checker match across
+  all eight evaluation cases after documented path normalisation.
+  Evidence is in `docs/evaluation-runs/reproducibility/`.
+- Final clean-extraction verification of the submission revision on the
+  course unit server remains pending. Earlier verification does not
+  establish successful execution of every later integrated revision.
+
+## Historical verification records
+
+The entries below preserve earlier development-stage results and outstanding
+work as recorded at the time. Their pending statements are superseded where
+the current summary above records subsequent completion.
+
 
 - The real checker was exercised locally on 28 October 2026 using Python
   3.12.14. The initial 32 test methods passed. Both real-checker demo cases
