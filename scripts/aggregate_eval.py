@@ -233,10 +233,21 @@ def load_member(path: Path) -> list[Row]:
     return rows
 
 
-def missing_runs(rows: list[Row]) -> list[str]:
-    """Member/case/method combinations absent from the loaded rows."""
+def discover_members(root: Path, exclude: set[str]) -> list[str]:
+    """Members with a results-analysis.csv, including files with no data rows."""
+    return sorted(f.parent.name for f in root.glob("*/results-analysis.csv")
+                  if f.parent.name not in exclude)
+
+
+def missing_runs(rows: list[Row], members: list[str] | None = None) -> list[str]:
+    """Member/case/method combinations absent from the loaded rows.
+
+    `members` should be the discovered member list, so that a member whose file
+    has a header but no rows is reported (all 16 runs missing), not silently dropped.
+    """
     have = {(r.member, r.case, r.method) for r in rows}
-    return [f"{m} {c} {meth}" for m in sorted({r.member for r in rows})
+    names = sorted(set(members or []) | {r.member for r in rows})
+    return [f"{m} {c} {meth}" for m in names
             for c in CASES for meth in METHODS if (m, c, meth) not in have]
 
 
@@ -248,7 +259,7 @@ def load_all(root: Path, exclude: set[str], allow_incomplete: bool = False) -> l
     for f in files:
         if f.parent.name not in exclude:
             rows.extend(load_member(f))
-    gaps = missing_runs(rows)
+    gaps = missing_runs(rows, discover_members(root, exclude))
     if gaps and not allow_incomplete:
         raise InputError(f"{len(gaps)} run(s) missing: {', '.join(gaps)} "
                          "(use --allow-incomplete to summarise anyway)")
@@ -385,25 +396,49 @@ def report_table(rows: list[Row], repro: str | None = None) -> list[str]:
     return out
 
 
+REPRO_COLUMNS = ("case", "commit", "zip_sha256", "exit")
+
+
+def load_repro(d: Path) -> dict[str, dict[str, str]]:
+    """Validate one repro_eval.sh output: case-01 … case-08 exactly once, all files present."""
+    summary = d / "summary.csv"
+    if not summary.is_file():
+        raise InputError(f"{d}: no summary.csv (not a repro_eval.sh output)")
+    rows: dict[str, dict[str, str]] = {}
+    with summary.open(newline="", encoding="utf-8") as fh:
+        reader = csv.DictReader(fh)
+        missing = [c for c in REPRO_COLUMNS if c not in (reader.fieldnames or [])]
+        if missing:
+            raise InputError(f"{summary}: missing column(s): {', '.join(missing)}")
+        for lineno, r in enumerate(reader, start=2):
+            try:
+                case = norm_case(r["case"] or "")
+            except ValueError as exc:
+                raise InputError(f"{summary}:{lineno}: {exc}") from exc
+            if case in rows:
+                raise InputError(f"{summary}:{lineno}: duplicate row for {case}")
+            rows[case] = r
+    absent = [c for c in CASES if c not in rows]
+    if absent:
+        raise InputError(f"{summary}: missing case(s): {', '.join(absent)}")
+    for case in CASES:
+        for ext in ("stdout", "stderr"):
+            if not (d / f"{case}.{ext}").is_file():
+                raise InputError(f"{d}: missing output file {case}.{ext}")
+    return rows
+
+
 def compare_repro(a: Path, b: Path) -> tuple[str, list[str]]:
     """Compare two repro_eval.sh output directories case by case (§8.6)."""
-    for d in (a, b):
-        if not (d / "summary.csv").exists():
-            raise InputError(f"{d}: no summary.csv (not a repro_eval.sh output)")
+    sa, sb = load_repro(a), load_repro(b)
     lines = [
         f"A: {a}", f"B: {b}", "",
         "| Case | Exit A | Exit B | Same fixture commit | stdout identical | stderr identical (normalised) |",
         "|---|---|---|---|---|---|",
     ]
-    with (a / "summary.csv").open(encoding="utf-8") as fa, (b / "summary.csv").open(encoding="utf-8") as fb:
-        sa = {r["case"]: r for r in csv.DictReader(fa)}
-        sb = {r["case"]: r for r in csv.DictReader(fb)}
     same = 0
-    for case in sorted(set(sa) | set(sb)):
-        ra, rb = sa.get(case), sb.get(case)
-        if ra is None or rb is None:
-            lines.append(f"| {case} | {ra and ra['exit'] or '–'} | {rb and rb['exit'] or '–'} | – | – | – |")
-            continue
+    for case in CASES:
+        ra, rb = sa[case], sb[case]
         commit = (ra["commit"], ra["zip_sha256"]) == (rb["commit"], rb["zip_sha256"])
         out_eq = (a / f"{case}.stdout").read_bytes() == (b / f"{case}.stdout").read_bytes()
         err_eq = (a / f"{case}.stderr").read_bytes() == (b / f"{case}.stderr").read_bytes()
@@ -411,14 +446,15 @@ def compare_repro(a: Path, b: Path) -> tuple[str, list[str]]:
         same += ok
         yn = lambda v: "yes" if v else "**no**"
         lines.append(f"| {case} | {ra['exit']} | {rb['exit']} | {yn(commit)} | {yn(out_eq)} | {yn(err_eq)} |")
-    return f"{same}/{len(set(sa) | set(sb))}", lines
+    return f"{same}/{len(CASES)}", lines
 
 
-def report(rows: list[Row], excluded: set[str], repro: tuple[str, list[str]] | None = None) -> str:
-    members = sorted({r.member for r in rows})
+def report(rows: list[Row], excluded: set[str], repro: tuple[str, list[str]] | None = None,
+           members: list[str] | None = None) -> str:
+    members = sorted(set(members or []) | {r.member for r in rows})
     flagged = [r for r in rows if r.flags]
     clean = unflagged_pairs(rows)
-    gaps = missing_runs(rows)
+    gaps = missing_runs(rows, members)
     lines = [
         "# Evaluation summary (generated by scripts/aggregate_eval.py)",
         "",
@@ -486,7 +522,7 @@ def main(argv: list[str] | None = None) -> int:
     except InputError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
-    text = report(rows, excluded, repro)
+    text = report(rows, excluded, repro, discover_members(args.root, excluded))
     if args.out:
         args.out.write_text(text, encoding="utf-8")
     else:

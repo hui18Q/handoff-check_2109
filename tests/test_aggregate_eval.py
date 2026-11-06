@@ -138,6 +138,23 @@ class AggregateTests(unittest.TestCase):
         self.assertIn("**INCOMPLETE: 1 run(s) missing: a case-03 checker**",
                       agg.report(loaded, set()))
 
+    def test_header_only_member_is_rejected(self):
+        write_member(self.root, "a", full_rows().values())
+        write_member(self.root, "b", [])                      # header, no rows
+        self.assertInputError("16 run(s) missing")
+
+    def test_header_only_member_labelled_incomplete_in_partial_mode(self):
+        write_member(self.root, "a", full_rows().values())
+        write_member(self.root, "b", [])
+        loaded = self.load(allow_incomplete=True)
+        members = agg.discover_members(self.root, set())
+        text = agg.report(loaded, set(), members=members)
+        self.assertIn("**INCOMPLETE: 16 run(s) missing: b case-01 manual", text)
+        self.assertIn("Members included: a, b", text)
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            self.assertEqual(agg.main(["--root", str(self.root), "--allow-incomplete"]), 0)
+        self.assertIn("INCOMPLETE: 16 run(s) missing", out.getvalue())
+
     def test_missing_diagnostic_row_is_rejected(self):
         rows = full_rows()
         diag = [d for d in full_diag(rows) if not (d[0] == "case-02" and d[1] == "manual")]
@@ -216,28 +233,57 @@ class AggregateTests(unittest.TestCase):
 
     # --- reproducibility ---------------------------------------------------
 
-    def _repro_dir(self, name, exit_code, stdout):
+    def _repro_dir(self, name, stdout_01="Result: PASS\n", cases=None, skip_file=None):
         d = self.root / name
         d.mkdir()
-        (d / "summary.csv").write_text(
-            f"case,commit,zip_sha256,exit,verdict\ncase-01,abc,-,{exit_code},PASS\n",
-            encoding="utf-8")
-        (d / "case-01.stdout").write_text(stdout, encoding="utf-8")
-        (d / "case-01.stderr").write_text("", encoding="utf-8")
+        cases = list(agg.CASES) if cases is None else cases
+        lines = ["case,commit,zip_sha256,exit,verdict"]
+        for c in cases:
+            lines.append(f"{c},abc{c[-2:]},-,0,PASS")
+        (d / "summary.csv").write_text("\n".join(lines) + "\n", encoding="utf-8")
+        for c in dict.fromkeys(cases):
+            for ext in ("stdout", "stderr"):
+                if f"{c}.{ext}" == skip_file:
+                    continue
+                text = stdout_01 if (c == "case-01" and ext == "stdout") else ""
+                (d / f"{c}.{ext}").write_text(text, encoding="utf-8")
         return d
 
     def test_compare_repro_identical_and_different(self):
-        a = self._repro_dir("ra", 0, "Result: PASS\n")
-        b = self._repro_dir("rb", 0, "Result: PASS\n")
-        c = self._repro_dir("rc", 0, "Result: PASS (changed)\n")
-        self.assertEqual(agg.compare_repro(a, b)[0], "1/1")
+        a = self._repro_dir("ra")
+        b = self._repro_dir("rb")
+        c = self._repro_dir("rc", stdout_01="Result: PASS (changed)\n")
+        self.assertEqual(agg.compare_repro(a, b)[0], "8/8")
         summary, lines = agg.compare_repro(a, c)
-        self.assertEqual(summary, "0/1")
+        self.assertEqual(summary, "7/8")
         self.assertIn("**no**", "\n".join(lines))
 
     def test_compare_repro_rejects_non_output_dir(self):
         with self.assertRaises(agg.InputError):
             agg.compare_repro(self.root, self.root)
+
+    def test_compare_repro_rejects_incomplete_case_set(self):
+        a = self._repro_dir("ra", cases=["case-01"])
+        b = self._repro_dir("rb", cases=["case-01"])
+        with self.assertRaises(agg.InputError) as cm:
+            agg.compare_repro(a, b)
+        self.assertIn("missing case(s): case-02", str(cm.exception))
+
+    def test_compare_repro_rejects_duplicate_case(self):
+        a = self._repro_dir("ra", cases=[*agg.CASES, "case-03"])
+        b = self._repro_dir("rb")
+        with self.assertRaises(agg.InputError) as cm:
+            agg.compare_repro(a, b)
+        self.assertIn("duplicate row for case-03", str(cm.exception))
+
+    def test_compare_repro_missing_output_file_is_input_error(self):
+        a = self._repro_dir("ra")
+        b = self._repro_dir("rb", skip_file="case-04.stdout")
+        write_member(self.root, "m", full_rows().values())
+        with contextlib.redirect_stderr(io.StringIO()) as err:
+            code = agg.main(["--root", str(self.root), "--repro", str(a), str(b)])
+        self.assertEqual(code, 2)
+        self.assertIn("missing output file case-04.stdout", err.getvalue())
 
 
 if __name__ == "__main__":
