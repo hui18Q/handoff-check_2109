@@ -1,0 +1,17 @@
+case,method,order,recorded_verdict,expected_verdict,analysis_verdict,verdict_correct,recorded_exit,log_exit,commands,recorded_judgements,reconstructed_judgements,time_s,analysis_note
+case-07,checker,1st,FAIL,FAIL,FAIL,yes,1,1,2,4,4,50,
+case-07,manual,2nd,FAIL,FAIL,FAIL,yes,,,5,19,19,40,
+case-08,manual,1st,FAIL,ERROR,FAIL,no,,,5,16,16,61,misclassified: expected ERROR
+case-08,checker,2nd,FAIL,ERROR,ERROR,yes,2,2,2,4,2,50,"transcription error: log shows ERROR, exit 2"
+case-01,checker,1st,PASS,PASS,PASS,yes,0,0,2,4,1,45,
+case-01,manual,2nd,PASS,PASS,PASS,yes,,,6,20,16,40,
+case-02,manual,1st,FAIL,FAIL,FAIL,yes,,,6,20,19,37,
+case-02,checker,2nd,FAIL,FAIL,FAIL,yes,1,1,2,4,4,38,
+case-03,checker,1st,FAIL,FAIL,FAIL,yes,1,1,2,4,4,31,
+case-03,manual,2nd,FAIL,FAIL,FAIL,yes,,,6,20,19,30,
+case-04,manual,1st,PASS,PASS,PASS,yes,,,6,20,18,33,
+case-04,checker,2nd,PASS,PASS,PASS,yes,0,0,2,4,3,29,
+case-05,checker,1st,FAIL,ERROR,ERROR,yes,2,2,2,4,2,32,"transcription error: log shows ERROR, exit 2"
+case-05,manual,2nd,FAIL,ERROR,FAIL,no,,,6,17,19,29,misclassified: expected ERROR
+case-06,manual,1st,FAIL,ERROR,FAIL,no,,,6,5,5,30,misclassified: expected ERROR
+case-06,checker,2nd,FAIL,ERROR,ERROR,yes,2,2,2,4,2,28,"transcription error: log shows ERROR, exit 2"

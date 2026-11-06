@@ -1,0 +1,35 @@
+Script started on 2026-11-05 21:58:00+08:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="90" LINES="23"]
+[?2004h]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ [7msource ~/fit2109/review/.venv-mr7/bin/activate [27m[7m&[27m[7m& cd $F/case-06/repo[27m[A]0;chinw@huiiiiiii: ~/fit2109/checker-71d7472[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/checker-71d7472[00m$ source ~/fit2109/review/.venv-mr7/bin/activate && cd $F/case-06/repo
+[?2004l[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[00m$ [7mgit rev-parse --verify v1.0^{commit}[27m
+[7mgit show v1.0:handoff-check.json | python3 -m json.tool[27m
+[7mgit status --short --untracked-files=all --ignored[27m
+[7mgit ls-tree -r v1.0[27m
+[7mgit archive --format=zip -o ../manual-handoff.zip v1.0[27m
+[7mpython3 -m zipfile -l ../manual-handoff.zip[27m[A[A[A[A[A[C[C[C[Cgit rev-parse --verify v1.0^{commit}
+git show v1.0:handoff-check.json | python3 -m json.tool
+git status --short --untracked-files=all --ignored
+git ls-tree -r v1.0
+git archive --format=zip -o ../manual-handoff.zip v1.0
+python3 -m zipfile -l ../manual-handoff.zip
+[?2004lfatal: Needed a single revision
+fatal: invalid object name 'v1.0'.
+Expecting value: line 1 column 1 (char 0)
+fatal: Not a valid object name v1.0
+fatal: not a valid object name: v1.0
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__main__.py", line 4, in <module>
+    main()
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 2333, in main
+    with ZipFile(src, 'r', metadata_encoding=encoding) as zf:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 1396, in __init__
+    self._RealGetContents()
+  File "/home/chinw/.local/share/uv/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/zipfile/__init__.py", line 1463, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+[?2004h((.venv-mr7) ) ]0;chinw@huiiiiiii: ~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[01;32mchinw@huiiiiiii[00m:[01;34m~/fit2109/MY-T06-06/.scenario-runs/eval-fixtures/case-06/repo[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-05 21:59:08+08:00 [COMMAND_EXIT_CODE="1"]
