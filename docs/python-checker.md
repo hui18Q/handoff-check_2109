@@ -136,5 +136,9 @@ Current verification status and evidence links are in README.md.
 The measured baseline comparison, its limitations and sensitivity analyses
 are recorded in docs/evaluation.md.
 
-Final clean-extraction verification of the submission revision on the
-unit server remains pending and is separate from earlier checker reviews.
+Integrated commit `3f79104` passed clean-extraction verification on
+the course unit server on 6 November 2026, including all 90 tests and
+the demonstration. Evidence and scope are recorded in
+`docs/evidence/unit-server-2026-11-06-3f79104/README.md`.
+This result is separate from earlier checker reviews and applies to
+the tested revision.

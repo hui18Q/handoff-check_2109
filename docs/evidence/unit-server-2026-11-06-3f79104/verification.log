@@ -1,0 +1,155 @@
+Fri Nov  6 12:56:04 UTC 2026
+fit2109s2.rep.monash.edu
+3f79104196643a4f58480c3e7422a656fd7849d8
+project.zip: OK
+Python 3.12.3
+/srv/home/wluu0044/MY-T06-06-verify-3f79104-hrm2fhjg/project/.venv/bin/python3
+git version 2.43.0
+GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+test_accuracy_uses_analysis_verdict_and_reports_recorded_separately (test_aggregate_eval.AggregateTests.test_accuracy_uses_analysis_verdict_and_reports_recorded_separately) ... ok
+test_bad_values_are_rejected (test_aggregate_eval.AggregateTests.test_bad_values_are_rejected) ... ok
+test_compare_repro_identical_and_different (test_aggregate_eval.AggregateTests.test_compare_repro_identical_and_different) ... ok
+test_compare_repro_missing_output_file_is_input_error (test_aggregate_eval.AggregateTests.test_compare_repro_missing_output_file_is_input_error) ... ok
+test_compare_repro_rejects_duplicate_case (test_aggregate_eval.AggregateTests.test_compare_repro_rejects_duplicate_case) ... ok
+test_compare_repro_rejects_incomplete_case_set (test_aggregate_eval.AggregateTests.test_compare_repro_rejects_incomplete_case_set) ... ok
+test_compare_repro_rejects_non_output_dir (test_aggregate_eval.AggregateTests.test_compare_repro_rejects_non_output_dir) ... ok
+test_complete_member_summarises (test_aggregate_eval.AggregateTests.test_complete_member_summarises) ... ok
+test_diagnosis_is_na_without_results_csv (test_aggregate_eval.AggregateTests.test_diagnosis_is_na_without_results_csv) ... ok
+test_duplicate_diagnostic_row_is_rejected (test_aggregate_eval.AggregateTests.test_duplicate_diagnostic_row_is_rejected) ... ok
+test_duplicate_row_is_rejected (test_aggregate_eval.AggregateTests.test_duplicate_row_is_rejected) ... ok
+test_exclude_member (test_aggregate_eval.AggregateTests.test_exclude_member) ... ok
+test_flags_column_optional (test_aggregate_eval.AggregateTests.test_flags_column_optional) ... ok
+test_header_only_member_is_rejected (test_aggregate_eval.AggregateTests.test_header_only_member_is_rejected) ... ok
+test_header_only_member_labelled_incomplete_in_partial_mode (test_aggregate_eval.AggregateTests.test_header_only_member_labelled_incomplete_in_partial_mode) ... ok
+test_incomplete_diagnosis_counts_as_not_complete (test_aggregate_eval.AggregateTests.test_incomplete_diagnosis_counts_as_not_complete) ... ok
+test_missing_column_is_input_error (test_aggregate_eval.AggregateTests.test_missing_column_is_input_error) ... ok
+test_missing_diagnostic_row_is_rejected (test_aggregate_eval.AggregateTests.test_missing_diagnostic_row_is_rejected) ... ok
+test_missing_row_allowed_only_when_requested_and_labelled (test_aggregate_eval.AggregateTests.test_missing_row_allowed_only_when_requested_and_labelled) ... ok
+test_missing_row_is_rejected (test_aggregate_eval.AggregateTests.test_missing_row_is_rejected) ... ok
+test_no_inputs_returns_exit_2 (test_aggregate_eval.AggregateTests.test_no_inputs_returns_exit_2) ... ok
+test_norm_where_accepts_member_spellings (test_aggregate_eval.AggregateTests.test_norm_where_accepts_member_spellings) ... ok
+test_one_sided_flag_drops_the_whole_pair (test_aggregate_eval.AggregateTests.test_one_sided_flag_drops_the_whole_pair) ... ok
+test_exit_codes_streams_and_evidence (test_bash_python_interface.BashPythonInterfaceTests.test_exit_codes_streams_and_evidence) ... ok
+test_invalid_ref_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_invalid_ref_is_error) ... ok
+test_missing_checker_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_missing_checker_is_error) ... ok
+test_missing_supplied_zip_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_missing_supplied_zip_is_error) ... ok
+test_supplied_zip_paths_and_preservation (test_bash_python_interface.BashPythonInterfaceTests.test_supplied_zip_paths_and_preservation) ... ok
+test_unsupported_checker_exit_is_error (test_bash_python_interface.BashPythonInterfaceTests.test_unsupported_checker_exit_is_error) ... ok
+test_empty_supplied_zip_fails_not_errors (test_eval_fixtures.CheckerEdgeCaseTests.test_empty_supplied_zip_fails_not_errors) ... ok
+test_executable_required_file_passes (test_eval_fixtures.CheckerEdgeCaseTests.test_executable_required_file_passes) ... ok
+test_force_added_ignored_required_file_passes (test_eval_fixtures.CheckerEdgeCaseTests.test_force_added_ignored_required_file_passes) ... ok
+test_ignored_required_file_never_committed_fails (test_eval_fixtures.CheckerEdgeCaseTests.test_ignored_required_file_never_committed_fails) ... ok
+test_legacy_code_page_zip_names_are_matched (test_eval_fixtures.CheckerEdgeCaseTests.test_legacy_code_page_zip_names_are_matched) ... ok
+test_locally_modified_required_file_still_passes (test_eval_fixtures.CheckerEdgeCaseTests.test_locally_modified_required_file_still_passes) ... ok
+test_non_ascii_required_name_passes (test_eval_fixtures.CheckerEdgeCaseTests.test_non_ascii_required_name_passes) ... ok
+test_non_utf8_untracked_name_is_context_only (test_eval_fixtures.CheckerEdgeCaseTests.test_non_utf8_untracked_name_is_context_only) ... ok
+test_staged_but_uncommitted_required_file_fails (test_eval_fixtures.CheckerEdgeCaseTests.test_staged_but_uncommitted_required_file_fails) ... ok
+test_submodule_gitlink_does_not_satisfy_regular_file (test_eval_fixtures.CheckerEdgeCaseTests.test_submodule_gitlink_does_not_satisfy_regular_file) ... ok
+test_unborn_head_is_error (test_eval_fixtures.CheckerEdgeCaseTests.test_unborn_head_is_error) ... ok
+test_zero_byte_required_file_passes (test_eval_fixtures.CheckerEdgeCaseTests.test_zero_byte_required_file_passes) ... ok
+test_case_01_complete_handoff_passes (test_eval_fixtures.EvaluationFixtureTests.test_case_01_complete_handoff_passes) ... ok
+test_case_02_untracked_required_file_fails_in_commit_and_archive (test_eval_fixtures.EvaluationFixtureTests.test_case_02_untracked_required_file_fails_in_commit_and_archive) ... ok
+test_case_03_export_ignore_fails_in_archive_only (test_eval_fixtures.EvaluationFixtureTests.test_case_03_export_ignore_fails_in_archive_only) ... ok
+test_case_04_unrelated_untracked_and_ignored_are_context (test_eval_fixtures.EvaluationFixtureTests.test_case_04_unrelated_untracked_and_ignored_are_context) ... ok
+test_case_05_parent_traversal_checklist_is_error (test_eval_fixtures.EvaluationFixtureTests.test_case_05_parent_traversal_checklist_is_error) ... ok
+test_case_06_invalid_ref_is_error (test_eval_fixtures.EvaluationFixtureTests.test_case_06_invalid_ref_is_error) ... ok
+test_case_07_supplied_zip_omission_fails_in_archive_only (test_eval_fixtures.EvaluationFixtureTests.test_case_07_supplied_zip_omission_fails_in_archive_only) ... ok
+test_case_08_invalid_zip_is_error (test_eval_fixtures.EvaluationFixtureTests.test_case_08_invalid_zip_is_error) ... ok
+test_generator_matches_reference_identifiers (test_eval_fixtures.EvaluationFixtureTests.test_generator_matches_reference_identifiers) ... ok
+test_archive_eof_error_names_input (test_python_checker.RealCheckerTests.test_archive_eof_error_names_input) ... ok
+test_bad_repository_error_names_input (test_python_checker.RealCheckerTests.test_bad_repository_error_names_input) ... ok
+test_bad_zip_error_names_input (test_python_checker.RealCheckerTests.test_bad_zip_error_names_input) ... ok
+test_case_sensitive_archive_match (test_python_checker.RealCheckerTests.test_case_sensitive_archive_match) ... ok
+test_checklist_error_names_source_and_position (test_python_checker.RealCheckerTests.test_checklist_error_names_source_and_position) ... ok
+test_checklist_error_names_user_path_and_ref_not_temporary_copy (test_python_checker.RealCheckerTests.test_checklist_error_names_user_path_and_ref_not_temporary_copy) ... ok
+test_checklist_schema_and_path_rejections (test_python_checker.RealCheckerTests.test_checklist_schema_and_path_rejections) ... ok
+test_commit_only_failure_reason_does_not_blame_zip (test_python_checker.RealCheckerTests.test_commit_only_failure_reason_does_not_blame_zip) ... ok
+test_complete_generated_archive (test_python_checker.RealCheckerTests.test_complete_generated_archive) ... ok
+test_corrupt_deflated_zip_is_error_not_fail (test_python_checker.RealCheckerTests.test_corrupt_deflated_zip_is_error_not_fail) ... ok
+test_corrupt_zip_is_error (test_python_checker.RealCheckerTests.test_corrupt_zip_is_error) ... ok
+test_directory_requirement_is_not_regular (test_python_checker.RealCheckerTests.test_directory_requirement_is_not_regular) ... ok
+test_duplicate_json_key_is_error (test_python_checker.RealCheckerTests.test_duplicate_json_key_is_error) ... ok
+test_duplicate_zip_entry_is_error (test_python_checker.RealCheckerTests.test_duplicate_zip_entry_is_error) ... ok
+test_export_ignore_omission (test_python_checker.RealCheckerTests.test_export_ignore_omission) ... ok
+test_fail_reason_names_each_actual_location (test_python_checker.RealCheckerTests.test_fail_reason_names_each_actual_location) ... ok
+test_invalid_archive_paths (test_python_checker.RealCheckerTests.test_invalid_archive_paths) ... ok
+test_invalid_git_evidence_rejected (test_python_checker.RealCheckerTests.test_invalid_git_evidence_rejected) ... ok
+test_invalid_ref_missing_archive_and_checklist (test_python_checker.RealCheckerTests.test_invalid_ref_missing_archive_and_checklist) ... ok
+test_local_io_failure_does_not_change_verdict (test_python_checker.RealCheckerTests.test_local_io_failure_does_not_change_verdict) ... ok
+test_local_permission_failure_is_informational (test_python_checker.RealCheckerTests.test_local_permission_failure_is_informational) ... ok
+test_malformed_json_is_error (test_python_checker.RealCheckerTests.test_malformed_json_is_error) ... ok
+test_missing_commit_file_retained_locally (test_python_checker.RealCheckerTests.test_missing_commit_file_retained_locally) ... ok
+test_no_arguments_is_error (test_python_checker.RealCheckerTests.test_no_arguments_is_error) ... ok
+test_selected_commit_and_committed_checklist (test_python_checker.RealCheckerTests.test_selected_commit_and_committed_checklist) ... ok
+test_spaces_and_newlines_in_required_names (test_python_checker.RealCheckerTests.test_spaces_and_newlines_in_required_names) ... ok
+test_status_rename_preserves_raw_names (test_python_checker.RealCheckerTests.test_status_rename_preserves_raw_names) ... ok
+test_supplied_archive_omission (test_python_checker.RealCheckerTests.test_supplied_archive_omission) ... ok
+test_supplied_archive_paths_and_preservation (test_python_checker.RealCheckerTests.test_supplied_archive_paths_and_preservation) ... ok
+test_symlink_in_commit_is_not_regular (test_python_checker.RealCheckerTests.test_symlink_in_commit_is_not_regular) ... ok
+test_top_level_zip_prefix_is_not_removed (test_python_checker.RealCheckerTests.test_top_level_zip_prefix_is_not_removed) ... ok
+test_unexpected_internal_exception_returns_error_without_traceback (test_python_checker.RealCheckerTests.test_unexpected_internal_exception_returns_error_without_traceback) ... ok
+test_unrelated_untracked_and_ignored_do_not_fail (test_python_checker.RealCheckerTests.test_unrelated_untracked_and_ignored_do_not_fail) ... ok
+test_unrelated_unusual_status_names_are_context_only (test_python_checker.RealCheckerTests.test_unrelated_unusual_status_names_are_context_only) ... ok
+test_unrelated_unusual_tree_and_zip_names_do_not_fail (test_python_checker.RealCheckerTests.test_unrelated_unusual_tree_and_zip_names_do_not_fail) ... ok
+test_working_absence_does_not_fail (test_python_checker.RealCheckerTests.test_working_absence_does_not_fail) ... ok
+test_working_symlink_ancestor_not_followed (test_python_checker.RealCheckerTests.test_working_symlink_ancestor_not_followed) ... ok
+test_zip_crc_error_prevents_verdict (test_python_checker.RealCheckerTests.test_zip_crc_error_prevents_verdict) ... ok
+test_zip_special_file_is_not_regular (test_python_checker.RealCheckerTests.test_zip_special_file_is_not_regular) ... ok
+test_zip_symlink_does_not_satisfy_regular_file (test_python_checker.RealCheckerTests.test_zip_symlink_does_not_satisfy_regular_file) ... ok
+
+----------------------------------------------------------------------
+Ran 90 tests in 7.481s
+
+OK
+test_exit=0
+
+=== Complete selected commit ===
+Expected checker exit code: 0
+Selected commit: 1e1aa7be2142d5b66b9f960f75156bce34d3af62
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "!!"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+Actual checker exit code: 0
+
+=== Required CSV exists locally but is absent from commit ===
+Expected checker exit code: 1
+Selected commit: aeb59ea66fe9efab6f43c080abc6fabf14b27c41
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+FAIL "data/items.csv"
+  working tree: regular; Git status: "!!"
+  selected commit: missing; ZIP: missing
+  Reason: required regular file unavailable at selected commit: missing; ZIP: missing.
+  Suggested action: track a regular file at this path, commit it, select that commit and rebuild the handoff ZIP.
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: FAIL (1 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+Actual checker exit code: 1
+
+Demo completed: both checker exit codes matched expectations.
+demo_exit=0
+Records: 3
+Total quantity: 10
+summary_exact_match=yes
+Remaining checker temporary directories: []
+VERIFICATION PASSED

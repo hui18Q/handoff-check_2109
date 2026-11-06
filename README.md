@@ -190,7 +190,7 @@ Total quantity: 10
 
 ## Current verification status — 6 November 2026
 
-- The reviewed integrated snapshot is commit
+- Earlier integrated snapshot verification refers to commit
   `075625db8834f14b83f46266b3475937fcd07fe3`. [Pipeline #169231](https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/pipelines/169231)
   is displayed as passed. The configured default jobs run the tests and demonstration;
   the frozen-checker reproducibility job is separately triggered.
@@ -210,9 +210,15 @@ Total quantity: 10
 - Stored CI and unit-server outputs for the frozen checker match across
   all eight evaluation cases after documented path normalisation.
   Evidence is in `docs/evaluation-runs/reproducibility/`.
-- Final clean-extraction verification of the submission revision on the
-  course unit server remains pending. Earlier verification does not
-  establish successful execution of every later integrated revision.
+- Clean-extraction verification passed on the course unit server for
+  integrated commit `3f79104196643a4f58480c3e7422a656fd7849d8`
+  on 6 November 2026: Python 3.12.3, Git 2.43.0 and Bash 5.2.21.
+  All 90 tests passed without skips, the demonstration returned 0,
+  and the regenerated evaluation summary matched byte for byte.
+  Original evidence and scope are documented in
+  `docs/evidence/unit-server-2026-11-06-3f79104/README.md`.
+  This verification applies to that tested revision; subsequent changes
+  must be accounted for when preparing the final submission.
 
 ## Historical verification records
 

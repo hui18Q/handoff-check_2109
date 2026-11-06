@@ -143,8 +143,11 @@ an earlier accidental incident.
 - The measured comparison now contains 48 method runs from three members.
   Results, recording qualifications and sensitivity analyses are in
   `docs/evaluation.md` and `docs/evaluation-runs/summary.md`.
-- Final clean-extraction verification of the submission revision on the
-  unit server remains pending. Earlier verification is version-specific.
+- Integrated commit `3f79104` passed clean-extraction unit-server
+  verification on 6 November 2026: all 90 tests and the demonstration
+  passed. Evidence is in
+  `docs/evidence/unit-server-2026-11-06-3f79104/README.md`.
+  Verification remains specific to the tested revision.
 
 ## Reproduction check — 13 October 2026
 

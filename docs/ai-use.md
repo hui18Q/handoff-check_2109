@@ -472,3 +472,19 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Measurement boundary: For Lu's sixteen retained timed runs, ChatGPT was used for preparation before timing. Lu independently executed the assessments, interpreted outputs and recorded conclusions before stopping the timer. Later assistance with review and report wording does not change that account.
 - Evidence: MRs !12, !14 and !16–!20; docs/evaluation.md; docs/evaluation-runs/summary.md; member CSV files and logs; the final report and ChatGPT conversation.
 - Remaining risks: Retrospective judgement counts are not contemporaneous cognitive tallies; terminal logs do not independently prove stopwatch endpoints. Follow-up review of the revised record in MR !21 and final submission verification remain pending.
+
+## Verify — Integrated snapshot on the course unit server
+
+- Date: 6 November 2026.
+- Owner and executor: Lu Wenxi.
+- Planned independent checker: Chin Wen Hui; evidence review pending.
+- AI tool: OpenAI ChatGPT.
+- Task and instructions: Prepare a versioned archive, transfer and checksum checks, clean extraction, Python 3.12 setup, test/demo execution and original-log retention.
+- AI output: Terminal commands, evidence-checking assistance and draft documentation.
+- Human verification: Lu executed the commands on fit2109s2.rep.monash.edu using a new Python 3.12.3 environment, Git 2.43.0 and Bash 5.2.21.
+- Tested source: 3f79104196643a4f58480c3e7422a656fd7849d8.
+- Results: The source checksum matched; initial extraction had no .git or .venv; 90 tests passed without skips; demo returned 0 with expected checker exits 0 and 1; the saved-record summary matched exactly; no checker temporary directories remained; verification_exit=0.
+- Owner decision: Accepted as execution evidence for the documented commit and environment, subject to independent evidence review before integration.
+- Attribution: Commands were AI-assisted; course-server execution was performed by Lu. Recomputing stored cross-environment results was not a new CI execution.
+- Evidence: docs/evidence/unit-server-2026-11-06-3f79104/.
+- Remaining risks: This run does not validate every later revision or establish measured user-effort savings. The controlled-scenario and evaluation limitations remain applicable.
