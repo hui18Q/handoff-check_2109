@@ -440,7 +440,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Owner: Lu Wenxi.
 - Independent checkers: Yin Jiayu (jyin0039) and Chin Wen Hui (wchi0071), MR !21, 6 November 2026.
 - Review evidence: Yin approved the initial MR revision. Chin reviewed all five files against repository evidence, confirming the test breakdown, duration history, execution attribution and commit references.
-- Review outcome: Chin requested clarification of workflow-need validation, reviewer attribution and the pipeline reference. Follow-up review of the revised documentation remains pending.
+- Review outcome: Chin requested clarification of workflow-need validation, reviewer attribution and the pipeline reference. Chin re-reviewed af372f43 in MR !21, confirmed the corrections and approved the revised documentation.
 - AI tool: OpenAI ChatGPT, including automated checks in its separate analysis environment.
 - Task and instructions: Check the exported project against the assignment specification and rubric, reproduce the submitted evaluation summary, inspect the sensitivity analyses, and identify remaining submission gaps.
 - AI output: An evidence-based review, automated test and demonstration results, aggregation checks, and suggested documentation corrections.
@@ -460,7 +460,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Owner: Lu Wenxi.
 - Independent checkers: Yin Jiayu (jyin0039) and Chin Wen Hui (wchi0071), MR !21, 6 November 2026.
 - Review evidence: Yin approved the initial MR revision. Chin reviewed all five files against repository evidence, confirming the test breakdown, duration history, execution attribution and commit references.
-- Review outcome: Chin requested clarification of workflow-need validation, reviewer attribution and the pipeline reference. Follow-up review of the revised documentation remains pending.
+- Review outcome: Chin requested clarification of workflow-need validation, reviewer attribution and the pipeline reference. Chin re-reviewed af372f43 in MR !21, confirmed the corrections and approved the revised documentation.
 - AI tool: OpenAI ChatGPT.
 - Task and instructions: Help inspect later test, evaluation and reproducibility changes; compare claims with submitted evidence; draft review comments and update the final report without overstating verification or measurement quality.
 - AI output: Review suggestions, controlled failure-propagation commands, automated calculations in a separate analysis environment, English MR comments and revised report paragraphs.
@@ -471,20 +471,20 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Report assistance: ChatGPT drafted and revised English explanations, AI reflections, contribution statements and review comments. This writing assistance produced no new measurement evidence. Each member remains responsible for confirming their own statements.
 - Measurement boundary: For Lu's sixteen retained timed runs, ChatGPT was used for preparation before timing. Lu independently executed the assessments, interpreted outputs and recorded conclusions before stopping the timer. Later assistance with review and report wording does not change that account.
 - Evidence: MRs !12, !14 and !16–!20; docs/evaluation.md; docs/evaluation-runs/summary.md; member CSV files and logs; the final report and ChatGPT conversation.
-- Remaining risks: Retrospective judgement counts are not contemporaneous cognitive tallies; terminal logs do not independently prove stopwatch endpoints. Follow-up review of the revised record in MR !21 and final submission verification remain pending.
+- Remaining risks: Retrospective judgement counts are not contemporaneous cognitive tallies; terminal logs do not independently prove stopwatch endpoints. Chin completed follow-up review of the revised record in MR !21. Course-server verification of commit 3f79104 is recorded below; later submission changes still require reconciliation.
 
 ## Verify — Integrated snapshot on the course unit server
 
 - Date: 6 November 2026.
 - Owner and executor: Lu Wenxi.
-- Planned independent checker: Chin Wen Hui; evidence review pending.
+- Independent checker: Chin Wen Hui (wchi0071), MR !22, 6 November 2026. Chin reviewed the original logs, test count, demo outcomes, exact summary match, extraction conditions and execution attribution. He requested that this record identify the completed review.
 - AI tool: OpenAI ChatGPT.
 - Task and instructions: Prepare a versioned archive, transfer and checksum checks, clean extraction, Python 3.12 setup, test/demo execution and original-log retention.
 - AI output: Terminal commands, evidence-checking assistance and draft documentation.
 - Human verification: Lu executed the commands on fit2109s2.rep.monash.edu using a new Python 3.12.3 environment, Git 2.43.0 and Bash 5.2.21.
 - Tested source: 3f79104196643a4f58480c3e7422a656fd7849d8.
 - Results: The source checksum matched; initial extraction had no .git or .venv; 90 tests passed without skips; demo returned 0 with expected checker exits 0 and 1; the saved-record summary matched exactly; no checker temporary directories remained; verification_exit=0.
-- Owner decision: Accepted as execution evidence for the documented commit and environment, subject to independent evidence review before integration.
+- Owner decision: Accepted as execution evidence for the documented commit and environment following Chin's evidence review in MR !22. The original source ZIP is attached to that MR; independent verification of its attachment checksum has not yet been recorded.
 - Attribution: Commands were AI-assisted; course-server execution was performed by Lu. Recomputing stored cross-environment results was not a new CI execution.
 - Evidence: docs/evidence/unit-server-2026-11-06-3f79104/.
 - Remaining risks: This run does not validate every later revision or establish measured user-effort savings. The controlled-scenario and evaluation limitations remain applicable.

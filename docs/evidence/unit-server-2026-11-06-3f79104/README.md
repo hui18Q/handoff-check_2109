@@ -33,10 +33,15 @@ VERIFICATION PASSED and verification_exit=0.
 The six accompanying files are copied unchanged from the server.
 SHA256SUMS identifies the tested source project.zip; that ZIP is retained
 as the original export rather than duplicated in this evidence folder.
+The original project.zip is also attached to MR !22 for independent
+checksum checking.
 This explanation was written after the run; verification.log retains
 the original output.
 
 ChatGPT prepared commands and helped interpret the evidence.
 Lu executed the commands on the course server.
-Independent evidence review by Chin Wen Hui is pending.
+Chin Wen Hui reviewed the original evidence in MR !22 on 6 November
+2026, confirming the test count, demo outcomes, exact summary match,
+extraction conditions and execution attribution. His review did not
+record independent checksum verification of the subsequently attached ZIP.
 The result applies to the stated commit, not automatically to later changes.
