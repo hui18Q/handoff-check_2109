@@ -1,6 +1,7 @@
 # Evaluation: Handoff Check versus the manual baseline
 
-Status: **protocol draft, no measured results yet.**
+Status: **measured.** Results are in Sections 8–9; Sections 2–7 are unchanged
+except for the changes logged in Section 10.
 Owner: Chin Wen Hui (fixture author). Expected-outcome checker: Lu Wenxi.
 Binding source: project proposal Sections 3–5.
 
@@ -311,12 +312,20 @@ even-numbered cases 2:1.
 
 ## 8. Results
 
-All figures below are generated from the member records by
-`scripts/aggregate_eval.py`; its full output, including the excluding-flagged-pairs
-view, is `docs/evaluation-runs/summary.md`. Regenerate with:
+All figures come from the members' derived records
+(`docs/evaluation-runs/<member>/results-analysis.csv`, joined with each member's
+`results.csv` for the diagnosis fields). The method-level summary, the
+excluding-flagged-pairs view and the §8.6 comparison are printed by
+`scripts/aggregate_eval.py` and saved as `docs/evaluation-runs/summary.md`:
 
     python3 scripts/aggregate_eval.py \
       --repro docs/evaluation-runs/reproducibility/ci docs/evaluation-runs/reproducibility/unit-server
+
+The script does not print the per-case tables in 8.2–8.5. These were computed
+from the same derived files: each cell covers the three members' runs for one case
+and method, giving the median with the minimum and maximum, and the first/second
+medians split by the `order` column. The sensitivity figures that exclude a member
+come from the same script with `--exclude-member`.
 
 ### 8.1 Run sheet
 
@@ -324,8 +333,10 @@ The 48 rows are kept per member rather than copied here:
 `docs/evaluation-runs/<member>/results.csv` holds each member's original record,
 and `results-analysis.csv` beside it is the derived file used for analysis
 (expected verdict, log exit code, reconstructed judgement count and flags).
-Original records are never edited; corrections and qualifications appear only in
-the derived file and in each member's `README.md`.
+Raw logs are unchanged. Revisions to a member's `results.csv` are traceable in Git
+history (for example, Lu Wenxi's d3ed67f added reconstructed judgement counts and
+corrected four durations). Corrections made for analysis appear only in the
+derived file and in each member's `README.md`.
 
 | Member | Runs | Flags |
 |---|---|---|
@@ -334,7 +345,12 @@ the derived file and in each member's `README.md`.
 | Chin Wen Hui (C) | 16 | none; three checker verdicts recorded as FAIL for logged exit 2 are corrected from the logs in the derived file (`chin/README.md`) |
 
 The excluding-flagged-pairs view drops both methods of any flagged member-case and
-leaves 14 pairs (L and C).
+leaves 14 pairs (L and C). Not every disclosed deviation is a flag. Chin Wen Hui's
+block-pasted manual commands and FAIL-for-ERROR recordings are disclosed but not
+flagged, so all 16 of those runs remain in the 14-pair view. A further sensitivity
+view also excludes Chin Wen Hui (`--exclude-member chin`). That leaves Lu Wenxi's
+six unflagged pairs: both methods 6/6 correct, and medians of 5 against 2 commands,
+16 against 2.5 judgements and 34 s against 25 s (manual against checker).
 
 ### 8.2 Measure 1: correctness
 
@@ -450,10 +466,19 @@ The checker is an improvement if it matches every expected outcome, produces
 no false FAIL for unrelated files, and needs fewer commands and judgements than
 the manual baseline. Timing is reported as indicative only.
 
-Result: met on correctness, false alarms, commands and judgements. The checker
-matched all 24 expected outcomes against 21 of 24 for the manual baseline,
-produced no false FAIL, and needed a median of 2 commands and 2.5 judgements per
-case against 6 and 16. The same holds in the excluding-flagged-pairs view.
+Result: on the recorded measures, the criterion is met for correctness, false
+alarms, commands and judgements. The checker matched all 24 expected outcomes
+against 21 of 24 for the manual baseline and produced no false FAIL. The records
+show a median of 2 commands and 2.5 judgements per case against 6 and 16. The same
+direction holds in the excluding-flagged-pairs view. Without Chin Wen Hui's runs,
+both methods were fully correct, so the correctness difference rests on one
+participant's runs; the effort difference in commands and judgements remains.
+
+These figures describe the records, not unassisted human effort. One member's
+runs were AI-assisted during timing. Some command counts include repeats that the
+member reports as untimed. Judgement counts come from different sources:
+reconstructed from logs for two members and recorded during the runs for one.
+The effort difference is therefore indicative, and time most of all.
 
 ## 9. Raw logs
 
@@ -512,7 +537,9 @@ Protocol changes after this draft:
   timing in the redo, and three manual times exceed the gap to the next logged
   session. Chin Wen Hui's and Lu Wenxi's judgement counts were reconstructed from
   the logs under Sections 4.3 and 5; Yin Jiayu's were recorded during the runs.
-  These rows are flagged in the derived files, and results are
-  reported with and without them (Section 8).
+  Lu Wenxi's corrected durations and all of Yin Jiayu's rows are
+  flagged and excluded from the excluding-flagged-pairs view. Chin Wen Hui's
+  deviations are disclosed but not flagged, so they remain in that view; a
+  separate view without Chin Wen Hui is reported in Section 8.1.
 - 2026-11-06: analysis uses `scripts/aggregate_eval.py`, which rejects incomplete,
   duplicate or out-of-range records instead of summarising them (reviewed in MR !17).
