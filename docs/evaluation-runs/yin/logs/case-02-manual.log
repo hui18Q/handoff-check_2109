@@ -1,0 +1,34 @@
+yin / case-02 / manual / 1st / 2026-11-06 17:22:03 +0800
+Checker commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Python 3.12.14
+git version 2.39.5 (Apple Git-154)
+Bash 3.2.57(1)-release
+Start state: /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-02/repo
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034heval> git rev-parse --verify "${REF}^{commit}"
+68edbabdc81c7325b2088dbb95a0fd352ff36876
+eval> git show "${REF}:handoff-check.json" | python3 -m json.tool
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "data/items.csv"
+    ]
+}
+eval> git status --short --untracked-files=all --ignored
+[31m??[m data/items.csv
+eval> git ls-tree -r "$REF"
+100644 blob c87e05ebc9a885479c8e3144d84361750d0c0c89	README.md
+100644 blob f64d14e2dd03aa3a2185f53dd18207e686db58bc	handoff-check.json
+100644 blob 0e92b34244d122913e021bfcca36ddc43e4f2714	report.py
+eval> git archive --format=zip -o ../manual-handoff.zip "$REF"
+eval> python3 -m zipfile -l ../manual-handoff.zip
+File Name                                             Modified             Size
+README.md                                      2026-10-20 07:00:00          202
+handoff-check.json                             2026-10-20 07:00:00           85
+report.py                                      2026-10-20 07:00:00          306
+eval> exit
+exit
