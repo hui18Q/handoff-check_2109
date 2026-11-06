@@ -489,13 +489,15 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Evidence: docs/evidence/unit-server-2026-11-06-3f79104/.
 - Remaining risks: This run does not validate every later revision or establish measured user-effort savings. The controlled-scenario and evaluation limitations remain applicable.
 
+The seven entries below use the course’s standard tool label, ChatGPT, for OpenAI assistance delivered through its desktop coding assistant.
+
 ## Design — Member B proposal and AI delegation plan
 
 - Activity date / retrospectively recorded date: October 2026 / 6 November 2026.
 - Stage and task: Draft Member B's proposed tool, technical approach and AI delegation activity for Handoff Check.
 - Owner: Yin Jiayu.
 - Independent checker: Pending.
-- Actual AI tool: Codex desktop (OpenAI).
+- Actual AI tool: ChatGPT.
 - Instructions: Explain the proposal requirements, clarify Member B's responsibilities and suggest wording for the checker design and AI declaration.
 - Output: Yin identified the parts of the proposal she needed to cover and asked for a clearer account of her responsibilities. The assistant suggested wording and design options for the checklist, finding categories and order of checks. Scope, severity and exit behaviour were left for the team to decide.
 - Decision: Pending confirmation of which wording was used in the submitted proposal.
@@ -507,7 +509,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Stage and task: Review the inventory scenario and report the findings in GitLab.
 - Owner: Yin Jiayu.
 - Independent checker: Pending for this AI-use record.
-- Actual AI tool: Codex desktop (OpenAI).
+- Actual AI tool: ChatGPT.
 - Instructions: Run the example locally, explain the normal and missing-CSV outcomes and draft concise review comments. Describe MR !1 as a post-merge review.
 - Output: Yin determined how to report the reviews and asked for MR !1 to be recorded as a post-merge check. The assistant ran local reproduction checks and helped turn the observed normal and missing-CSV outcomes into review comments.
 - Decision: Modified. The MR !1 note was scoped to a post-merge check. Follow-up review on MR !2 addressed the revised documentation.
@@ -519,7 +521,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Stage and task: Review ZIP handling, the Bash-to-Python interface, demo setup and development documentation.
 - Owner: Yin Jiayu.
 - Independent checker: Pending for this AI-use record.
-- Actual AI tool: Codex desktop (OpenAI).
+- Actual AI tool: ChatGPT.
 - Instructions: Inspect the changed files, run scoped local checks in isolated copies and draft comments with the checked commit, commands and observed results.
 - Output: Yin reviewed the merge requests and reported findings for the scope of each change. The assistant helped inspect the diff, ran local checks for ZIP handling, interface arguments and exit codes, and drafted comments. The server documentation review compared existing logs with the written claims.
 - Decision: Modified. The review comments retained the tested scope of each MR.
@@ -531,7 +533,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Stage and task: Follow up on Issue #2 and prepare the checklist diagnostic change for team review.
 - Owner: Yin Jiayu.
 - Independent checker: Chin Wen Hui was asked to review the change. Review of this AI-use entry is pending.
-- Actual AI tool: Codex desktop (OpenAI).
+- Actual AI tool: ChatGPT.
 - Instructions: Help address the checklist error message and prepare the MR handoff. Keep the diagnostic change separate from the frozen evaluation.
 - Output: Yin owned the checklist diagnostic follow-up and requested a teammate's review. The assistant helped prepare the review handoff. MR !13 shows the requested checklist path and ref in the public error and still returns `ERROR` with exit code `2`.
 - Decision: Accepted for the merged diagnostic change. The evaluation continued with frozen commit `71d7472`.
@@ -543,7 +545,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Stage and task: Prepare Yin's evaluation environment and exercise the eight cases under both methods.
 - Owner: Yin Jiayu.
 - Independent checker: Chin Wen Hui (MR !15 review). Review of this AI-use entry is pending.
-- Actual AI tool: Codex desktop (OpenAI).
+- Actual AI tool: ChatGPT.
 - Instructions: Prepare the frozen checker, fixtures, run order and results sheet. Run the procedures on the local Mac and capture terminal output.
 - Output: Yin requested preparation for her assigned case order and later completed the timed sessions. The assistant prepared the run guide and results sheet, and ran the separate scripted checks for both methods across all eight cases. Those checks produced their own logs.
 - Decision: Modified. The team kept the scripted logs as supplementary material and repeated the timed evaluation with separate terminal transcripts.
@@ -555,7 +557,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Stage and task: Repeat the 16 runs, record terminal sessions, and prepare Yin's results CSV and README.
 - Owner: Yin Jiayu.
 - Independent checker: Chin Wen Hui (MR !15 review). Review of this AI-use entry is pending.
-- Actual AI tool: Codex desktop (OpenAI), referred to as ChatGPT in the evaluation README.
+- Actual AI tool: ChatGPT.
 - Instructions: Give the next command for each case, help interpret terminal output, and enter verdicts and diagnostics in the CSV. Use the elapsed times reported by Yin, who operated the stopwatch.
 - Output: Yin operated the terminal and stopwatch, supplied her elapsed times and confirmed how repeated commands were handled. The assistant suggested commands, helped interpret terminal output and helped enter verdicts and diagnostics in the CSV. The checker runs used frozen commit `71d7472`.
 - Decision: Modified. Keep the rows in the all-results analysis and flag them as `ai-assisted`. Keep the three unconfirmed manual timings flagged as `time-inconsistent`.
@@ -567,7 +569,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Stage and task: Prepare Yin's 90-second demonstration of the Python checker.
 - Owner: Yin Jiayu.
 - Independent checker: Pending.
-- Actual AI tool: Codex desktop (OpenAI).
+- Actual AI tool: ChatGPT.
 - Instructions: Draft a spoken English script, run the existing demo locally and identify the terminal lines to show.
 - Output: Yin prepared to present her Python checker in a 90-second segment. The assistant ran the demo locally and suggested English narration and recording cues for the complete handoff (`PASS`, exit `0`) and the missing-CSV handoff (`FAIL`, exit `1`).
 - Decision: Pending Yin's selection of the final wording and recording.
