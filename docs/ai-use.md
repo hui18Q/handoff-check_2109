@@ -438,7 +438,9 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 
 - Date: 6 November 2026.
 - Owner: Lu Wenxi.
-- Planned independent checker: Yin Jiayu. Review of this activity record is pending.
+- Independent checkers: Yin Jiayu (jyin0039) and Chin Wen Hui (wchi0071), MR !21, 6 November 2026.
+- Review evidence: Yin approved the initial MR revision. Chin reviewed all five files against repository evidence, confirming the test breakdown, duration history, execution attribution and commit references.
+- Review outcome: Chin requested clarification of workflow-need validation, reviewer attribution and the pipeline reference. Follow-up review of the revised documentation remains pending.
 - AI tool: OpenAI ChatGPT, including automated checks in its separate analysis environment.
 - Task and instructions: Check the exported project against the assignment specification and rubric, reproduce the submitted evaluation summary, inspect the sensitivity analyses, and identify remaining submission gaps.
 - AI output: An evidence-based review, automated test and demonstration results, aggregation checks, and suggested documentation corrections.
@@ -450,13 +452,15 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Verification boundary: This activity occurred after measurement and did not change the raw logs or measured values. It does not establish stopwatch endpoints, contemporaneous cognitive judgements, final PDF compliance or video quality.
 - Findings requiring follow-up: Update outdated README and checker-review status, complete the team's later AI-use records, and verify the final submission revision from a clean extraction on the unit server.
 - Evidence: The reviewed archive; docs/evaluation-runs/summary.md; docs/evaluation.md Sections 8–10; the ChatGPT review conversation and its recorded execution results.
-- Remaining risks: Automated tests can share assumptions with the implementation. Independent checking of this record and final unit-server verification remain pending.
+- Remaining risks: Automated tests can share assumptions with the implementation. Follow-up review of the revised record in MR !21 and final unit-server verification remain pending.
 
 ## Verify / Evaluate — Later peer reviews and report integration
 
 - Activity dates: 5–6 November 2026. Recorded retrospectively on 6 November 2026.
 - Owner: Lu Wenxi.
-- Planned independent checker: Yin Jiayu. Review of this activity record is pending.
+- Independent checkers: Yin Jiayu (jyin0039) and Chin Wen Hui (wchi0071), MR !21, 6 November 2026.
+- Review evidence: Yin approved the initial MR revision. Chin reviewed all five files against repository evidence, confirming the test breakdown, duration history, execution attribution and commit references.
+- Review outcome: Chin requested clarification of workflow-need validation, reviewer attribution and the pipeline reference. Follow-up review of the revised documentation remains pending.
 - AI tool: OpenAI ChatGPT.
 - Task and instructions: Help inspect later test, evaluation and reproducibility changes; compare claims with submitted evidence; draft review comments and update the final report without overstating verification or measurement quality.
 - AI output: Review suggestions, controlled failure-propagation commands, automated calculations in a separate analysis environment, English MR comments and revised report paragraphs.
@@ -467,4 +471,4 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Report assistance: ChatGPT drafted and revised English explanations, AI reflections, contribution statements and review comments. This writing assistance produced no new measurement evidence. Each member remains responsible for confirming their own statements.
 - Measurement boundary: For Lu's sixteen retained timed runs, ChatGPT was used for preparation before timing. Lu independently executed the assessments, interpreted outputs and recorded conclusions before stopping the timer. Later assistance with review and report wording does not change that account.
 - Evidence: MRs !12, !14 and !16–!20; docs/evaluation.md; docs/evaluation-runs/summary.md; member CSV files and logs; the final report and ChatGPT conversation.
-- Remaining risks: Retrospective judgement counts are not contemporaneous cognitive tallies; terminal logs do not independently prove stopwatch endpoints. Independent review of this activity record and final submission verification remain pending.
+- Remaining risks: Retrospective judgement counts are not contemporaneous cognitive tallies; terminal logs do not independently prove stopwatch endpoints. Follow-up review of the revised record in MR !21 and final submission verification remain pending.

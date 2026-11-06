@@ -191,8 +191,8 @@ Total quantity: 10
 ## Current verification status — 6 November 2026
 
 - The reviewed integrated snapshot is commit
-  `075625db8834f14b83f46266b3475937fcd07fe3`. GitLab displays its pipeline
-  as passed. The configured default jobs run the tests and demonstration;
+  `075625db8834f14b83f46266b3475937fcd07fe3`. [Pipeline #169231](https://git.infotech.monash.edu/fit2109/fit2109-s2-2026/group-assignment/MY-T06-06/-/pipelines/169231)
+  is displayed as passed. The configured default jobs run the tests and demonstration;
   the frozen-checker reproducibility job is separately triggered.
 - An assistant-executed check of this snapshot's ZIP in a fresh Linux
   extraction using Python 3.12.14 passed all 90 tests and the demonstration.

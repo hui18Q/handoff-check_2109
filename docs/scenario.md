@@ -128,6 +128,10 @@ does not establish required-file presence in the selected commit or ZIP.
 It deliberately isolates a missing-input failure rather than claiming
 an earlier accidental incident.
 
+- Open limitation: the controlled reproduction validates the failure
+  mechanism. Additional evidence of the team's investigation into this
+  need in actual development has not yet been documented in the repository.
+  This remains an open limitation.
 - Scenario peer-review evidence is recorded in MR !2.
 - The completed `scripts/demo.sh` reconstructs the normal and missing-file
   cases and checks the real tool's expected PASS/0 and FAIL/1 results.
