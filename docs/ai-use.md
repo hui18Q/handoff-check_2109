@@ -499,7 +499,9 @@ The seven entries below use the course’s standard tool label, ChatGPT, for Ope
 - Independent checker: Pending.
 - Actual AI tool: ChatGPT.
 - Instructions: Explain the proposal requirements, clarify Member B's responsibilities and suggest wording for the checker design and AI declaration.
-- Output: Yin identified the parts of the proposal she needed to cover and asked for a clearer account of her responsibilities. The assistant suggested wording and design options for the checklist, finding categories and order of checks. Scope, severity and exit behaviour were left for the team to decide.
+- Output: A proposal draft and design options for team discussion.
+  - Yin identified which sections she needed to cover and asked for wording that reflected her responsibilities. The team retained decisions on scope, severity and exit behaviour.
+  - The assistant suggested wording, checklist formats, finding categories and a possible order for the checks.
 - Decision: Pending confirmation of which wording was used in the submitted proposal.
 - Remaining risks: The proposal describes a plan. Record any later change in the actual division of work separately.
 
@@ -511,7 +513,9 @@ The seven entries below use the course’s standard tool label, ChatGPT, for Ope
 - Independent checker: Pending for this AI-use record.
 - Actual AI tool: ChatGPT.
 - Instructions: Run the example locally, explain the normal and missing-CSV outcomes and draft concise review comments. Describe MR !1 as a post-merge review.
-- Output: Yin determined how to report the reviews and asked for MR !1 to be recorded as a post-merge check. The assistant ran local reproduction checks and helped turn the observed normal and missing-CSV outcomes into review comments.
+- Output: Review notes for the complete handoff and the missing CSV case.
+  - Yin chose how to report the reviews and specified that the MR !1 review took place after the merge.
+  - The assistant ran local reproduction checks and suggested wording for the review comments.
 - Decision: Modified. The MR !1 note was scoped to a post-merge check. Follow-up review on MR !2 addressed the revised documentation.
 - Remaining risks: The local reproduction was scoped to the inventory fixture. The MR !1 check happened after the merge.
 
@@ -523,7 +527,9 @@ The seven entries below use the course’s standard tool label, ChatGPT, for Ope
 - Independent checker: Pending for this AI-use record.
 - Actual AI tool: ChatGPT.
 - Instructions: Inspect the changed files, run scoped local checks in isolated copies and draft comments with the checked commit, commands and observed results.
-- Output: Yin reviewed the merge requests and reported findings for the scope of each change. The assistant helped inspect the diff, ran local checks for ZIP handling, interface arguments and exit codes, and drafted comments. The server documentation review compared existing logs with the written claims.
+- Output: Review comments on the ZIP handling, interface and preflight checks. The server documentation review compared existing logs with the written claims.
+  - Yin was responsible for the peer review and the conclusions reported on each MR.
+  - The assistant helped inspect the changes, ran local checks and drafted comments.
 - Decision: Modified. The review comments retained the tested scope of each MR.
 - Remaining risks: The interface tests used a Python test double. The server documentation review used existing logs, and the earlier preflight was scoped to the development snapshot.
 
@@ -535,7 +541,9 @@ The seven entries below use the course’s standard tool label, ChatGPT, for Ope
 - Independent checker: Chin Wen Hui was asked to review the change. Review of this AI-use entry is pending.
 - Actual AI tool: ChatGPT.
 - Instructions: Help address the checklist error message and prepare the MR handoff. Keep the diagnostic change separate from the frozen evaluation.
-- Output: Yin owned the checklist diagnostic follow-up and requested a teammate's review. The assistant helped prepare the review handoff. MR !13 shows the requested checklist path and ref in the public error and still returns `ERROR` with exit code `2`.
+- Output: MR !13 displays the requested checklist path and ref in the public error and returns `ERROR` with exit code `2`.
+  - Yin took responsibility for the diagnostic follow-up and requested a teammate's review.
+  - The assistant helped prepare the review handoff.
 - Decision: Accepted for the merged diagnostic change. The evaluation continued with frozen commit `71d7472`.
 - Remaining risks: The scope of AI involvement in the implementation still needs confirmation for this entry. The timed evaluation used the earlier frozen build.
 
@@ -547,7 +555,9 @@ The seven entries below use the course’s standard tool label, ChatGPT, for Ope
 - Independent checker: Chin Wen Hui (MR !15 review). Review of this AI-use entry is pending.
 - Actual AI tool: ChatGPT.
 - Instructions: Prepare the frozen checker, fixtures, run order and results sheet. Run the procedures on the local Mac and capture terminal output.
-- Output: Yin requested preparation for her assigned case order and later completed the timed sessions. The assistant prepared the run guide and results sheet, and ran the separate scripted checks for both methods across all eight cases. Those checks produced their own logs.
+- Output: A run guide, a results sheet and a separate set of scripted logs.
+  - Yin requested a setup for her assigned case order and later completed her own timed sessions.
+  - The assistant prepared the materials and executed the scripted checks for both methods across all eight cases.
 - Decision: Modified. The team kept the scripted logs as supplementary material and repeated the timed evaluation with separate terminal transcripts.
 - Remaining risks: Scripted wall times describe automated execution. Human timing and judgement metrics come from the participant sessions and their recorded limitations.
 
@@ -559,7 +569,9 @@ The seven entries below use the course’s standard tool label, ChatGPT, for Ope
 - Independent checker: Chin Wen Hui (MR !15 review). Review of this AI-use entry is pending.
 - Actual AI tool: ChatGPT.
 - Instructions: Give the next command for each case, help interpret terminal output, and enter verdicts and diagnostics in the CSV. Use the elapsed times reported by Yin, who operated the stopwatch.
-- Output: Yin operated the terminal and stopwatch, supplied her elapsed times and confirmed how repeated commands were handled. The assistant suggested commands, helped interpret terminal output and helped enter verdicts and diagnostics in the CSV. The checker runs used frozen commit `71d7472`.
+- Output: Terminal transcripts and a results CSV for the 16 runs with frozen checker commit `71d7472`.
+  - Yin ran the terminal commands, operated the stopwatch, supplied the elapsed times and confirmed how repeated commands were handled.
+  - The assistant suggested commands and helped interpret the output and enter verdicts and diagnostics in the CSV.
 - Decision: Modified. Keep the rows in the all-results analysis and flag them as `ai-assisted`. Keep the three unconfirmed manual timings flagged as `time-inconsistent`.
 - Remaining risks: AI guidance may affect diagnosis and timing. Three reported manual times exceed the gaps between the corresponding terminal sessions.
 
@@ -571,6 +583,8 @@ The seven entries below use the course’s standard tool label, ChatGPT, for Ope
 - Independent checker: Pending.
 - Actual AI tool: ChatGPT.
 - Instructions: Draft a spoken English script, run the existing demo locally and identify the terminal lines to show.
-- Output: Yin prepared to present her Python checker in a 90-second segment. The assistant ran the demo locally and suggested English narration and recording cues for the complete handoff (`PASS`, exit `0`) and the missing-CSV handoff (`FAIL`, exit `1`).
+- Output: English narration and recording cues for the complete handoff (`PASS`, exit `0`) and missing CSV case (`FAIL`, exit `1`).
+  - Yin set the 90-second format and prepared to present her checker.
+  - The assistant ran the demo locally and suggested which output to show and how to describe it.
 - Decision: Pending Yin's selection of the final wording and recording.
 - Remaining risks: Check that the terminal output is readable and the segment fits the time budget in the final team edit.
