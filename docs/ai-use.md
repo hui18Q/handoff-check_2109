@@ -488,6 +488,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Attribution: Commands were AI-assisted; course-server execution was performed by Lu. Recomputing stored cross-environment results was not a new CI execution.
 - Evidence: docs/evidence/unit-server-2026-11-06-3f79104/.
 - Remaining risks: This run does not validate every later revision or establish measured user-effort savings. The controlled-scenario and evaluation limitations remain applicable.
+
 ## Chin Wen Hui (Member C) — AI-assisted activities
 
 **Approach used throughout:** For code I owned, I used ChatGPT and Claude for high-level direction, wrote the implementation myself, and asked Claude to review it. For reviews of teammates' work, I first read, ran and compared the evidence myself, then used Claude for explanations, secondary checks and clearer review comments. I kept final verdicts, approvals and decisions human-led. AI was excluded from retained timed measurements; an early AI-assisted timed attempt was discarded and is disclosed in Activity 7. Verification was matched to risk: higher-risk outputs received independent checks through execution, another environment or another team member.
