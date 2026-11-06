@@ -309,26 +309,58 @@ M = manual baseline first, then checker. C = checker first, then manual.
 Per-case split (manual-first : checker-first): odd-numbered cases 1:2,
 even-numbered cases 2:1.
 
-## 8. Results (to be completed)
+## 8. Results
 
-### 8.1 Run sheet (one row per member × case × method, 48 rows)
+All figures below are generated from the member records by
+`scripts/aggregate_eval.py`; its full output, including the excluding-flagged-pairs
+view, is `docs/evaluation-runs/summary.md`. Regenerate with:
 
-| Member | Case | Method | Order (1st/2nd) | Verdict | Exit (checker) | Missing path / invalid input | Where absent | Next action | Commands | Judgements | Time (s) | Notes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | | | | | |
+    python3 scripts/aggregate_eval.py \
+      --repro docs/evaluation-runs/reproducibility/ci docs/evaluation-runs/reproducibility/unit-server
+
+### 8.1 Run sheet
+
+The 48 rows are kept per member rather than copied here:
+`docs/evaluation-runs/<member>/results.csv` holds each member's original record,
+and `results-analysis.csv` beside it is the derived file used for analysis
+(expected verdict, log exit code, reconstructed judgement count and flags).
+Original records are never edited; corrections and qualifications appear only in
+the derived file and in each member's `README.md`.
+
+| Member | Runs | Flags |
+|---|---|---|
+| Lu Wenxi (L) | 16 | `time-corrected`: case-01 and case-02, both methods |
+| Yin Jiayu (Y) | 16 | `ai-assisted`: all 16 (ChatGPT assisted during timing, `yin/README.md`); `time-inconsistent`: case-01, case-02, case-08 manual |
+| Chin Wen Hui (C) | 16 | none; three checker verdicts recorded as FAIL for logged exit 2 are corrected from the logs in the derived file (`chin/README.md`) |
+
+The excluding-flagged-pairs view drops both methods of any flagged member-case and
+leaves 14 pairs (L and C).
 
 ### 8.2 Measure 1: correctness
 
 | Case | Expected | Checker matches (L / Y / C) | Manual matches (L / Y / C) |
 |---|---|---|---|
-| case-01 … case-08 | | | |
+| case-01 | PASS | ✓ / ✓ / ✓ | ✓ / ✓ / ✓ |
+| case-02 | FAIL | ✓ / ✓ / ✓ | ✓ / ✓ / ✓ |
+| case-03 | FAIL | ✓ / ✓ / ✓ | ✓ / ✓ / ✓ |
+| case-04 | PASS | ✓ / ✓ / ✓ | ✓ / ✓ / ✓ |
+| case-05 | ERROR | ✓ / ✓ / ✓ | ✓ / ✓ / ✗ |
+| case-06 | ERROR | ✓ / ✓ / ✓ | ✓ / ✓ / ✗ |
+| case-07 | FAIL | ✓ / ✓ / ✓ | ✓ / ✓ / ✓ |
+| case-08 | ERROR | ✓ / ✓ / ✓ | ✓ / ✓ / ✗ |
+
+Checker verdicts are taken from the logged exit code. Chin Wen Hui's three
+manual misclassifications recorded ERROR cases as FAIL; the same runs still named
+the invalid input (8.4).
 
 ### 8.3 Measure 2: false alarms
 
 | Case | Unrelated path | Checker treated as failure? (L / Y / C) | Manual treated as failure? (L / Y / C) |
 |---|---|---|---|
-| case-04 | `notes/todo.txt` (`??`) | | |
-| case-04 | `report.log` (`!!`) | | |
+| case-04 | `notes/todo.txt` (`??`) | no / no / no | no / no / no |
+| case-04 | `report.log` (`!!`) | no / no / no | no / no / no |
+
+All six case-04 runs returned PASS.
 
 ### 8.4 Measure 3: diagnosis
 
@@ -336,19 +368,50 @@ FAIL cases (missing-file diagnosis):
 
 | Case | Method | Names missing path? | Correct location (commit / archive / both)? | Next action given? |
 |---|---|---|---|---|
-| case-02, case-03, case-07 | checker / manual | | | |
+| case-02 | checker | 3/3 | 3/3 | 3/3 |
+| case-02 | manual | 3/3 | 3/3 | 3/3 |
+| case-03 | checker | 3/3 | 3/3 | 3/3 |
+| case-03 | manual | 3/3 | 3/3 | 3/3 |
+| case-07 | checker | 3/3 | 3/3 | 3/3 |
+| case-07 | manual | 3/3 | 3/3 | 3/3 |
 
 ERROR cases:
 
-| Case | Method | Identifies the invalid input or failed command? |
+| Case | Method | Identifies the invalid input? |
 |---|---|---|
-| case-05, case-06, case-08 | checker / manual | |
+| case-05 | checker | 3/3 |
+| case-05 | manual | 3/3 |
+| case-06 | checker | 3/3 |
+| case-06 | manual | 3/3 |
+| case-08 | checker | 3/3 |
+| case-08 | manual | 3/3 |
 
 ### 8.5 Measure 4: effort
 
 | Case | Method | Commands (median, min–max) | Judgements (median, min–max) | Time s (median, min–max) | Time when first (median) | Time when second (median) |
 |---|---|---|---|---|---|---|
-| | | | | | | |
+| case-01 | checker | 2 (2–4) | 1 (1–1) | 45 (25–76) | 60.5 | 25 |
+| case-01 | manual | 6 (6–6) | 16 (11–16) | 40 (40–175) | 40 | 107.5 |
+| case-02 | checker | 2 (2–2) | 4 (4–4) | 38 (25–48) | 25 | 43 |
+| case-02 | manual | 6 (6–6) | 19 (12–19) | 38 (37–134) | 85.5 | 38 |
+| case-03 | checker | 2 (2–2) | 4 (4–4) | 31 (24–39) | 35 | 24 |
+| case-03 | manual | 6 (6–6) | 19 (14–19) | 40 (30–129) | 40 | 79.5 |
+| case-04 | checker | 2 (2–4) | 3 (3–3) | 29 (24–57) | 24 | 43 |
+| case-04 | manual | 6 (6–10) | 18 (14–18) | 40 (33–156) | 94.5 | 40 |
+| case-05 | checker | 2 (2–2) | 2 (2–2) | 32 (25–47) | 39.5 | 25 |
+| case-05 | manual | 2 (2–6) | 7 (7–19) | 29 (26–89) | 26 | 59 |
+| case-06 | checker | 2 (2–4) | 2 (2–2) | 28 (25–68) | 25 | 48 |
+| case-06 | manual | 2 (1–6) | 3 (3–5) | 30 (23–129) | 79.5 | 23 |
+| case-07 | checker | 2 (2–2) | 4 (4–4) | 48 (27–50) | 49 | 27 |
+| case-07 | manual | 5 (5–5) | 19 (19–19) | 40 (35–129) | 35 | 84.5 |
+| case-08 | checker | 2 (2–2) | 2 (2–2) | 48 (26–50) | 26 | 49 |
+| case-08 | manual | 5 (5–15) | 14 (14–16) | 61 (33–128) | 94.5 | 33 |
+
+Effort medians over all 24 runs per method: commands 6 manual vs 2 checker,
+judgements 16 vs 2.5, time 40 s vs 35 s. Excluding flagged pairs (14 per method):
+commands 6 vs 2, judgements 18 vs 2.5, time 34 s vs 28.5 s. Yin Jiayu's manual times
+(median 129 s) are three to four times the other members' and include
+AI-assisted interaction, so time is reported as indicative only.
 
 ### 8.6 Measure 5: reproducibility
 
@@ -387,11 +450,17 @@ The checker is an improvement if it matches every expected outcome, produces
 no false FAIL for unrelated files, and needs fewer commands and judgements than
 the manual baseline. Timing is reported as indicative only.
 
-## 9. Raw logs (to be completed)
+Result: met on correctness, false alarms, commands and judgements. The checker
+matched all 24 expected outcomes against 21 of 24 for the manual baseline,
+produced no false FAIL, and needed a median of 2 commands and 2.5 judgements per
+case against 6 and 16. The same holds in the excluding-flagged-pairs view.
 
-One block per run, headed `member / case / method / order / date / checker commit`
-(the output of `git -C ../checker-71d7472 rev-parse HEAD`, Section 5.1),
-containing the exact commands and their full output.
+## 9. Raw logs
+
+Raw logs are stored per run as `docs/evaluation-runs/<member>/logs/case-NN-<method>.log`,
+recorded with `script` during the measured runs; how each member's logs map to
+their CSV rows, and any gaps, is documented in that member's `README.md`.
+Reproducibility outputs are in `docs/evaluation-runs/reproducibility/`.
 
 ## 10. Threats to validity and protocol changes
 
@@ -434,3 +503,16 @@ Protocol changes after this draft:
   the exported checker directory with `<CHECKER>`, because case-05's error
   names the temporary checklist inside it and that directory differs between
   machines. The comparison was otherwise run as specified.
+- 2026-11-06, after all measured runs: recorded the deviations found in review.
+  Chin Wen Hui pasted the manual commands as one block, so the Section 4.3 stop
+  rules did not take effect, and recorded three ERROR cases as FAIL under both
+  methods (checker rows corrected from the logs in the derived file; manual rows
+  kept as measured). Lu Wenxi corrected four durations after the runs. Yin Jiayu's
+  first runs had no logs and were redone with `script`; ChatGPT assisted during
+  timing in the redo, and three manual times exceed the gap to the next logged
+  session. Chin Wen Hui's and Lu Wenxi's judgement counts were reconstructed from
+  the logs under Sections 4.3 and 5; Yin Jiayu's were recorded during the runs.
+  These rows are flagged in the derived files, and results are
+  reported with and without them (Section 8).
+- 2026-11-06: analysis uses `scripts/aggregate_eval.py`, which rejects incomplete,
+  duplicate or out-of-range records instead of summarising them (reviewed in MR !17).
