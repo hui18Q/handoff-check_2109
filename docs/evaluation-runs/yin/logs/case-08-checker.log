@@ -1,0 +1,17 @@
+yin / case-08 / checker / 2nd / 2026-11-06 17:17:17 +0800
+Checker commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Python 3.12.14
+git version 2.39.5 (Apple Git-154)
+Bash 3.2.57(1)-release
+Start state: /Users/suxl/Documents/Codex/2026-10-13/210/work/checker-71d7472
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034heval> bash scripts/handoff_check.sh --repo "/Users/suxl/Documents/Codex/2026-10- 13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-08/repo" --ref main  --checklist handoff-check.json --zip "/Users/suxl/Documents/Codex/2026-10-13/210 /work/eval-runs-yin/.scenario-runs/eval-fixtures/case-08/handoff.zip"
+echo $?
+ERROR: ZIP archive "/Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-08/handoff.zip": File is not a zip file
+eval> echo $?
+2
+eval> exit
+exit

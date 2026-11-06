@@ -1,0 +1,16 @@
+yin / case-06 / manual / 1st / 2026-11-06 17:02:49 +0800
+Checker commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Python 3.12.14
+git version 2.39.5 (Apple Git-154)
+Bash 3.2.57(1)-release
+Start state: /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-06/repo
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034heval> git rev-parse --verify "${REF}^{commit}"
+fatal: Needed a single revision
+eval> git rev-parse --verify "${REF}^{commit}"
+fatal: Needed a single revision
+eval> exit
+exit

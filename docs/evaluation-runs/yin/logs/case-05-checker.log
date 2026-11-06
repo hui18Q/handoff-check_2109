@@ -1,0 +1,51 @@
+yin / case-05 / checker / 1st / 2026-11-06 16:59:07 +0800
+Checker commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Python 3.12.14
+git version 2.39.5 (Apple Git-154)
+Bash 3.2.57(1)-release
+Start state: /Users/suxl/Documents/Codex/2026-10-13/210/work/checker-71d7472
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034heval> bash scripts/handoff_check.sh --repo "/Users/suxl/Documents/Codex/2026-10- 13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-05/repo" --ref main  --checklist handoff-check.json
+echo $?
+ERROR: Checklist "/Users/suxl/Documents/Codex/2026-10-13/210/work/checker-71d7472/.handoff-tmp.RcxIv23d/checklist.json": required_files[2]: Non-canonical repository-relative path: "../data/items.csv"
+eval> echo $?
+2
+eval> bash "/Users/suxl/Documents/Codex/2026-10-13/210/work/start-yin-eval.sh" c ase-05 manual
+Case: case-05
+Repository: /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-05/repo
+Target ref: main
+Checklist: handoff-check.json (read from the target ref)
+ZIP: none supplied - generate one from the target ref
+Manual baseline archive output: /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-05/manual-handoff.zip
+
+Checker command (run from the tool project root):
+  bash scripts/handoff_check.sh --repo /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-05/repo --ref main --checklist handoff-check.json
+Setup only: log opens now. Start stopwatch when you execute the first assessment command.
+Stop once you have saved the verdict and required diagnostic fields in the CSV, then type exit.
+yin / case-05 / manual / 2nd / 2026-11-06 17:01:06 +0800
+Checker commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Python 3.12.14
+git version 2.39.5 (Apple Git-154)
+Bash 3.2.57(1)-release
+Start state: /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-05/repo
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034heval> git rev-parse --verify "${REF}^{commit}"
+df81a70abb2df6fb63ccd65bf1b91a7e7e1953d4
+eval> git show "${REF}:handoff-check.json" | python3 -m json.tool
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "../data/items.csv"
+    ]
+}
+eval> exit
+exit
+eval> exit
+exit

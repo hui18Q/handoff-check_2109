@@ -1,0 +1,35 @@
+Local command check: case-01 / checker / 1st
+15.7.4 / Python 3.12.14 / git version 2.39.5 (Apple Git-154) / GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)
+Checker 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Fixture 92f067b25ee433ac8b5931dd33b254e65e72581b
+$ bash scripts/handoff_check.sh --repo /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/mac-check-vzuOWE/fixtures/case-01/repo --ref main --checklist handoff-check.json
+$ echo $?
+[stdout]
+Selected commit: 92f067b25ee433ac8b5931dd33b254e65e72581b
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+0
+
+[stderr]
+
+[shell status] 0
+K1 PASS / exit 0
+Verdict: PASS
+Missing path or invalid input: none
+Where absent: not applicable
+Next action: none
+Commands: 2
+Recorded judgement checks: 1
+Local wall time (s): 0.101306
+Local automated execution; command and rule-check wall time, not participant timing. Log: logs/case-01-checker.log

@@ -1,0 +1,51 @@
+yin / case-04 / checker / 2nd / 2026-11-06 16:56:32 +0800
+Checker commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Python 3.12.14
+git version 2.39.5 (Apple Git-154)
+Bash 3.2.57(1)-release
+Start state: /Users/suxl/Documents/Codex/2026-10-13/210/work/checker-71d7472
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034heval> bash scripts/handoff_check.sh --repo "/Users/suxl/Documents/Codex/2026-10- 13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-04/repo" --ref main  --checklist handoff-check.json
+echo $?
+Selected commit: d7d3a9dd32a41a550eec314cee9faf4ea8821d43
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 2 (informational; do not determine the verdict)
+  Context: "notes/todo.txt"; Git status: "??"
+  Context: "report.log"; Git status: "!!"
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+eval> echo $?
+0
+eval> bash scripts/handoff_check.sh --repo "/Users/suxl/Documents/Codex/2026-10- 13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-04/repo" --ref main  --checklist handoff-check.json
+Selected commit: d7d3a9dd32a41a550eec314cee9faf4ea8821d43
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 2 (informational; do not determine the verdict)
+  Context: "notes/todo.txt"; Git status: "??"
+  Context: "report.log"; Git status: "!!"
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+eval> echo $?
+0
+eval> 1[Kexit
+exit

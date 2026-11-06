@@ -1,0 +1,31 @@
+yin / case-07 / checker / 1st / 2026-11-06 17:09:06 +0800
+Checker commit: 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Python 3.12.14
+git version 2.39.5 (Apple Git-154)
+Bash 3.2.57(1)-release
+Start state: /Users/suxl/Documents/Codex/2026-10-13/210/work/checker-71d7472
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034heval> bash scripts/handoff_check.sh --repo "/Users/suxl/Documents/Codex/2026-10- 13/210/work/eval-runs-yin/.scenario-runs/eval-fixtures/case-07/repo" --ref main  --checklist handoff-check.json --zip "/Users/suxl/Documents/Codex/2026-10-13/210 /work/eval-runs-yin/.scenario-runs/eval-fixtures/case-07/handoff.zip"
+Selected commit: 65476cfa6ddead9da2d38752e3b744bc752e2293
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+FAIL "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: missing
+  Reason: required regular file unavailable at ZIP: missing.
+  Suggested action: inspect archive paths and export-ignore/packaging rules, then rebuild a ZIP containing this exact regular-file path.
+Other Git status paths: 0 (informational; do not determine the verdict)
+Result: FAIL (1 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+eval> echo $?
+1
+eval> exit
+exit

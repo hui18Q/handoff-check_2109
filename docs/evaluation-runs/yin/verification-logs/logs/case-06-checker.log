@@ -1,0 +1,23 @@
+Local command check: case-06 / checker / 2nd
+15.7.4 / Python 3.12.14 / git version 2.39.5 (Apple Git-154) / GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)
+Checker 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Fixture b7e74af8afc475937da3e91c519828ece6b71414
+$ bash scripts/handoff_check.sh --repo /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/mac-check-vzuOWE/fixtures/case-06/repo --ref v1.0 --checklist handoff-check.json
+$ echo $?
+[stdout]
+2
+
+[stderr]
+ERROR: Ref does not resolve to an available commit: v1.0
+
+[shell status] 0
+K1 ERROR / exit 2
+K3 ref v1.0
+Verdict: ERROR
+Missing path or invalid input: ref v1.0
+Where absent: not applicable
+Next action: Use an existing Git ref.
+Commands: 2
+Recorded judgement checks: 2
+Local wall time (s): 0.031813
+Local automated execution; command and rule-check wall time, not participant timing. Log: logs/case-06-checker.log

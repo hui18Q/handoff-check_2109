@@ -1,0 +1,39 @@
+Local command check: case-05 / manual / 2nd
+15.7.4 / Python 3.12.14 / git version 2.39.5 (Apple Git-154) / GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)
+Checker 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Fixture df81a70abb2df6fb63ccd65bf1b91a7e7e1953d4
+$ git rev-parse --verify 'main^{commit}'
+[stdout]
+df81a70abb2df6fb63ccd65bf1b91a7e7e1953d4
+
+[stderr]
+
+[shell status] 0
+J1 ref resolves: true
+$ git show 'main:handoff-check.json' | python3 -m json.tool
+[stdout]
+{
+    "required_files": [
+        "README.md",
+        "report.py",
+        "../data/items.csv"
+    ]
+}
+
+[stderr]
+
+[shell status] 0
+J2 checklist shape: true
+J3 "README.md": valid
+J3 "report.py": valid
+J3 "../data/items.csv": invalid
+J9 ERROR
+J10 handoff-check.json: ../data/items.csv
+Verdict: ERROR
+Missing path or invalid input: handoff-check.json: ../data/items.csv
+Where absent: not applicable
+Next action: Correct the checklist and commit it.
+Commands: 2
+Recorded judgement checks: 7
+Local wall time (s): 0.034633
+Local automated execution; command and rule-check wall time, not participant timing. Log: logs/case-05-manual.log

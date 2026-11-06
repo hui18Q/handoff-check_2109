@@ -1,0 +1,39 @@
+Local command check: case-04 / checker / 2nd
+15.7.4 / Python 3.12.14 / git version 2.39.5 (Apple Git-154) / GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)
+Checker 71d7472d7e920b2bba64327e9b69c3c18ecacd60
+Fixture d7d3a9dd32a41a550eec314cee9faf4ea8821d43
+$ bash scripts/handoff_check.sh --repo /Users/suxl/Documents/Codex/2026-10-13/210/work/eval-runs-yin/.scenario-runs/mac-check-vzuOWE/fixtures/case-04/repo --ref main --checklist handoff-check.json
+$ echo $?
+[stdout]
+Selected commit: d7d3a9dd32a41a550eec314cee9faf4ea8821d43
+Required files: 3
+PASS "README.md"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "report.py"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+PASS "data/items.csv"
+  working tree: regular; Git status: "not listed"
+  selected commit: regular; ZIP: regular
+Other Git status paths: 2 (informational; do not determine the verdict)
+  Context: "notes/todo.txt"; Git status: "??"
+  Context: "report.log"; Git status: "!!"
+Result: PASS (0 required-file findings)
+Scope: required-file presence only; contents, provenance and program behaviour are not checked.
+0
+
+[stderr]
+
+[shell status] 0
+K1 PASS / exit 0
+K4 ?? notes/todo.txt is unrelated
+K4 !! report.log is unrelated
+Verdict: PASS
+Missing path or invalid input: none
+Where absent: not applicable
+Next action: none
+Commands: 2
+Recorded judgement checks: 3
+Local wall time (s): 0.109227
+Local automated execution; command and rule-check wall time, not participant timing. Log: logs/case-04-checker.log. Context: ?? notes/todo.txt; !! report.log
