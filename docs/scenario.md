@@ -121,15 +121,26 @@ Expected results:
 - The selected commit and ZIP omit the CSV.
 - Receiver execution raises `FileNotFoundError` and exits with code 1.
 
-## Interpretation and validation status
+## Interpretation and current validation status
 
-The experiment demonstrates that local execution success does not establish archive completeness. It does not yet measure the completed checker's improvement over the manual workflow.
+The controlled experiment demonstrates that successful local execution
+does not establish required-file presence in the selected commit or ZIP.
+It deliberately isolates a missing-input failure rather than claiming
+an earlier accidental incident.
 
-Outstanding work:
-- Peer review: tracked in MR #2.
-- Validation on the required unit-server environment with Python 3.12.
-- Documentation of the team's investigation into the real workflow need.
-- Evaluation of the completed checker against a defined manual baseline.
+- Scenario peer-review evidence is recorded in MR !2.
+- The completed `scripts/demo.sh` reconstructs the normal and missing-file
+  cases and checks the real tool's expected PASS/0 and FAIL/1 results.
+- Frozen checker commit `71d7472` passed the then-current 45-test suite
+  and demonstration locally and from a clean unit-server extraction on
+  4 November 2026. The retained evidence is in
+  `docs/evidence/local-real-checker-2026-11-04.txt` and
+  `docs/evidence/unit-server-real-checker-2026-11-04.txt`, reviewed in MR !8.
+- The measured comparison now contains 48 method runs from three members.
+  Results, recording qualifications and sensitivity analyses are in
+  `docs/evaluation.md` and `docs/evaluation-runs/summary.md`.
+- Final clean-extraction verification of the submission revision on the
+  unit server remains pending. Earlier verification is version-specific.
 
 ## Reproduction check — 13 October 2026
 
@@ -139,4 +150,7 @@ Both developer executions succeeded with exit code 0. The normal archive contain
 
 The environment was macOS, Git 2.50.1 (Apple Git-155), and Python 3.14.2. Receiver outputs are recorded in `docs/evidence/reproduction-2026-10-13.txt`.
 
-This check was performed by the original author. Unit-server validation with Python 3.12 remains pending. Peer review is tracked in MR #2.
+This 13 October check was performed by the original author.
+It records the historical scenario reproduction, not final submission
+verification. Subsequent evidence and remaining work are described in
+the current validation status above.

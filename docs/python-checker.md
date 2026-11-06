@@ -1,8 +1,10 @@
 # Python checker: contract and review notes
 
 Owner: Yin Jiayu. Independent checker: Chin Wen Hui.
-MR !7 was reviewed at `77dc8fa63136d092ce4eee1cefc2b76271664119`;
-the follow-up revision requires re-review before merge.
+MR !7 initially reviewed `77dc8fa63136d092ce4eee1cefc2b76271664119`.
+The reported defects were corrected and the frozen checker revision
+`71d7472` was re-reviewed before integration. The recorded 45-test result
+belongs to that historical revision; the current project suite has 90 tests.
 
 The implementation is `src/handoff_check.py`. The public Bash script
 provides exactly six internal arguments:
@@ -48,8 +50,8 @@ The proposal-derived outcomes are presence-based PASS/0 or FAIL/1, invalid
 input ERROR/2, and context-only local/status evidence. Tests of those rules
 assert the verdict and relevant evidence, not a particular full sentence.
 
-The following are implementation policies proposed for team confirmation,
-not extra requirements claimed to come from the proposal:
+The following defensive policies describe the current implementation,
+rather than additional requirements stated in the proposal:
 
 - Checklist names use portable `/`-separated paths, excluding literal
   backslashes and drive-like prefixes such as `C:`. This restriction is
@@ -65,8 +67,8 @@ not extra requirements claimed to come from the proposal:
   checking or comprehensive ZIP security validation.
 
 Chin Wen Hui raised the policy distinction in S5. These extension tests
-document the current implementation; they do not establish team acceptance.
-The reviewer/team should confirm or request changes before merge.
+document implementation behaviour; passing tests alone does not establish
+that a policy is required by the proposal. MR !7 retains the review context.
 
 Errors from each input reader name the source (Checklist, Tree evidence,
 Status evidence or ZIP archive) and its path. Checklist schema errors
@@ -105,8 +107,8 @@ bash scripts/test.sh
 bash scripts/demo.sh
 ```
 
-The first runs both the six existing interface tests and 39 real
-checker/helper tests. The second uses the real checker for a complete
+The first discovers the current 90-test suite, covering the Bash interface,
+real checker, evaluation fixtures, edge cases and aggregation. The second uses the real checker for a complete
 selected commit and a commit omitting the required CSV while retaining
 it locally. Expected checker exits are 0 and 1; expected demo exit is 0.
 
@@ -125,13 +127,14 @@ location-specific failure reasons. Permission/I/O, EOF and unexpected-error
 branches are fault-injected with `unittest.mock`; these are not claims of
 real permission-denied execution on every operating system.
 
-The standard-library test runner keeps setup dependency-free and runs
-the existing unittest-based interface suite together with new tests.
-This differs from the proposal's planned pytest dependency. Member C can
-integrate these tests into the final test/CI workflow; any added package
-must be pinned and justified. CI and baseline evaluation are not claimed
-complete by this change.
+The standard-library unittest runner keeps setup dependency-free. This
+differs from the proposal's planned pytest dependency; any future
+third-party dependency must be pinned and justified.
 
-Chin Wen Hui should re-review the revised rules and expected outcomes, then
-reproduce both commands from this branch before approval. Final complete
-unit-server verification remains with the team after integration.
+The suites are integrated into scripts/test.sh and the GitLab CI workflow.
+Current verification status and evidence links are in README.md.
+The measured baseline comparison, its limitations and sensitivity analyses
+are recorded in docs/evaluation.md.
+
+Final clean-extraction verification of the submission revision on the
+unit server remains pending and is separate from earlier checker reviews.
