@@ -9,7 +9,17 @@ Each results-analysis.csv must contain at least:
     commands, reconstructed_judgements, time_s
 Optional column:
     flags   semicolon-separated labels (e.g. "ai-assisted;time-corrected").
-            Rows with any flag are dropped in the "excluding flagged rows" view.
+            The "excluding flagged pairs" view drops BOTH methods of a member's
+            case when either row is flagged, so manual and checker stay paired.
+
+Input is validated before anything is computed: each member file must hold
+exactly the 16 case x method rows once each, expected verdicts must match
+evaluation.md §3, verdicts must be PASS/FAIL/ERROR, counts must be
+non-negative integers and times finite positive numbers. If results.csv is
+present it must have a diagnostic row for every analysis row. Any violation
+is an ERROR (exit 2), not a silently different table. --allow-incomplete
+accepts missing rows (still rejecting duplicates and bad values) and labels
+the output INCOMPLETE.
 
 If the member directory also holds the original results.csv, its diagnostic
 fields (missing_path_or_invalid_input, where_absent, next_action) are joined by
@@ -24,6 +34,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import math
 import statistics
 import sys
 from dataclasses import dataclass
@@ -40,6 +51,11 @@ REQUIRED = (
     "time_s",
 )
 METHODS = ("manual", "checker")
+CASES = tuple(f"case-{n:02d}" for n in range(1, 9))
+VERDICTS = ("PASS", "FAIL", "ERROR")
+# evaluation.md §3 expected verdicts.
+EXPECTED_VERDICT = {"case-01": "PASS", "case-02": "FAIL", "case-03": "FAIL", "case-04": "PASS",
+                    "case-05": "ERROR", "case-06": "ERROR", "case-07": "FAIL", "case-08": "ERROR"}
 
 # evaluation.md §3: where the missing file is absent (FAIL cases), the invalid
 # input that an ERROR diagnosis must name, and the context-only case.
@@ -62,7 +78,38 @@ def norm_where(text: str) -> str:
 
 
 def norm_case(text: str) -> str:
-    return f"case-{text.strip()[-2:]}"
+    t = text.strip().lower()
+    digits = t[5:] if t.startswith("case-") else t
+    if not (digits.isdigit() and len(digits) == 2 and f"case-{digits}" in CASES):
+        raise ValueError(f"unknown case {text!r} (expected case-01 … case-08)")
+    return f"case-{digits}"
+
+
+def _nonneg_int(text: str, field: str) -> int:
+    try:
+        value = int(text)
+    except ValueError:
+        raise ValueError(f"{field} must be a whole number, got {text!r}") from None
+    if value < 0:
+        raise ValueError(f"{field} must not be negative, got {value}")
+    return value
+
+
+def _positive_time(text: str) -> float:
+    try:
+        value = float(text)
+    except ValueError:
+        raise ValueError(f"time_s must be a number, got {text!r}") from None
+    if not math.isfinite(value) or value <= 0:
+        raise ValueError(f"time_s must be a finite positive number, got {text!r}")
+    return value
+
+
+def _verdict(text: str, field: str) -> str:
+    v = text.strip().upper()
+    if v not in VERDICTS:
+        raise ValueError(f"{field} must be PASS, FAIL or ERROR, got {text!r}")
+    return v
 
 
 @dataclass(frozen=True)
@@ -109,13 +156,22 @@ class InputError(Exception):
     pass
 
 
-def load_diagnostics(path: Path) -> dict[tuple[str, str], dict[str, str]]:
+def load_diagnostics(path: Path) -> dict[tuple[str, str], dict[str, str]] | None:
+    """Rows of the member's results.csv keyed by (case, method); None if absent."""
     raw = path.parent / "results.csv"
     if not raw.exists():
-        return {}
+        return None
+    out: dict[tuple[str, str], dict[str, str]] = {}
     with raw.open(newline="", encoding="utf-8") as fh:
-        return {(norm_case(r["case"]), r["method"].strip().lower()): r
-                for r in csv.DictReader(fh)}
+        for lineno, r in enumerate(csv.DictReader(fh), start=2):
+            try:
+                key = (norm_case(r.get("case") or ""), (r.get("method") or "").strip().lower())
+            except ValueError as exc:
+                raise InputError(f"{raw}:{lineno}: {exc}") from exc
+            if key in out:
+                raise InputError(f"{raw}:{lineno}: duplicate row for {key[0]} {key[1]}")
+            out[key] = r
+    return out
 
 
 def load_member(path: Path) -> list[Row]:
@@ -127,24 +183,42 @@ def load_member(path: Path) -> list[Row]:
         if missing:
             raise InputError(f"{path}: missing column(s): {', '.join(missing)}")
         rows = []
+        seen: dict[tuple[str, str], int] = {}
         for lineno, raw in enumerate(reader, start=2):
-            method = raw["method"].strip().lower()
+            method = (raw["method"] or "").strip().lower()
             if method not in METHODS:
                 raise InputError(f"{path}:{lineno}: unknown method {raw['method']!r}")
-            case = norm_case(raw["case"])
-            d = diag.get((case, method))
+            try:
+                case = norm_case(raw["case"] or "")
+                expected = _verdict(raw["expected_verdict"] or "", "expected_verdict")
+                if expected != EXPECTED_VERDICT[case]:
+                    raise ValueError(f"expected_verdict for {case} is {EXPECTED_VERDICT[case]} "
+                                     f"in evaluation.md §3, got {expected}")
+            except ValueError as exc:
+                raise InputError(f"{path}:{lineno}: {exc}") from exc
+            if (case, method) in seen:
+                raise InputError(f"{path}:{lineno}: duplicate row for {case} {method} "
+                                 f"(first at line {seen[(case, method)]})")
+            seen[(case, method)] = lineno
+            d = None
+            if diag is not None:
+                d = diag.get((case, method))
+                if d is None:
+                    raise InputError(f"{path.parent / 'results.csv'}: no diagnostic row for "
+                                     f"{case} {method}")
             try:
                 rows.append(
                     Row(
                         member=member,
                         case=case,
                         method=method,
-                        expected=raw["expected_verdict"].strip().upper(),
-                        analysis=raw["analysis_verdict"].strip().upper(),
-                        recorded=raw["recorded_verdict"].strip().upper(),
-                        commands=int(raw["commands"]),
-                        judgements=int(raw["reconstructed_judgements"]),
-                        time_s=float(raw["time_s"]),
+                        expected=expected,
+                        analysis=_verdict(raw["analysis_verdict"] or "", "analysis_verdict"),
+                        recorded=_verdict(raw["recorded_verdict"] or "", "recorded_verdict"),
+                        commands=_nonneg_int(raw["commands"] or "", "commands"),
+                        judgements=_nonneg_int(raw["reconstructed_judgements"] or "",
+                                               "reconstructed_judgements"),
+                        time_s=_positive_time(raw["time_s"] or ""),
                         flags=tuple(
                             f.strip() for f in (raw.get("flags") or "").split(";") if f.strip()
                         ),
@@ -159,7 +233,14 @@ def load_member(path: Path) -> list[Row]:
     return rows
 
 
-def load_all(root: Path, exclude: set[str]) -> list[Row]:
+def missing_runs(rows: list[Row]) -> list[str]:
+    """Member/case/method combinations absent from the loaded rows."""
+    have = {(r.member, r.case, r.method) for r in rows}
+    return [f"{m} {c} {meth}" for m in sorted({r.member for r in rows})
+            for c in CASES for meth in METHODS if (m, c, meth) not in have]
+
+
+def load_all(root: Path, exclude: set[str], allow_incomplete: bool = False) -> list[Row]:
     files = sorted(root.glob("*/results-analysis.csv"))
     if not files:
         raise InputError(f"no */results-analysis.csv found under {root}")
@@ -167,7 +248,17 @@ def load_all(root: Path, exclude: set[str]) -> list[Row]:
     for f in files:
         if f.parent.name not in exclude:
             rows.extend(load_member(f))
+    gaps = missing_runs(rows)
+    if gaps and not allow_incomplete:
+        raise InputError(f"{len(gaps)} run(s) missing: {', '.join(gaps)} "
+                         "(use --allow-incomplete to summarise anyway)")
     return rows
+
+
+def unflagged_pairs(rows: list[Row]) -> list[Row]:
+    """Drop both methods of a member's case if either row is flagged."""
+    bad = {(r.member, r.case) for r in rows if r.flags}
+    return [r for r in rows if (r.member, r.case) not in bad]
 
 
 def _fmt(x: float) -> str:
@@ -326,22 +417,26 @@ def compare_repro(a: Path, b: Path) -> tuple[str, list[str]]:
 def report(rows: list[Row], excluded: set[str], repro: tuple[str, list[str]] | None = None) -> str:
     members = sorted({r.member for r in rows})
     flagged = [r for r in rows if r.flags]
-    clean = [r for r in rows if not r.flags]
+    clean = unflagged_pairs(rows)
+    gaps = missing_runs(rows)
     lines = [
         "# Evaluation summary (generated by scripts/aggregate_eval.py)",
         "",
-        f"Members included: {', '.join(members) or 'none'}",
     ]
+    if gaps:
+        lines += [f"**INCOMPLETE: {len(gaps)} run(s) missing: {', '.join(gaps)}**", ""]
+    lines += [f"Members included: {', '.join(members) or 'none'}"]
     if excluded:
         lines.append(f"Members excluded: {', '.join(sorted(excluded))}")
     lines += [
-        f"Rows: {len(rows)} ({len(flagged)} flagged)",
+        f"Rows: {len(rows)} ({len(flagged)} flagged; {len(rows) - len(clean)} rows "
+        "in flagged pairs)",
         "",
         "## Report Section 3 table — all rows",
         "",
         *report_table(rows, repro[0] if repro else None),
         "",
-        "## Report Section 3 table — excluding flagged rows",
+        "## Report Section 3 table — excluding flagged pairs",
         "",
         *(report_table(clean, repro[0] if repro else None) if flagged
           else ["No flagged rows; identical to the table above."]),
@@ -350,7 +445,7 @@ def report(rows: list[Row], excluded: set[str], repro: tuple[str, list[str]] | N
         "",
         *method_table(rows),
         "",
-        "## By method — excluding flagged rows",
+        "## By method — excluding flagged pairs",
         "",
         *(method_table(clean) if flagged else ["No flagged rows; identical to the table above."]),
         "",
@@ -380,11 +475,13 @@ def main(argv: list[str] | None = None) -> int:
                     help="leave a member out (sensitivity check); repeatable")
     ap.add_argument("--repro", nargs=2, type=Path, metavar=("DIR_A", "DIR_B"),
                     help="compare two scripts/repro_eval.sh output directories")
+    ap.add_argument("--allow-incomplete", action="store_true",
+                    help="summarise even if some runs are missing (output is labelled INCOMPLETE)")
     ap.add_argument("--out", type=Path, help="write Markdown here instead of stdout")
     args = ap.parse_args(argv)
     excluded = set(args.exclude_member)
     try:
-        rows = load_all(args.root, excluded)
+        rows = load_all(args.root, excluded, args.allow_incomplete)
         repro = compare_repro(*args.repro) if args.repro else None
     except InputError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
