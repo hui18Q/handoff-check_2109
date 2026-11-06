@@ -460,6 +460,14 @@ Normalisation for comparison: replace the fixture root with `<FIXTURES>` and
 temporary checklist copy). stdout is compared byte for byte. Record the
 Python, Git and Bash versions of both environments.
 
+Separate integrated-project verification: on 6 November 2026, Lu Wenxi
+verified commit `3f79104` from a fresh ZIP extraction on the course unit
+server using Python 3.12.3. All 90 tests and the demonstration passed,
+and recomputing the summary from the saved records produced an exact
+match. This is separate from the frozen-checker CI/server comparison
+above. Original evidence and limitations are in
+`docs/evidence/unit-server-2026-11-06-3f79104/README.md`.
+
 ### 8.7 Improvement criterion (proposal §5)
 
 The checker is an improvement if it matches every expected outcome, produces
