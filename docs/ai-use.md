@@ -488,3 +488,87 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Attribution: Commands were AI-assisted; course-server execution was performed by Lu. Recomputing stored cross-environment results was not a new CI execution.
 - Evidence: docs/evidence/unit-server-2026-11-06-3f79104/.
 - Remaining risks: This run does not validate every later revision or establish measured user-effort savings. The controlled-scenario and evaluation limitations remain applicable.
+
+## Design — Member B proposal and AI delegation plan
+
+- Activity date / retrospectively recorded date: October 2026 / 6 November 2026.
+- Stage and task: Draft Member B's proposed tool, technical approach and AI delegation activity for Handoff Check.
+- Owner: Yin Jiayu.
+- Independent checker: Pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Explain the proposal requirements, clarify Member B's responsibilities and suggest wording for the checker design and AI declaration.
+- Output: Draft proposal text and alternatives for the checklist format, finding categories and processing sequence. The draft left scope, severity and exit behaviour as team decisions.
+- Decision: Pending confirmation of which wording was used in the submitted proposal.
+- Remaining risks: The proposal describes a plan. Record any later change in the actual division of work separately.
+
+## Verify — Inventory scenario peer reviews (MR !1 and !2)
+
+- Activity date / retrospectively recorded date: October 2026 / 6 November 2026.
+- Stage and task: Reproduce the inventory scenario and help prepare Yin's GitLab review comments.
+- Owner: Yin Jiayu.
+- Independent checker: Pending for this AI-use record.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Run the example locally, explain the normal and missing-CSV outcomes and draft concise review comments. Describe MR !1 as a post-merge review.
+- Output: Local reproduction assistance and review drafts that distinguished the successful handoff from the missing-file failure.
+- Decision: Modified. The MR !1 note was scoped to a post-merge check. Follow-up review on MR !2 addressed the revised documentation.
+- Remaining risks: The local reproduction was scoped to the inventory fixture. The MR !1 check happened after the merge.
+
+## Verify — Bash workflow peer reviews (MR !3–!6)
+
+- Activity date / retrospectively recorded date: 24–28 October 2026 / 6 November 2026.
+- Stage and task: Review ZIP handling, the Bash-to-Python interface, demo setup and development documentation.
+- Owner: Yin Jiayu.
+- Independent checker: Pending for this AI-use record.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Inspect the changed files, run scoped local checks in isolated copies and draft comments with the checked commit, commands and observed results.
+- Output: Test commands, local runs and review drafts. They covered generated and supplied ZIPs, interface argument handling and exit codes, and the clean-extraction preflight. The server documentation review compared existing logs with the written claims.
+- Decision: Modified. The review comments retained the tested scope of each MR.
+- Remaining risks: The interface tests used a Python test double. The server documentation review used existing logs, and the earlier preflight was scoped to the development snapshot.
+
+## Revise — Checklist diagnostic follow-up (MR !13)
+
+- Activity date / retrospectively recorded date: 5 November 2026 / 6 November 2026.
+- Stage and task: Follow up on Issue #2 and prepare the checklist diagnostic change for team review.
+- Owner: Yin Jiayu.
+- Independent checker: Chin Wen Hui was asked to review the change. Review of this AI-use entry is pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Help address the checklist error message and prepare the MR handoff. Keep the diagnostic change separate from the frozen evaluation.
+- Output: Help with the diagnostic follow-up and review handoff. MR !13 changes the public error to show the requested checklist path and ref while keeping `ERROR` and exit code `2`.
+- Decision: Accepted for the merged diagnostic change. The evaluation continued with frozen commit `71d7472`.
+- Remaining risks: The scope of AI involvement in the implementation still needs confirmation for this entry. The timed evaluation used the earlier frozen build.
+
+## Verify — Evaluation setup and separate scripted runs
+
+- Activity date / retrospectively recorded date: 5 November 2026 / 6 November 2026.
+- Stage and task: Prepare Yin's evaluation environment and exercise the eight cases under both methods.
+- Owner: Yin Jiayu.
+- Independent checker: Chin Wen Hui (MR !15 review). Review of this AI-use entry is pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Prepare the frozen checker, fixtures, run order and results sheet. Run the procedures on the local Mac and capture terminal output.
+- Output: A local run guide, a results sheet and scripted runs with separate terminal logs. The runs exercised the manual procedure and the checker for all eight cases.
+- Decision: Modified. The team kept the scripted logs as supplementary material and repeated the timed evaluation with separate terminal transcripts.
+- Remaining risks: Scripted wall times describe automated execution. Human timing and judgement metrics come from the participant sessions and their recorded limitations.
+
+## Verify — Timed evaluation reruns and results recording (MR !15)
+
+- Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
+- Stage and task: Repeat the 16 runs, record terminal sessions, and prepare Yin's results CSV and README.
+- Owner: Yin Jiayu.
+- Independent checker: Chin Wen Hui (MR !15 review). Review of this AI-use entry is pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Give the next command for each case, help interpret terminal output, and enter verdicts and diagnostics in the CSV. Use the elapsed times reported by Yin, who operated the stopwatch.
+- Output: Command suggestions, help interpreting findings and entering results in the CSV, and README wording about AI assistance and repeated commands. The checker runs used frozen commit `71d7472`.
+- Decision: Modified. Keep the rows in the all-results analysis and flag them as `ai-assisted`. Keep the three unconfirmed manual timings flagged as `time-inconsistent`.
+- Remaining risks: AI guidance may affect diagnosis and timing. Three reported manual times exceed the gaps between the corresponding terminal sessions.
+
+## Demonstrate — Member B video preparation
+
+- Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
+- Stage and task: Prepare Yin's 90-second demonstration of the Python checker.
+- Owner: Yin Jiayu.
+- Independent checker: Pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Draft a spoken English script, run the existing demo locally and identify the terminal lines to show.
+- Output: A script and recording cues for the complete handoff (`PASS`, exit `0`) and the missing-CSV handoff (`FAIL`, exit `1`). The second cue points to the file's presence in the working tree and its absence from the commit and ZIP.
+- Decision: Pending Yin's selection of the final wording and recording.
+- Remaining risks: Check that the terminal output is readable and the segment fits the time budget in the final team edit.
