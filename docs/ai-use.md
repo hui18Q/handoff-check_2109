@@ -489,6 +489,162 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Evidence: docs/evidence/unit-server-2026-11-06-3f79104/.
 - Remaining risks: This run does not validate every later revision or establish measured user-effort savings. The controlled-scenario and evaluation limitations remain applicable.
 
+## Chin Wen Hui (Member C) — AI-assisted activities
+
+**Approach used throughout:** For code I owned, I used ChatGPT and Claude for high-level direction, wrote the implementation myself, and asked Claude to review it. For reviews of teammates' work, I first read, ran and compared the evidence myself, then used Claude for explanations, secondary checks and clearer review comments. I kept final verdicts, approvals and decisions human-led. AI was excluded from retained timed measurements; an early AI-assisted timed attempt was discarded and is disclosed in Activity 7. Verification was matched to risk: higher-risk outputs received independent checks through execution, another environment or another team member.
+
+### 1. Verify — Review of the Member B Python checker (MR !7)
+
+- Activity date / retrospectively recorded date: 28–29 October 2026 / 6 November 2026.
+- Stage and task: Verify. Independent review of Yin Jiayu's Python checker before integration.
+- Owner: Chin Wen Hui (wchi0071).
+- Independent checker: Yin Jiayu, who reproduced both reported defects with regression tests (her entry "Member B peer-review corrections").
+- Actual AI tool: Anthropic Claude (chat).
+- Instructions: Delegated: explaining unfamiliar parts of the checker's Python code, cross-checking my findings after manual reproduction, and improving the clarity of my review comment. Human-led: reviewing the MR against the proposal and interface, independently selecting failure inputs before consulting Claude, reproducing the defects, deciding which findings were valid, and making the final review and approval decisions.
+- Output: Explanations of code paths, a second check that agreed with my two findings, and a shorter version of my comment.
+- Verification and evidence: Risk was high, because a wrong review could let a defect into the frozen checker used for evaluation. So no finding rested on the AI's explanation of the code. I reproduced each one myself on WSL2 with Python 3.12.16 before reporting it. Two defects were confirmed this way: a corrupt compressed ZIP returned FAIL/1 instead of ERROR/2, and unrelated unusual filenames forced ERROR. Approval followed only my own re-run of the fixed revision 71d7472 (45/45). Evidence: MR !7.
+- Decision: Modified. I edited the reworded comment before posting, so the findings and wording are mine.
+- Remaining risks: The AI's explanations may have influenced which parts of the code I looked at closely, so the review may share its blind spots. Twelve further edge-case tests (entry 6) were added to widen coverage.
+
+### 2. Build — CI smoke pipeline and project runner (MR !9)
+
+- Activity date / retrospectively recorded date: 30 October 2026 / 6 November 2026.
+- Stage and task: Build. Make CI possible when no shared runner was available.
+- Owner: Chin Wen Hui.
+- Independent checker: Lu Wenxi (MR !9 review; her entry "MR !8 evidence and CI smoke").
+- Actual AI tool: OpenAI ChatGPT (direction); Anthropic Claude (chat) (review of my written YAML).
+- Instructions: Delegated: direction on a minimal smoke job, runner registration (Docker executor, pinned image) and WSL/Docker troubleshooting; then a review of the .gitlab-ci.yml I wrote. Human-led: writing the YAML, choosing python:3.12.16-slim, registering and operating runner #922, and deciding when the smoke result was sufficient.
+- Output: A suggested approach and set-up steps (ChatGPT); review comments on my YAML (Claude).
+- Verification and evidence: Risk was low and the output was self-checking: either a real job runs or it does not. Pipeline #166423 job #519084 passed and printed Python 3.12.16, Git 2.47.3 and Bash 5.2.37. Evidence: commit 58a6a49, MR !9.
+- Decision: Accepted after Lu Wenxi's requested MR-description corrections.
+- Remaining risks: CI depends on one machine being online. The smoke job ran no project tests (addressed in entry 6).
+
+### 3. Evaluate — Baseline-comparison protocol and fixture generator (MR !10)
+
+- Activity date / retrospectively recorded date: 4 November 2026 / 6 November 2026.
+- Stage and task: Evaluate. Design how the improvement over the manual baseline is measured, and generate the eight proposal cases.
+- Owner: Chin Wen Hui.
+- Independent checker: Lu Wenxi, who confirmed all eight expected outcomes from Git state without running the tool.
+- Actual AI tool: OpenAI ChatGPT (direction); Anthropic Claude (chat) (review).
+- Instructions: Delegated: high-level direction from ChatGPT and Claude on designing a measurable baseline-comparison protocol and deterministic fixture generation, followed by Claude's review of my implementation. Human-led: writing `scripts/make_fixtures.py` and `docs/evaluation.md` Sections 1–7, defining the expected outcomes, reviewing and revising the protocol, and deciding when to freeze the assessed checker. The expected outcomes were independently checked by Lu Wenxi before measurement to reduce the risk of circular evaluation.
+- Output: Suggested protocol structure and determinism approach (ChatGPT); review comments (Claude).
+- Verification and evidence: Risk was the highest of all activities. An evaluation instrument shaped by AI direction and review could agree with the tool for the wrong reasons and make the evaluation circular. Expected outcomes were therefore fixed by a second person before any run and without the tool. The generator was rerun to confirm identical commit IDs and ZIP hashes (later also on macOS, CI and the unit server). Two review rounds changed the protocol before measurement (evaluation.md Section 10). Evidence: commits c665291, 0f071de, 3c36318, aa6de9c, c8f1bc4, e1c7cfc; MR !10.
+- Decision: Modified through two review rounds.
+- Remaining risks: The step sheet printed the manual commands as one copyable block, which later caused a procedure deviation (entry 7). Lesson: participant instructions need the same review as the protocol itself.
+
+### 4. Verify — Reviews of MR !8 (Lu Wenxi) and MR !13 (Yin Jiayu)
+
+- Activity date / retrospectively recorded date: 5 November 2026 / 6 November 2026.
+- Stage and task: Verify. Check a teammate's verification evidence and a checker fix.
+- Owner: Chin Wen Hui.
+- Independent checker: Lu Wenxi (MR !8 owner, who acted on the review) and Yin Jiayu (MR !13 owner).
+- Actual AI tool: Anthropic Claude (chat).
+- Instructions: Delegated: for MR !8, only a second check of my own comparison; for MR !13, help reading the Python diff, a second check of my reading after I had reviewed it, and rewording my comment. Human-led: the MR !8 comparison itself, running the MR !13 test suite, and both review conclusions.
+- Output: A confirming second check (MR !8); notes on the diff and a reworded comment (MR !13).
+- Verification and evidence: I ran checker 71d7472 on WSL2 and compared my results with Lu Wenxi's logs myself, using AI only afterwards as a cross-check. For MR !13 I read the diff, ran the suite myself and confirmed it passed, and held the merge until Lu Wenxi had confirmed the change to her Bash script. Evidence: MR !8, MR !13.
+- Decision: MR !8: Accepted (the AI cross-check matched my findings). MR !13: Modified (the comment was edited before posting).
+- Remaining risks: Evidence reviews only; the macOS and unit-server runs were not repeated.
+
+### 5. Verify — Reviews of teammates' evaluation records and final documentation (MR !14, !15, !21, !22)
+
+- Activity date / retrospectively recorded date: 5–6 November 2026 / 6 November 2026.
+- Stage and task: Verify. Check each member's evaluation CSV against their raw logs, and the final documentation against repository evidence.
+- Owner: Chin Wen Hui.
+- Independent checker: Lu Wenxi (MR !14, MR !21) and Yin Jiayu (MR !15), who answered or corrected each finding.
+- Actual AI tool: Anthropic Claude (chat).
+- Instructions: Delegated: a second check of my own log-by-log comparison (exit codes, command counts, run order, session timestamps, AI statements), and rewording my review comments. Human-led: the comparisons themselves, confirming each finding in the files, deciding what to request, and approval.
+- Output: A second check of my findings and reworded review comments.
+- Verification and evidence: Every finding was confirmed in the files before posting. The reviews found three problems with Yin Jiayu's records:
+  - Her first submission had no timed-run logs, so a redo was requested.
+  - Her rerun used AI during timing.
+  - Three manual times exceeded the gap to the next logged session.
+
+  In MR !21 the reviews found a removed but unfinished workflow-need item and a reviewer misattribution, both corrected in af372f43.
+  For MR !22, I reviewed Lu Wenxi's final clean-extraction verification on the unit server. I checked the evidence for 90 passing tests, the demo run, the byte-for-byte summary comparison, the extraction steps and who carried out the verification. Claude helped with a second check, but I made the final review decision myself. Evidence: MR !22, commit `3f79104`.
+  Evidence: MR !14, !15, !21; flags in each results-analysis.csv.
+- Decision: Modified. Comments were edited before posting. Yin Jiayu's rerun was accepted with flags rather than redone a third time, to avoid further exposure to the cases.
+- Remaining risks: Logs cannot prove stopwatch endpoints or what happened outside the recorded sessions.
+
+### 6. Verify — Evaluation-fixture tests and full CI pipeline (MR !12)
+
+- Activity date / retrospectively recorded date: 5 November 2026 / 6 November 2026.
+- Stage and task: Verify. Run the real checker on every evaluation case and on edge cases in CI.
+- Owner: Chin Wen Hui.
+- Independent checker: Lu Wenxi, who reproduced the suite on macOS (65 passed, 1 filesystem-dependent skip).
+- Actual AI tool: OpenAI ChatGPT (direction); Anthropic Claude (chat) (review of my written tests and CI).
+- Instructions: Delegated: direction on which edge cases to cover and how to structure a two-job CI pipeline; then a review of what I wrote. Human-led: writing the tests for the eight cases, an identifier check and twelve edge cases, and the two-job CI configuration with pipefail; the expected verdicts (from entry 3, not from AI); and the merge decision.
+- Output: Suggested edge cases and CI structure (ChatGPT); review comments (Claude).
+- Verification and evidence: The eight evaluation-case tests use expected results from the protocol, which Lu Wenxi independently checked for the eight evaluation cases using Git and ZIP evidence. This reduces the risk of circular testing because the expected results were not taken from the checker's output. However, this independent check covered the eight evaluation cases, not every additional edge-case test. The suite ran locally, in CI (pipeline #168128, 66 tests) and on a second operating system. Evidence: commits 9fe05cb, ffb2f2a; MR !12. For the twelve additional edge cases, I determined the expected results from the checker's documented rules and the Git or ZIP conditions used in each test. I checked these expectations against the test setup rather than copying the checker's actual output. These expected results were not independently verified case by case, so incorrect assumptions may still remain.
+- Decision: Accepted after review.
+- Remaining risks: Some edge cases I chose after ChatGPT's suggestions may share its blind spots. Lu Wenxi's independent check of the eight evaluation cases reduced this risk for those cases, but did not cover every additional edge case. Independent review and execution on different operating systems provided further checks, although they could not guarantee that all errors were found.
+
+### 7. Evaluate — Chin Wen Hui's measured runs and evidence record (MR !16)
+
+- Activity date / retrospectively recorded date: 5 November 2026 / 6 November 2026.
+- Stage and task: Evaluate. Sixteen timed manual-versus-checker runs and their evidence record.
+- Owner: Chin Wen Hui.
+- Independent checker: Lu Wenxi (MR !16 review).
+- Actual AI tool: Anthropic Claude (chat).
+- Instructions: Delegated: AI review of my completed evaluation records, evidence map, judgement count reconstruction and derived analysis, including checking for errors or unclear explanations. Human-led: completing the retained timed runs without AI assistance, preparing the evidence records, reconstructing judgement counts, producing the analysis, checking AI feedback and making the final decisions.
+- Output: AI review comments and suggestions on my completed `docs/evaluation-runs/chin/README.md`, reconstructed judgement counts and `results-analysis.csv`. AI did not create these files or reconstruct the counts.
+- Verification and evidence: In an early attempt at case-07, I asked AI for help while the stopwatch was running, and it produced a complete results row. That attempt was discarded. I then repeated case-07 without AI assistance during the timed run and recorded the results myself. I also prepared the evidence records, reconstructed judgement counts and completed the analysis myself after the timed runs. Only after completing these tasks did I use AI to review and check my work. I checked every AI-suggested statement against my own records. One AI-supplied reason for my FAIL-for-ERROR recordings was incorrect, so I replaced it with what I actually did: I classified the cases based on terminal output. Evidence: commits da0c264, 04d612c, 03d0d56; MR !16.
+- Decision: Modified. An AI suggestion to overwrite recorded verdicts with correct values was Rejected: results.csv and the logs are unchanged, and corrections live only in the derived file with log evidence.
+- Remaining risks: Block-pasted manual commands and FAIL-for-ERROR recordings remain in the data as disclosed deviations. A further sensitivity view without these runs is reported in evaluation.md Section 8.1.
+
+### 8. Evaluate — Aggregation script and derived analysis files (MR !17, MR !19)
+
+- Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
+- Stage and task: Evaluate. Produce the report Section 3 table and evaluation.md Section 8 reproducibly from every member's records.
+- Owner: Chin Wen Hui.
+- Independent checker: Lu Wenxi (two review rounds, ChatGPT-assisted per her own entry); Yin Jiayu checked the flags on her own data (MR !19).
+- Actual AI tool: OpenAI ChatGPT (direction); Anthropic Claude (chat) (review of my written code).
+- Instructions: Delegated: ChatGPT provided high-level direction on reproducible aggregation, while Claude reviewed my aggregation script, tests and handling of evaluation flags. Human-led: writing `scripts/aggregate_eval.py` and its unit tests, deriving the analysis files, checking flags against raw evaluation records, confirming relevant findings with the members concerned, and making the final decisions about flag inclusion and reported results. AI review was treated as a secondary check rather than evidence of correctness.
+- Output: Suggested approach (ChatGPT); review comments (Claude).
+- Verification and evidence: Lu Wenxi's independent review showed that the first version could produce plausible but incorrect tables when given invalid input. Her two review rounds identified seven validation gaps:
+  - duplicate runs were summarised without rejection
+  - missing runs were summarised without warning
+  - a missing diagnostic row silently reduced the denominator
+  - invalid values (negative command counts and `NaN` times) were accepted or caused a traceback
+  - a one-sided flag left unpaired samples after exclusion
+  - the reproducibility comparison accepted incomplete or duplicate case sets, while missing stdout caused a traceback
+  - a header-only member file was silently omitted
+
+  All seven gaps were fixed with regression tests (commits `a427a57` and `b576dfd`; 90 tests in total). I independently confirmed two cases by hand: a duplicate run and a header-only member file, both of which correctly produced exit code 2 after the fixes. Each evaluation flag was confirmed with the relevant team member. Evidence: MR !17 and MR !19.
+- Decision: Modified through two independent review rounds; accepted after the validation fixes and tests.
+- Remaining risks: My original tests and Claude's review both missed these validation gaps. Lu Wenxi's independent review exposed the shared blind spots. For future evaluation tools, I would include independently designed negative tests using malformed, missing and duplicated records before relying on aggregated results.
+
+### 9. Evaluate — Reproducibility script and CI/unit-server runs (MR !18)
+
+- Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
+- Stage and task: Evaluate. Measure 5 (evaluation.md Section 8.6): identical frozen-checker results in GitLab CI and on the unit server.
+- Owner: Chin Wen Hui.
+- Independent checker: Lu Wenxi (MR !18 review; her additional rerun was assistant-executed, per her entry).
+- Actual AI tool: OpenAI ChatGPT (direction); Anthropic Claude (chat) (review).
+- Instructions: Delegated: high-level direction from ChatGPT and Claude on comparing frozen-checker outputs across environments, followed by Claude's review of my script, CI job and documentation. Human-led: writing `scripts/repro_eval.sh`, the manual CI job, the reproducibility README and `docs/evaluation.md` Section 8.6, running the verification locally, in GitLab CI and on the unit server, comparing the outputs, and making the final decisions. Cross-environment execution was used to verify the results independently of AI suggestions.
+- Output: Suggested approach (ChatGPT); review comments (Claude).
+- Verification and evidence: I ran the script locally, triggered CI pipeline #168569 and ran it from a fresh clone on fit2109s2.rep.monash.edu. diff -r showed all eight cases identical, and the commit IDs matched Section 2.3. The script's extra <CHECKER> path normalisation differs from the protocol and is disclosed in evaluation.md Section 10 rather than hidden. Evidence: commits 24bcfbb, 033498c, bcfa359; MR !18.
+- Decision: Accepted after review.
+- Remaining risks: My verification covered the frozen checker only. Lu Wenxi separately completed clean-extraction verification of the integrated project on the unit server (MR !22, commit `3f79104`).
+
+### 10. Acknowledgement — Report, evaluation write-up and video script
+
+- Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
+- Stage and task: Writing support. Acknowledged as the spec requires; not counted as an AI-assisted activity.
+- Owner: Chin Wen Hui.
+- Independent checker: Lu Wenxi (MR !20) and the team (final report).
+- Actual AI tool: Anthropic Claude (chat).
+- Instructions: Delegated: providing high-level direction for evaluation.md Sections 8–10, my report text in Sections 2–5, my video script, and this AI-use record, followed by improving the grammar, clarity and professional wording of my own drafts. Human-led: writing the initial drafts myself, checking and editing AI suggestions, verifying all technical claims against project evidence, and deciding on the final wording.
+- Output: High-level guidance on the content and structure, followed by suggestions to improve grammar, clarity and professional wording.
+- Verification and evidence: Lu Wenxi's MR !20 review led to four corrections:
+  - record-edit wording
+  - flagged versus disclosed deviations
+  - a qualified improvement claim
+  - how per-case tables were computed
+
+ Reviewing and refining the report also showed that, without my runs, both methods were fully correct. I kept this finding in the final report instead of overstating the improvement. Evidence: MR !20; the final report.
+- Decision: Modified.
+- Remaining risks: Writing support produces no evidence. The video is recorded in my own voice, with no AI-generated or AI-altered footage.
+
 ## Design — Member B proposal and AI delegation plan
 
 - Activity date / retrospectively recorded date: October 2026 / 6 November 2026.
