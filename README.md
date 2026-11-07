@@ -220,6 +220,9 @@ Total quantity: 10
   This verification applies to that tested revision; subsequent changes
   must be accounted for when preparing the final submission.
 
+The submission differs from the unit-server-verified revision `3f79104`
+only in documentation and verification records; the code and tests are unchanged.
+
 ## Historical verification records
 
 The entries below preserve earlier development-stage results and outstanding
