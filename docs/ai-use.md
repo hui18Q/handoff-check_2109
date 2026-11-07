@@ -531,10 +531,10 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Modified. The review comments retained the tested scope of each MR.
 - Remaining risks: The interface tests used a Python test double. The server documentation review used existing logs, and the earlier preflight was scoped to the development snapshot.
 
-## Revise — Checklist diagnostic follow-up (MR !13)
+## Build — Checklist diagnostic follow-up (MR !13)
 
 - Activity date / retrospectively recorded date: 5 November 2026 / 6 November 2026.
-- Stage and task: Follow up on Issue #2 and prepare the checklist diagnostic change for team review.
+- Stage and task: Build. Implement the checklist diagnostic fix for Issue #2 and prepare it for team review.
 - Owner: Yin Jiayu.
 - Independent checker: Chin Wen Hui approved the implementation in MR !13. Review of this AI-use entry is pending in MR !24.
 - Actual AI tool: OpenAI Codex desktop.
@@ -572,16 +572,26 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 - Decision: Modified. Keep the rows in the all-results analysis and flag them as `ai-assisted`. Keep the three unconfirmed manual timings flagged as `time-inconsistent`.
 - Remaining risks: AI guidance may affect diagnosis and timing. Three reported manual times exceed the gaps between the corresponding terminal sessions.
 
-## Demonstrate — Member B video preparation
+## Verify — Local demo check for Member B
 
 - Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
-- Stage and task: Prepare Yin's 90-second demonstration of the Python checker.
+- Stage and task: Verify. Run the existing demo locally and check the output for both handoff cases.
 - Owner: Yin Jiayu.
 - Independent checker: Pending.
 - Actual AI tool: OpenAI Codex desktop.
-- Instructions: Draft a spoken English script, run the existing demo locally and identify the terminal lines to show.
-- Output: English narration and recording cues for the complete handoff (`PASS`, exit `0`) and missing CSV case (`FAIL`, exit `1`).
-  - Yin set the 90-second format and recorded her segment about the checker.
-  - The assistant ran the demo locally and suggested which output to show and how to describe it.
+- Instructions: Run the demo and identify the terminal output that shows each case's result.
+- Output: Codex ran the demo locally. The complete handoff returned `PASS` with exit code `0`, and the missing CSV case returned `FAIL` with exit code `1`.
+- Decision: Used the output as a reference for the terminal lines to show in the video.
+- Remaining risks: This check covered the two demo cases on the local machine.
+
+## Video preparation — Member B narration
+
+- Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
+- Stage and task: Prepare narration for Yin's 90-second demonstration. Script assistance does not count as a technical AI activity.
+- Owner: Yin Jiayu.
+- Independent checker: Pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Suggest a spoken English script and an order for presenting the two cases.
+- Output: Draft narration and presentation cues. Yin set the 90-second format and recorded her own explanation of the checker.
 - Decision: Modified. Yin used the draft and demonstration order as a guide and recorded the explanation in her own words.
 - Remaining risks: Check that the terminal output is readable and the segment fits the time budget in the final team edit.
