@@ -477,7 +477,7 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
 
 - Date: 6 November 2026.
 - Owner and executor: Lu Wenxi.
-- Independent checker: Chin Wen Hui (wchi0071), MR !22, 6 November 2026. Chin reviewed the original logs, test count, demo outcomes, exact summary match, extraction conditions and execution attribution. He requested that this record identify the completed review.
+- Independent checker: Chin Wen Hui (wchi0071), MR !22, 6 November 2026. Chin reviewed the original logs, test count, demo outcomes, exact summary match, extraction conditions and execution attribution. She requested that this record identify the completed review.
 - AI tool: OpenAI ChatGPT.
 - Task and instructions: Prepare a versioned archive, transfer and checksum checks, clean extraction, Python 3.12 setup, test/demo execution and original-log retention.
 - AI output: Terminal commands, evidence-checking assistance and draft documentation.

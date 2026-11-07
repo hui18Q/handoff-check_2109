@@ -42,6 +42,6 @@ ChatGPT prepared commands and helped interpret the evidence.
 Lu executed the commands on the course server.
 Chin Wen Hui reviewed the original evidence in MR !22 on 6 November
 2026, confirming the test count, demo outcomes, exact summary match,
-extraction conditions and execution attribution. His review did not
+extraction conditions and execution attribution. Her review did not
 record independent checksum verification of the subsequently attached ZIP.
 The result applies to the stated commit, not automatically to later changes.
