@@ -644,3 +644,110 @@ AI assistance with drafting the proposal is acknowledged separately in its Appen
  Reviewing and refining the report also showed that, without my runs, both methods were fully correct. I kept this finding in the final report instead of overstating the improvement. Evidence: MR !20; the final report.
 - Decision: Modified.
 - Remaining risks: Writing support produces no evidence. The video is recorded in my own voice, with no AI-generated or AI-altered footage.
+
+## Design — Member B proposal and AI delegation plan
+
+- Activity date / retrospectively recorded date: October 2026 / 6 November 2026.
+- Stage and task: Draft Member B's proposed tool, technical approach and AI delegation activity for Handoff Check.
+- Owner: Yin Jiayu.
+- Independent checker: Pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Explain the proposal requirements, clarify Member B's responsibilities and suggest wording for the checker design and AI declaration.
+- Output: A proposal draft and design options for team discussion.
+  - Yin identified which sections she needed to cover and asked for wording that reflected her responsibilities. The team retained decisions on scope, severity and exit behaviour.
+  - The assistant suggested wording, checklist formats, finding categories and a possible order for the checks.
+- Decision: Accepted for planning only. Yin used the suggestions to organise ideas and wrote the submitted text herself.
+- Remaining risks: The proposal describes a plan. Record any later change in the actual division of work separately.
+
+## Verify — Inventory scenario peer reviews (MR !1 and !2)
+
+- Activity date / retrospectively recorded date: October 2026 / 6 November 2026.
+- Stage and task: Review the inventory scenario and report the findings in GitLab.
+- Owner: Yin Jiayu.
+- Independent checker: Pending for this AI-use record.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Run the example locally, explain the normal and missing-CSV outcomes and draft concise review comments. Describe MR !1 as a post-merge review.
+- Output: Review notes for the complete handoff and the missing CSV case.
+  - Yin chose how to report the reviews and specified that the MR !1 review took place after the merge.
+  - The assistant ran local reproduction checks and suggested wording for the review comments.
+- Decision: Modified. The MR !1 note was scoped to a post-merge check. Follow-up review on MR !2 addressed the revised documentation.
+- Remaining risks: The local reproduction was scoped to the inventory fixture. The MR !1 check happened after the merge.
+
+## Verify — Bash workflow peer reviews (MR !3–!6)
+
+- Activity date / retrospectively recorded date: 24–28 October 2026 / 6 November 2026.
+- Stage and task: Review ZIP handling, the Bash-to-Python interface, demo setup and development documentation.
+- Owner: Yin Jiayu.
+- Independent checker: Pending for this AI-use record.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Inspect the changed files, run scoped local checks in isolated copies and draft comments with the checked commit, commands and observed results.
+- Output: Review comments on the ZIP handling, interface and preflight checks. The server documentation review compared existing logs with the written claims.
+  - Yin was responsible for the peer review and the conclusions reported on each MR.
+  - The assistant helped inspect the changes, ran local checks and drafted comments.
+- Decision: Modified. The review comments retained the tested scope of each MR.
+- Remaining risks: The interface tests used a Python test double. The server documentation review used existing logs, and the earlier preflight was scoped to the development snapshot.
+
+## Build — Checklist diagnostic follow-up (MR !13)
+
+- Activity date / retrospectively recorded date: 5 November 2026 / 6 November 2026.
+- Stage and task: Build. Implement the checklist diagnostic fix for Issue #2 and prepare it for team review.
+- Owner: Yin Jiayu.
+- Independent checker: Chin Wen Hui approved the implementation in MR !13. Review of this AI-use entry is pending in MR !24.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Fix the checklist diagnostic so it names the requested path and ref. Keep the change separate from the frozen evaluation and prepare it for peer review.
+- Output: MR !13 displays the requested checklist path and ref in the public error and returns `ERROR` with exit code `2`.
+  - Yin used Codex to help fix the checklist diagnostic and requested a teammate's review. Codex generated and applied the patch and ran the local checks, including the test suite and demo.
+- Decision: Accepted for the merged diagnostic change. The evaluation continued with frozen commit `71d7472`.
+- Remaining risks: The local suite had one filesystem-dependent skip. The timed evaluation used the earlier frozen build.
+
+## Verify — Evaluation setup and separate scripted runs
+
+- Activity date / retrospectively recorded date: 5 November 2026 / 6 November 2026.
+- Stage and task: Prepare Yin's evaluation environment and exercise the eight cases under both methods.
+- Owner: Yin Jiayu.
+- Independent checker: Chin Wen Hui (MR !15 review). Review of this AI-use entry is pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Prepare the frozen checker, fixtures, run order and results sheet. Run the procedures on the local Mac and capture terminal output.
+- Output: A run guide, a results sheet and a separate set of scripted logs.
+  - Yin requested a setup for her assigned case order and later completed her own timed sessions.
+  - The assistant prepared the materials and executed the scripted checks for both methods across all eight cases.
+- Decision: Modified. The team kept the scripted logs as supplementary material and repeated the timed evaluation with separate terminal transcripts.
+- Remaining risks: Scripted wall times describe automated execution. Human timing and judgement metrics come from the participant sessions and their recorded limitations.
+
+## Verify — Timed evaluation reruns and results recording (MR !15)
+
+- Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
+- Stage and task: Repeat the 16 runs, record terminal sessions, and prepare Yin's results CSV and README.
+- Owner: Yin Jiayu.
+- Independent checker: Chin Wen Hui (MR !15 review). Review of this AI-use entry is pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Give the next command for each case, help interpret terminal output, and enter verdicts and diagnostics in the CSV. Use the elapsed times reported by Yin, who operated the stopwatch.
+- Output: Terminal transcripts and a results CSV for the 16 runs with frozen checker commit `71d7472`.
+  - Yin ran the terminal commands, operated the stopwatch, supplied the elapsed times and confirmed how repeated commands were handled.
+  - The assistant suggested commands and helped interpret the output and enter verdicts and diagnostics in the CSV.
+- Decision: Modified. Keep the rows in the all-results analysis and flag them as `ai-assisted`. Keep the three unconfirmed manual timings flagged as `time-inconsistent`.
+- Remaining risks: AI guidance may affect diagnosis and timing. Three reported manual times exceed the gaps between the corresponding terminal sessions.
+
+## Verify — Local demo check for Member B
+
+- Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
+- Stage and task: Verify. Run the existing demo locally and check the output for both handoff cases.
+- Owner: Yin Jiayu.
+- Independent checker: Pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Run the demo and identify the terminal output that shows each case's result.
+- Output: Codex ran the demo locally. The complete handoff returned `PASS` with exit code `0`, and the missing CSV case returned `FAIL` with exit code `1`.
+- Decision: Used the output as a reference for the terminal lines to show in the video.
+- Remaining risks: This check covered the two demo cases on the local machine.
+
+## Video preparation — Member B narration
+
+- Activity date / retrospectively recorded date: 6 November 2026 / 6 November 2026.
+- Stage and task: Prepare narration for Yin's 90-second demonstration. Script assistance does not count as a technical AI activity.
+- Owner: Yin Jiayu.
+- Independent checker: Pending.
+- Actual AI tool: OpenAI Codex desktop.
+- Instructions: Suggest a spoken English script and an order for presenting the two cases.
+- Output: Draft narration and presentation cues. Yin set the 90-second format and recorded her own explanation of the checker.
+- Decision: Modified. Yin used the draft and demonstration order as a guide and recorded the explanation in her own words.
+- Remaining risks: Check that the terminal output is readable and the segment fits the time budget in the final team edit.
